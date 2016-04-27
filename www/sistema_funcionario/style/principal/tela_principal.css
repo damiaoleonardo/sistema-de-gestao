@@ -1,0 +1,133 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.tela_principal{
+    width: 100%;
+    height: 100%;
+    background: #7ebebe;
+}
+.tela_principal .row{
+    width: 100%;
+    height: auto;
+    background: #7ebebe;
+}
+.tela_principal .row #header{
+    width: 96%;
+    height: 130px;
+    margin-top: 5%;
+    margin-left:2%;
+    background:#cfcfcf;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+.tela_principal .row #header #logo{
+     height: 100%;
+    height: 30%; font-size:2.3em; color: #01669F;
+}
+.tela_principal .row #header #informacoes{
+    height: 30%; font-size:1.6em; color: #01669F;
+}
+.tela_principal .row #header #imagem{
+     height: 100%;
+}
+.tela_principal .row #header #imagem img{
+    margin:auto;
+    margin-top:12px;
+}
+.tela_principal .row #header #sair_sistema {
+    height: 100%;
+}
+.tela_principal .row #header #sair_sistema #botao_sair {
+    width: 90%;
+    height: 40%;
+    margin:20% 0% 0% 5%;
+    
+}
+.tela_principal .row #header #sair_sistema #botao_sair a{
+    color:white;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-decoration: none;
+    background: #3a87ad;
+    border-radius: 5px;
+    margin-top:5px;
+       zoom: 1.4;
+         -ms-zoom: 1.24;
+         -webkit-zoom: 1.24;
+         -moz-transform:  scale(1.4,1.4);
+         -moz-transform-origin: left center; 
+}
+
+.tela_principal .row #conteudo{
+    width: 98%;
+    margin-left: 1%;
+    height: auto;
+}
+
+.tela_principal .row #conteudo .projetos{
+    width: 100%;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.tela_principal .row #conteudo #tarefas{
+    width: 100%;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.tela_principal .row #conteudo #adiciona_tarefa {
+    width: 100%;
+    height: 400px;
+    background: beige;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.tela_principal .row #conteudo #adiciona_tarefa #tela_campos #campo_button{
+    width: 100%;
+    height: 100%;
+    border-radius:9px;
+}
+.tela_principal .row #conteudo #adiciona_tarefa #tela_campos #campo_button #button{
+    height: 70%;
+    width:20%;
+    margin-left: 20%;
+    margin-top:2%;
+    background: #01669F;
+    font-size:1.5em;
+    color:white;
+}
+
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #primeira_coluna{
+    zoom: 1.1;
+         -ms-zoom: 1.1;
+         -webkit-zoom: 1.1;
+         -moz-transform:  scale(1.1,1.1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #segunda_coluna{
+    zoom: 1;
+         -ms-zoom: 1;
+         -webkit-zoom: 1;
+         -moz-transform:  scale(1,1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #terceira_coluna{
+          zoom: 1;
+         -ms-zoom: 1;
+         -webkit-zoom: 1;
+         -moz-transform:  scale(1,1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #quarta_coluna{
+      zoom: 1.7;
+         -ms-zoom: 1.7;
+         -webkit-zoom: 1.7;
+         -moz-transform:  scale(1.7,1.7);
+         -moz-transform-origin: left center; 
+
+}

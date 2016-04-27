@@ -1,0 +1,105 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.row_relatorio_projeto{
+    width: 100%;
+    height: 100px;
+    background: #444;
+}
+.row_relatorio_projeto  #primeiro_campo{
+    height: 100%;
+}
+.row_relatorio_projeto #primeiro_campo #projeto{
+     height: 40%;
+     margin-top:15px;
+}
+.row_relatorio_projeto #primeiro_campo #projeto .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #primeiro_campo #projeto .selectpicker{
+    width: 60%;
+}
+.row_relatorio_projeto #primeiro_campo #veiculo{
+     height: 40%;
+}
+.row_relatorio_projeto #primeiro_campo #veiculo .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #primeiro_campo #veiculo .selectpicker{
+    width: 40%;
+}
+
+
+
+.row_relatorio_projeto #segundo_campo{
+    height: 100%;  
+}
+
+.row_relatorio_projeto #segundo_campo #funcionario{
+     height: 40%;
+     margin-top:15px;
+}
+.row_relatorio_projeto #segundo_campo #funcionario .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #segundo_campo #funcionario .selectpicker{
+    width: 45%;
+}
+.row_relatorio_projeto #segundo_campo #tipoveiculo{
+     height: 40%;
+}
+.row_relatorio_projeto #segundo_campo #tipoveiculo .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #segundo_campo #tipoveiculo .selectpicker{
+    width:40%;
+}
+
+.row_relatorio_projeto #terceiro_campo{
+    height: 100%;
+}
+
+.row_relatorio_projeto #terceiro_campo #data_inicio{
+     height: 40%;
+     margin-top:15px;
+}
+.row_relatorio_projeto #terceiro_campo #data_inicio .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #terceiro_campo #data_inicio .selectpicker{
+    width: 40%;
+}
+.row_relatorio_projeto #terceiro_campo #data_final{
+     height: 40%;
+}
+.row_relatorio_projeto #terceiro_campo #data_final .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_projeto #terceiro_campo #data_final .selectpicker{
+    width: 40%;
+}
+
+
+
+.row_relatorio_projeto #campo_button{
+    height: 100%;
+}
+.row_relatorio_projeto #campo_button  .btn-default{
+   margin:15% 0% 0% 10%;
+   background: #01669F;
+   color:white;
+}
+
+.row_conteudo-controle-manutencao{
+    width: 100%;
+    height: 600px;
+    overflow: scroll;
+}
+
