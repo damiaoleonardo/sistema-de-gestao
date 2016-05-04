@@ -22,7 +22,7 @@ class Connection {
         $host = "localhost";
         $user = "root";
         $pass = "";
-        $banco = "sistema de gerenciamento";
+        $banco = "sistema_de_gestao";
 
         try {
           $this->conn = mysql_connect($host,$user,$pass);

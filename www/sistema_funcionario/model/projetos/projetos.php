@@ -1,12 +1,19 @@
 <?php
-//require('../model/Connection.class.php');
-//$conexao = Connection::getInstance();
 
 class projeto {
     private $id_projeto;
     private $id_veiculo;
+    private $id_funcionario;
 
-    function getId_projeto() {
+    function getId_funcionario() {
+        return $this->id_funcionario;
+    }
+
+    function setId_funcionario($id_funcionario) {
+        $this->id_funcionario = $id_funcionario;
+    }
+
+        function getId_projeto() {
         return $this->id_projeto;
     }
 
@@ -25,12 +32,11 @@ class projeto {
     
 
 function add_projeto(projeto $obj){
-
-$id_do_veiculo = $obj->getId_projeto();
-$id_do_projeto = $obj->getId_veiculo();
-
-session_start("usuario_funcionario");
-$login_funcionario = $_SESSION['usuario'];
+ $id_do_veiculo = $obj->getId_veiculo();
+ $id_do_projeto = $obj->getId_projeto();
+$id_do_funcionario = $obj->getId_funcionario();
+$conecta = mysql_connect("localhost", "root", "") or print (mysql_error()); 
+mysql_select_db("sistema_de_gestao", $conecta) or print(mysql_error()); 
 $cont_veiculos_iguais = 0;
 $sql_consulta_de_veiculo = "select projeto_executa.id_veiculo from projeto_executa where projeto_executa.id_projeto = $id_do_projeto and projeto_executa.status != 'concluido'";
 $result_consulta_veiculo = mysql_query($sql_consulta_de_veiculo);
@@ -43,23 +49,20 @@ while ($aux_consulta_veiculo = mysql_fetch_array($result_consulta_veiculo)) {
 if ($cont_veiculos_iguais > 0) {
     echo "<script>alert('Ja existe um veiculo vinculado a esta atividade');</script>";
 } else {
-    $sql_recebe_nome_projeto = "select projeto.nome,projeto.duracao from projeto where projeto.id_projeto=$id_do_projeto";
+    $sql_recebe_nome_projeto = "select projeto.nome,projeto.duracao,veiculos.nome_veiculo from projeto join veiculos on(veiculos.id_veiculo = $id_do_veiculo ) where projeto.id_projeto = $id_do_projeto ";
     $result_nome = mysql_query($sql_recebe_nome_projeto);
     while ($aux_recebe_nome = mysql_fetch_array($result_nome)) {
         $nome_projeto = $aux_recebe_nome['nome'];
+        $nome_veiculo = $aux_recebe_nome['nome_veiculo'];
         $duracao_projeto = $aux_recebe_nome['duracao'];
     }
-    $sql_query_insert = "insert projeto_executa (nome_projeto,status,duracao,id_projeto,id_veiculo)"
-            . "values('$nome_projeto','notopen','$duracao_projeto','$id_do_projeto','$id_do_veiculo')";
-
+    $sql_query_insert = "insert projeto_executa (nome_projeto,nome_veiculo,status,duracao,id_projeto,id_veiculo,id_funcionario)"
+            . "values('$nome_projeto','$nome_veiculo','notopen','$duracao_projeto','$id_do_projeto','$id_do_veiculo','$id_do_funcionario')";
     mysql_query($sql_query_insert);
-
     $sql_duracao_projeto_executa = "select projeto_executa.duracao from projeto_executa where projeto_executa.id_projeto = $id_do_projeto and projeto_executa.id_veiculo = $id_do_veiculo and projeto_executa.status !='concluido'";
     $result_duracao_projeto_executa = mysql_query($sql_duracao_projeto_executa);
     $id_projeto_duracao = mysql_fetch_row($result_duracao_projeto_executa);
     $id_projetos_duracao = $id_projeto_duracao[0];
-
-
     $sql_id_projeto_executa = "select projeto_executa.id_projeto_executa from projeto_executa where projeto_executa.id_projeto = $id_do_projeto and projeto_executa.id_veiculo = $id_do_veiculo and projeto_executa.status !='concluido'";
     $result_id_projeto_executa = mysql_query($sql_id_projeto_executa);
     $id_projeto_executa = mysql_fetch_row($result_id_projeto_executa);
@@ -77,12 +80,14 @@ if ($cont_veiculos_iguais > 0) {
         }
     }
     mysql_query("UPDATE projeto_executa SET status = 'open' where projeto_executa.id_projeto = $id_do_projeto and projeto_executa.id_veiculo=$id_do_veiculo and projeto_executa.status != 'concluido'");
+    unset($id_do_veiculo);
+    unset($id_do_projeto);
+    unset($id_do_funcionario);
     echo "<script>alert('projeto adicionado com sucesso!');</script>";
-    echo "<script>location.href='../view/telaPrincipal.php?t=visualiza_projeto&login=$login_funcionario'</script>";
-}
-   
-    
-    
+    echo "<script>location.href='../view/telaPrincipal.php?t=visualiza_projeto'</script>";
+  }
+      
+  
 }
 
 }

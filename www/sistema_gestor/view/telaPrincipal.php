@@ -12,10 +12,18 @@ $conexao = Connection::getInstance();
         <link rel="stylesheet" href="../style/bootstrap/class_table.css" type="text/css">
         <link rel="stylesheet" href="../style/bootstrap/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="../style/principal/menu.css" type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
     </head>
     <body>
+        <?php
+            $tabela = $_REQUEST['t'];
+            if ($tabela == 'home') {
+                ?>
+              <meta http-equiv="refresh" content="20">
+              <?php
+              }
+            ?>
         <header>
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -57,11 +65,18 @@ $conexao = Connection::getInstance();
                                                   </li>-->
                                             </ul>
                                         </li>
-                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=projetos">Graficos</a></li>
+                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=projetos">Atividade Semanal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span style="color:white; font-size:1em;">Indicadores</span><b class="caret"></b></a>
+                                    <ul class="dropdown-menu"  >
+                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=atividade-semanal">Atividade Semanal</a></li>
+                                       
                                     </ul>
                                 </li>
                                 <li id="usuario" style="text-align: left; float:right; width: 200px; ">
-                                    <a  class="dropdown-toggle" data-toggle="dropdown" href="#"  ><img src="../img/usuario.png"><span>Diogenes</span></span></a>
+                                    <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/usuario.png"><span>Diogenes</span></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Troca Senha</a></li>
                                         <li><a href="../index.php">Sair</a></li>
@@ -106,6 +121,12 @@ $conexao = Connection::getInstance();
             } else if ($tabela == 'relatorios/funcionario/ativo-inativo') {
                 ?>
                 <div class="relatorio_funcionario-inativo-ativo"><?php require './relatorios/funcionario/relatorio_periodo.php';?></div><?php
+            }else if ($tabela == 'atividade-semanal') {
+                ?>
+                <div class="atividade_semanal"><?php require './indicadores/indicadores.php';?></div><?php
+            }else {
+                ?>
+                <div class="tela_inicial"><?php require 'grafico_execucao.php'; ?></div><?php
             }
             ?>             
         </div>

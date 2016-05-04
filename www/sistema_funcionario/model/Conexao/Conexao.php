@@ -36,7 +36,7 @@
 		//método que conecta com o banco de dados
 		public function conectar() {
 			try {
-				$this->pdo = new PDO("mysql:host=localhost;dbname=sistema de gerenciamento",
+				$this->pdo = new PDO("mysql:host=localhost;dbname=sistema_de_gestao",
 								"root",
 								"",
 								array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

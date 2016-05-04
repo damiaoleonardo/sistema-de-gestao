@@ -7,7 +7,7 @@ class projetos_abertos {
     function projetosAberto() {
         ?>
         <table class='table table-hover'>
-            <tr><td colspan="5" style="background:#449d44; color:white;">Projetos<td></tr>
+            <tr><td colspan="5" style="background:#449d44; color:white;">Projetos Abertos <td></tr>
             <tr  style="font-size: 0.9em; background: #adadad; color:white;">
                 <td>Funcionario</td>
                 <td>Projeto</td>
@@ -30,6 +30,17 @@ class projetos_abertos {
             <?php  
             }
             ?>
+            <tr style="height: 70px;">
+                <td></td>
+                 <td></td>
+                  <td></td>
+            </tr>
+            <tr style="height: 70px;">
+                <td></td>
+                 <td></td>
+                  <td></td>
+            </tr>
+            
         </table>
         <?php
 

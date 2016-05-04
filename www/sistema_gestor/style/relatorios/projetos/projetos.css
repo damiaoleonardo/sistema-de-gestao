@@ -4,7 +4,7 @@ body{
 }
 .row_relatorio_projeto{
     width: 100%;
-    height: 100px;
+    height: 120px;
     background: #444;
 }
 .row_relatorio_projeto  #primeiro_campo{
@@ -48,38 +48,9 @@ body{
     margin-top:5px;
     margin-left:7px;
 }
-
 .row_relatorio_projeto #terceiro_campo{
-    height: 100%;
+    height: 100%;  
 }
-
-.row_relatorio_projeto #terceiro_campo #data_inicio{
-     height: 40%;
-     margin-top:15px;
-}
-.row_relatorio_projeto #terceiro_campo #data_inicio .label{
-    font-size: 1em;
-    color:white; 
-}
-.row_relatorio_projeto #terceiro_campo #data_inicio .selectpicker{
-    width: 50%;
-     margin-top:5px;
-     margin-left:7px;
-}
-.row_relatorio_projeto #terceiro_campo #data_final{
-     height: 40%;
-}
-.row_relatorio_projeto #terceiro_campo #data_final .label{
-    font-size: 1em;
-    color:white; 
-}
-.row_relatorio_projeto #terceiro_campo #data_final .selectpicker{
-    margin-top:5px;
-    width: 50%;
-    margin-left:7px;
-}
-
-
 
 .row_relatorio_projeto #campo_button{
     height: 100%;
@@ -92,7 +63,7 @@ body{
 
 .row_conteudo-controle-manutencao{
     width: 100%;
-    height: 600px;
+    height: 580px;
     overflow: scroll;
 }
 

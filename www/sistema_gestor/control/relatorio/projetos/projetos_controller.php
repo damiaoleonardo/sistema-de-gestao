@@ -1,13 +1,14 @@
 <?php
 
-//require '../../../model/relatorios/projetos/projetos_tarefas.php';
-
-echo $id_tarefa = $_POST['campo_select_projeto'];
-$id_veiculo = $_POST['campo_select_veiculo'];
-$id_funcionario = $_POST['campo_select_funcionario'];
-$id_tipo = $_POST['campo_select_tipo'];
-echo $data_inicio = $_POST['data_inicio'];
-echo $data_final = $_POST['data_final'];
+ require '../../../model/relatorios/projetos/projetos_tarefas.php';
+ $id_projeto = $_POST['campo_select_projeto'];
+ $id_veiculo = $_POST['campo_select_veiculo'];
+ $id_funcionario = $_POST['campo_select_funcionario'];
+ $id_tipo = $_POST['campo_select_tipo'];
+ $data_inicio = $_POST['data_inicio'];
+ $data_final = $_POST['data_final'];
+ 
+ 
 /*
 if (empty($id_tarefa) and empty($id_veiculo) and empty($id_funcionario) and empty($data_final) and empty($tipo_veiculo)) {
     $relatorio->setData_inicial($data_inicio);

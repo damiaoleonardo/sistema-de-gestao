@@ -14,6 +14,8 @@ while ($aux_disponibilidade = mysql_fetch_array($recebe)) {
     $id_funcionario = $aux_disponibilidade['id_funcionario'];
     $status_disponibilidade = $aux_disponibilidade['disponibilidade'];
 }
+session_start("id_funcionario");
+$_SESSION['id_do_funcionario'] = $id_funcionario;
 $sql_status_funcionario = "select funcionarios.disponibilidade from funcionarios where funcionarios.id_funcionario = $id_funcionario";
 $aux_status_funcionario = mysql_query($sql_status_funcionario);
 $status_funcionario = mysql_fetch_row($aux_status_funcionario);
@@ -51,11 +53,12 @@ while ($aux_horas_trabalhadas_funcionarios = mysql_fetch_array($horas_trabalhada
     $horas_trabalhada = $aux_horas_trabalhadas_funcionarios['horas_concluidas'];
     $horas_concluidas_funcionario_por_dia[] = $horas_trabalhada;
 }
+
 $horas_trabalhadas_pelo_funcionario = somarhoras_funcionario($horas_concluidas_funcionario_por_dia);
 $pagina_atual = $_GET['t'];
 if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto") {
     ?>
-    <meta http-equiv="refresh" content="40">
+    <meta http-equiv="refresh" content="20">
     <?php
 }
 ?>
@@ -166,12 +169,15 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                                         <div id="campo_button" class="col-sm-12 col-md-12 col-xs-12">
                                             <button onclick="location.href = 'telaPrincipal.php?t=visualiza_projeto'" id="button" class="btn btn-default">Voltar</button>
                                             <button id="button" type="submit"  class="btn btn-default">Adicionar</button>
-
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                        <?php
+                    } else if ($tabela == 'finaliza_tarefa') {
+                        ?>
+                        <div class="finaliza_tarefa"><?php require './finaliza_tarefa_liberada.php'; ?></div>
                         <?php
                     } else {
                         ?><div class="projetos"><?php require '../control/tela_principal/getProjetos.php'; ?></div><?php
@@ -179,9 +185,6 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                     ?>
                 </div>
             </div>         
-        </div>
-        <div  id="editCourseModal" class="modalDialog">
-            <div id="recebe_dados"></div>
         </div>
     </body>
 </html>

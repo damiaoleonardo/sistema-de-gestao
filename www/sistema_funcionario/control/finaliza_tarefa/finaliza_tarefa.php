@@ -15,7 +15,7 @@ $sql_get_quantidade_executores_tarefa_para_stop = "select tarefas_executa.quanti
 $aux_get_quantidade_executores_para_stop = mysql_query($sql_get_quantidade_executores_tarefa_para_stop);
 $quantidades_executores_tarefa_para_stop = mysql_fetch_row($aux_get_quantidade_executores_para_stop);
 $executores_da_tarefa_para_stop = $quantidades_executores_tarefa_para_stop[0];
-$conexao_select = mysqli_connect("localhost", "root", "", "sistema de gerenciamento");
+$conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
 mysqli_autocommit($conexao_select, FALSE);
 $erro_finaliza = 0;
 

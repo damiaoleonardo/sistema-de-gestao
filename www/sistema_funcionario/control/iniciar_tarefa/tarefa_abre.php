@@ -20,7 +20,26 @@ $status_da_tarefa_funcio = mysql_fetch_row($result_funcio);
 $id_do_status_do_funcio = $status_da_tarefa_funcio[0];
 
 
-$conexao_select = mysqli_connect("localhost", "root", "", "sistema de gerenciamento");
+$sql_nome_projeto = "select projeto.nome from projeto where projeto.id_projeto = $id_projeto_varios_executores";
+$result_nome_projeto = mysql_query($sql_nome_projeto);
+$nome_projeto = mysql_fetch_row($result_nome_projeto);
+$nome_do_projeto = $nome_projeto[0];
+
+$sql_nome_veiculo = "select veiculos.nome_veiculo from veiculos where veiculos.id_veiculo = $veiculo_varios_executores";
+$result_nome_veiculo  = mysql_query($sql_nome_veiculo);
+$nome_veiculo  = mysql_fetch_row($result_nome_veiculo);
+$nome_do_veiculo  = $nome_veiculo[0];
+$sql_nome_tarefa = "select tarefas.nome from tarefas where tarefas.id_tarefa = $id_tarefa_varios_executores";
+$result_nome_tarefa  = mysql_query($sql_nome_tarefa);
+$nome_tarefa  = mysql_fetch_row($result_nome_tarefa);
+$nome_da_tarefa  = $nome_tarefa[0];
+$sql_nome_funcionario = "select funcionarios.sobrenome from funcionarios where funcionarios.id_funcionario = $id_funcionario_varios_executores";
+$result_nome_funcionario = mysql_query($sql_nome_funcionario);
+$nome_funcionario = mysql_fetch_row($result_nome_funcionario);
+$nome_do_funcionario = $nome_funcionario[0];
+
+
+$conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
 mysqli_autocommit($conexao_select, FALSE);
 $erro_reabre = 0;
 
@@ -31,7 +50,7 @@ if ($id_do_status_do_funcio == $id_funcionario_varios_executores) {
         $erro_reabre++;
     }
 } else {
-   $insere_funcionario_executa = "INSERT INTO funcionario_executa (id_projeto_executa,id_projeto,id_veiculo,id_tarefa,id_funcionario,hora_inicial,data_tarefa,status_funcionario_tarefa,status_tarefa,flag_tarefa_aberta,flag_tarefa_relatorio) VALUES ('$id_projetos_executa_tarefa_abre','$id_projeto_varios_executores','$veiculo_varios_executores','$id_tarefa_varios_executores','$id_funcionario_varios_executores','$horainicio','$dataatual','ativo','open','1','0')";
+   $insere_funcionario_executa = "INSERT INTO funcionario_executa (id_projeto_executa,id_projeto,id_veiculo,id_tarefa,id_funcionario,nome_do_projeto,nome_do_veiculo,nome_da_tarefa,nome_do_funcionario,hora_inicial,data_tarefa,status_funcionario_tarefa,status_tarefa,flag_tarefa_aberta,flag_tarefa_relatorio) VALUES ('$id_projetos_executa_tarefa_abre','$id_projeto_varios_executores','$veiculo_varios_executores','$id_tarefa_varios_executores','$id_funcionario_varios_executores','$nome_do_projeto','$nome_do_veiculo','$nome_da_tarefa','$nome_do_funcionario','$horainicio','$dataatual','ativo','open','1','0')";
     if (!mysqli_query($conexao_select, $insere_funcionario_executa)) {
         $erro_reabre++;
     }

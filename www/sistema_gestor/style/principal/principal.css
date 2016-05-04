@@ -74,6 +74,13 @@ header .row #usuario img{
     background:#e3e3e3;
     border:1px solid #adadad;
 }
+.conteudo_central .atividade_semanal {
+    height: 600px;
+    width: 80%;
+    margin: 6% 0% 3% 10%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
 .conteudo_central  .controle_manutencao {
     height: 600px;
     width: 90%;

@@ -78,6 +78,15 @@
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
 }
+.tela_principal .row #conteudo .finaliza_tarefa{
+    width: 100%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background: beige;
+}
+
 
 .tela_principal .row #conteudo #adiciona_tarefa {
     width: 100%;

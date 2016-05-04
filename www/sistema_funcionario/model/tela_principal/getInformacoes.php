@@ -291,7 +291,7 @@ class getInformacoes {
             $m = $m . 0;
         return sprintf('%02d:%02d:00', $h, $m);
     }
-    
+
     function atualiza_tarefa_nao_liberada(getInformacoes $obj) {
         $id_projeto = $obj->getId_projeto();
         $id_veiculo = $obj->getId_veiculo();
@@ -396,7 +396,7 @@ class getInformacoes {
                     $aux_duracao_hora = date('h', strtotime($duracao_tarefa));
                     $aux_duracao_minuto = date('i', strtotime($duracao_tarefa));
                     $duracao_geral = $aux_duracao_hora . "." . $aux_duracao_minuto;
-                    $horas_concluidas_tarefa = $this->pegahorasconluidatarefa($id_projeto, $id_veiculo, $id_tarefa); 
+                    $horas_concluidas_tarefa = $this->pegahorasconluidatarefa($id_projeto, $id_veiculo, $id_tarefa);
                     $status_tarefa = $this->pegastatustarefa($id_projeto, $id_veiculo, $id_tarefa);
                     if ($status_tarefa == "notopen") {
                         ?>
@@ -422,8 +422,8 @@ class getInformacoes {
                             $tipo_tarefa = $this->pegaflagtipotarefa($id_projeto, $id_veiculo, $id_tarefa);
 
                             if ($tipo_tarefa == "liberada") {
-                              $quantidade_de_executores_da_tarefa = $this->pegaquantidadeexecutorestarefa($id_projeto, $id_veiculo, $id_tarefa);
-                              
+                                $quantidade_de_executores_da_tarefa = $this->pegaquantidadeexecutorestarefa($id_projeto, $id_veiculo, $id_tarefa);
+
                                 if ($quantidade_de_executores_da_tarefa == 1) {
 
                                     if ($id_projeto_funcionario_ativo == $id_projeto && $id_veiculo_funcionario_ativo == $id_veiculo && $id_tarefa_funcionario_ativo == $id_tarefa) {
@@ -458,7 +458,7 @@ class getInformacoes {
                                         <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
                                             <div class="progress" style="height: 60px; margin:auto;" >
                                                 <div class="progress-bar  progress-bar-info"aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%" >
-                                                    <div style="margin-top:20px; "><span style="font-size:2em; color:black; "><?php echo $horas_concluidas_tarefa ; ?></span></div>
+                                                    <div style="margin-top:20px; "><span style="font-size:2em; color:black; "><?php echo $horas_concluidas_tarefa; ?></span></div>
                                                 </div>
                                                 <div class="progress-bar progress-bar-danger" role="progressbar" style="width:10%"></div>
                                             </div> 
@@ -479,140 +479,150 @@ class getInformacoes {
                                             </div>
                                         </div>  
                                     </td>
-                                  <?php
-                                }
-                                ?>
-                                <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna" ><span style="font-size:1.5em; color:black; "><?php echo $duracao_tarefa; ?></span></td>
-                                <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
-                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="#" onclick="openModal(<?php echo $id_projeto ?>, <?php echo $id_veiculo ?>,<?php echo $id_projeto_executa ?>, 'editCourseModal')"><img src="../img/1430175773_PauseHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="#" onclick="openModal(<?php echo $id_projeto ?>, <?php echo $id_veiculo ?>,<?php echo $id_projeto_executa ?>, 'editCourseModal')"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
-                                </td>
-                            </tr>
-                            <?php
-    
-                            } else if ($tipo_tarefa == "nao liberada") {
-
-                                $quantidade_de_executores_da_tarefa = $this->pegaquantidadeexecutorestarefa($id_projeto, $id_veiculo, $id_tarefa);
-                                if ($quantidade_de_executores_da_tarefa == 1) {
-
-                                    if ($id_projeto_funcionario_ativo == $id_projeto && $id_veiculo_funcionario_ativo == $id_veiculo && $id_tarefa_funcionario_ativo == $id_tarefa) {
-                                        $atualiza_tarefa = new getInformacoes();
-                                        $atualiza_tarefa->setId_projeto($id_projeto);
-                                        $atualiza_tarefa->setId_veiculo($id_veiculo);
-                                        $atualiza_tarefa->setId_funcionario($id_funcionario);
-                                        $atualiza_tarefa->setId_tarefa($id_tarefa);
-                                        $atualiza_tarefa->setDuracao_tarefa($duracao_tarefa);
-                                        $tamanho = $this->atualiza_tarefa_nao_liberada($atualiza_tarefa);
-                                    } else {
-                                        $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
-                                    }
-                                } else {
-
-                                    if ($id_projeto_funcionario_ativo == $id_projeto && $id_veiculo_funcionario_ativo == $id_veiculo && $id_tarefa_funcionario_ativo == $id_tarefa) {
-
-                                        $atualiza_tarefa_com_varios_executores = new getInformacoes();
-                                        $atualiza_tarefa_com_varios_executores->setId_projeto($id_projeto);
-                                        $atualiza_tarefa_com_varios_executores->setId_veiculo($id_veiculo);
-                                        $atualiza_tarefa_com_varios_executores->setId_tarefa($id_tarefa);
-                                        $atualiza_tarefa_com_varios_executores->setDuracao_tarefa($duracao_tarefa);
-                                        $atualiza_tarefa_com_varios_executores->setQuantidade_executores($quantidade_de_executores_da_tarefa);
-                                        $tamanho = $this->atualiza_tarefa_nao_liberada_com_varios_executores($atualiza_tarefa_com_varios_executores);
-                                    } else {
-                                        $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
-                                    }
-                                }
-                                if ($tamanho > 100) {
-                                    ?> 
-                                    <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
-                                        <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
-                                            <div class="progress" style="height: 60px; margin:auto;" >
-                                                <div class="progress-bar  progress-bar-info"aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%" >
-                                                    <div style="margin-top:20px; "><span style="font-size:2em; color:black; "><?php echo $horas_concluidas_tarefa ;?></span></div>
-                                                </div>
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" style="width:10%"></div>
-                                            </div> 
-                                        </div>  
-                                    </td>
-
                                     <?php
-                                    unset($tamanho);
-                                    unset($atualiza_tarefa);
-                                } else {
-                                    ?>
-                                    <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
-                                        <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
-                                            <div class="progress" style="height: 60px; margin:auto;" >
-                                                <div class="progress-bar  progress-bar-info"aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $tamanho ?>" >
-                                                    <div style="margin-top:20px;"><span style="font-size:2em; color:black;"><?php echo $horas_concluidas_tarefa ;?></span></div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                    </td>
-                                  <?php
                                 }
                                 ?>
                                 <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna" ><span style="font-size:1.5em; color:black; "><?php echo $duracao_tarefa; ?></span></td>
                                 <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
                                     <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="pausa_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto_executa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>');"><img src="../img/1430175773_PauseHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="finaliza_tarefa('<?php echo $id_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="telaPrincipal.php?t=finaliza_tarefa&id_projeto=<?php echo $id_projeto ?>&id_veiculo=<?php echo $id_veiculo ?>&id_executa=<?php echo $id_projeto_executa?>&id_tarefa=<?php echo $id_tarefa ?>&id_funcionario=<?php echo $id_funcionario ?>" ><img src="../img/1430175773_PauseHot.png" ></a></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4" ><a href="#" onclick="openModal(<?php echo $id_projeto ?>, <?php echo $id_veiculo ?>,<?php echo $id_projeto_executa ?>, 'finaliza_tarefa')"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
                                 </td>
                             </tr>
                             <?php
-                            }
-                        } else if ($status_tarefa == "pause") {
-                            $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";                        
-                            ?>
-                            <tr style="height: 80px;">
-                                <td class="col-md-3 col-sm-3 col-xs-3" id="primeira_coluna"><?php echo $nome_tarefa ?></td>
-                                <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
-                                    <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;"  >                                     
-                                        <div class="progress" style="height: 60px; margin:auto;" >
-                                            <div class="progress-bar progress-bar-warning" style="width: <?php if($tamanho > 100){echo $tamanho = 100 . "%";}else{echo $tamanho;} ?>; ">
-                                                 <div style="margin-top:20px;"><span style="font-size:2em; color:black;"><?php echo $horas_concluidas_tarefa; ?></span></div>  
-                                            </div>
-                                        </div>
-                                    </div>                              
-                                </td>
-                                <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna"><span style="font-size:1.5em; color:black;"><?php echo $duracao_tarefa; ?></span></td>
-                                <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
-                                    <div class="col-md-4 col-sm-4 col-xs-4"><a href=""  onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4"><a href="" onClick="alert('Tarefa se encontra Pausada!');"><img src="../img/1430175773_PauseHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4"><a href="" onClick="alert('Tarefa se encontra Pausada!!');"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
-                                </td>
-                            </tr>
-                            <?php
-                        } else if ($status_tarefa == "concluida") {
-                             $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
-                            ?>
-                            <tr style="height: 80px;">
-                                <td class="col-md-3 col-sm-3 col-xs-3" id="primeira_coluna"><?php echo $nome_tarefa ?></td>
-                                <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
-                                    <div class="progress " class="progress" style="height: 60px; margin:auto;">                                     
-                                        <div class="progress" style="height: 60px; margin:auto;" >
-                                            <div class="progress-bar progress-bar-success" style="width: <?php if($tamanho > 100){echo $tamanho = 100 . "%";}else{echo $tamanho;} ?>">
-                                                 <div style="margin-top:20px;"><span style="font-size:2em; color:black;" ><?php echo $horas_concluidas_tarefa; ?></span></div>        
-                                            </div>
-                                        </div>
-                                    </div>                              
-                                </td>
-                                <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna"><span style="font-size:1.5em; color:black;"><?php echo $duracao_tarefa; ?></span></td>
-                                <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
-                                    <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175773_PauseHot.png" ></a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                }
-                ?>
-            </table> 
+                        } else if ($tipo_tarefa == "nao liberada") {
 
-            <?php
-      
+                            $quantidade_de_executores_da_tarefa = $this->pegaquantidadeexecutorestarefa($id_projeto, $id_veiculo, $id_tarefa);
+                            if ($quantidade_de_executores_da_tarefa == 1) {
+
+                                if ($id_projeto_funcionario_ativo == $id_projeto && $id_veiculo_funcionario_ativo == $id_veiculo && $id_tarefa_funcionario_ativo == $id_tarefa) {
+                                    $atualiza_tarefa = new getInformacoes();
+                                    $atualiza_tarefa->setId_projeto($id_projeto);
+                                    $atualiza_tarefa->setId_veiculo($id_veiculo);
+                                    $atualiza_tarefa->setId_funcionario($id_funcionario);
+                                    $atualiza_tarefa->setId_tarefa($id_tarefa);
+                                    $atualiza_tarefa->setDuracao_tarefa($duracao_tarefa);
+                                    $tamanho = $this->atualiza_tarefa_nao_liberada($atualiza_tarefa);
+                                } else {
+                                    $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
+                                }
+                            } else {
+
+                                if ($id_projeto_funcionario_ativo == $id_projeto && $id_veiculo_funcionario_ativo == $id_veiculo && $id_tarefa_funcionario_ativo == $id_tarefa) {
+
+                                    $atualiza_tarefa_com_varios_executores = new getInformacoes();
+                                    $atualiza_tarefa_com_varios_executores->setId_projeto($id_projeto);
+                                    $atualiza_tarefa_com_varios_executores->setId_veiculo($id_veiculo);
+                                    $atualiza_tarefa_com_varios_executores->setId_tarefa($id_tarefa);
+                                    $atualiza_tarefa_com_varios_executores->setDuracao_tarefa($duracao_tarefa);
+                                    $atualiza_tarefa_com_varios_executores->setQuantidade_executores($quantidade_de_executores_da_tarefa);
+                                    $tamanho = $this->atualiza_tarefa_nao_liberada_com_varios_executores($atualiza_tarefa_com_varios_executores);
+                                } else {
+                                    $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
+                                }
+                            }
+                            if ($tamanho > 100) {
+                                ?> 
+                                <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
+                                    <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
+                                        <div class="progress" style="height: 60px; margin:auto;" >
+                                            <div class="progress-bar  progress-bar-info"aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%" >
+                                                <div style="margin-top:20px; "><span style="font-size:2em; color:black; "><?php echo $horas_concluidas_tarefa; ?></span></div>
+                                            </div>
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:10%"></div>
+                                        </div> 
+                                    </div>  
+                                </td>
+
+                                <?php
+                                unset($tamanho);
+                                unset($atualiza_tarefa);
+                            } else {
+                                ?>
+                                <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
+                                    <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
+                                        <div class="progress" style="height: 60px; margin:auto;" >
+                                            <div class="progress-bar  progress-bar-info"aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $tamanho ?>" >
+                                                <div style="margin-top:20px;"><span style="font-size:2em; color:black;"><?php echo $horas_concluidas_tarefa; ?></span></div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </td>
+                                <?php
+                            }
+                            ?>
+                            <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna" ><span style="font-size:1.5em; color:black; "><?php echo $duracao_tarefa; ?></span></td>
+                            <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
+                                <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="pausa_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto_executa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>');"><img src="../img/1430175773_PauseHot.png" ></a></div>
+                                <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="finaliza_tarefa('<?php echo $id_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                } else if ($status_tarefa == "pause") {
+                    $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
+                    ?>
+                    <tr style="height: 80px;">
+                        <td class="col-md-3 col-sm-3 col-xs-3" id="primeira_coluna"><?php echo $nome_tarefa ?></td>
+                        <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
+                            <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;"  >                                     
+                                <div class="progress" style="height: 60px; margin:auto;" >
+                                    <div class="progress-bar progress-bar-warning" style="width: <?php
+                                    if ($tamanho > 100) {
+                                        echo $tamanho = 100 . "%";
+                                    } else {
+                                        echo $tamanho;
+                                    }
+                                    ?>; ">
+                                        <div style="margin-top:20px;"><span style="font-size:2em; color:black;"><?php echo $horas_concluidas_tarefa; ?></span></div>  
+                                    </div>
+                                </div>
+                            </div>                              
+                        </td>
+                        <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna"><span style="font-size:1.5em; color:black;"><?php echo $duracao_tarefa; ?></span></td>
+                        <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
+                            <div class="col-md-4 col-sm-4 col-xs-4"><a href=""  onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
+                            <div class="col-md-4 col-sm-4 col-xs-4"><a href="" onClick="alert('Tarefa se encontra Pausada!');"><img src="../img/1430175773_PauseHot.png" ></a></div>
+                            <div class="col-md-4 col-sm-4 col-xs-4"><a href="" onClick="alert('Tarefa se encontra Pausada!!');"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
+                        </td>
+                    </tr>
+                    <?php
+                } else if ($status_tarefa == "concluida") {
+                    $tamanho = $this->pegaporcentagemconcluidatarefa($id_projeto, $id_veiculo, $id_tarefa) . "%";
+                    ?>
+                    <tr style="height: 80px;">
+                        <td class="col-md-3 col-sm-3 col-xs-3" id="primeira_coluna"><?php echo $nome_tarefa ?></td>
+                        <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
+                            <div class="progress " class="progress" style="height: 60px; margin:auto;">                                     
+                                <div class="progress" style="height: 60px; margin:auto;" >
+                                    <div class="progress-bar progress-bar-success" style="width: <?php
+                                    if ($tamanho > 100) {
+                                        echo $tamanho = 100 . "%";
+                                    } else {
+                                        echo $tamanho;
+                                    }
+                                    ?>">
+                                        <div style="margin-top:20px;"><span style="font-size:2em; color:black;" ><?php echo $horas_concluidas_tarefa; ?></span></div>        
+                                    </div>
+                                </div>
+                            </div>                              
+                        </td>
+                        <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna"><span style="font-size:1.5em; color:black;"><?php echo $duracao_tarefa; ?></span></td>
+                        <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
+                            <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
+                            <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175773_PauseHot.png" ></a></div>
+                            <div class="col-md-4 col-sm-4 col-xs-4"  ><a href="" onClick="alert('Tarefa ja foi finalizada!!');"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+        }
+        ?>
+        </table> 
+
+        <?php
     }
 
     function exibeProjetos() {
@@ -620,6 +630,7 @@ class getInformacoes {
         <table class="table table-hover" style="width: 100%;">
             <tr style="background: #cfcfcf; color: #01669F; font-size:1.6em; height: 70px; "><td>Projeto</td><td>Veiculo</td></tr>
             <?php
+            $tela_vazia = 0;
             $sql = "select projeto_executa.nome_projeto,projeto_executa.id_projeto_executa,projeto_executa.id_projeto,veiculos.nome_veiculo,veiculos.id_veiculo  from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) where projeto_executa.status = 'open'";
             $result_projeto = mysql_query($sql);
             while ($projetos = mysql_fetch_array($result_projeto)) {
@@ -628,6 +639,7 @@ class getInformacoes {
                 $nome = $projetos['nome_projeto'];
                 $nome_veiculo = $projetos['nome_veiculo'];
                 $id_veiculo = $projetos['id_veiculo'];
+                $tela_vazia ++;
                 ?>
                 <tr style="height: 60px; font-size: 1.5em;">
                     <td><center><span><a href="telaPrincipal.php?t=visualiza_tarefas&id=<?php echo $id ?>&id_projeto=<?php echo $id_projetos_executas ?>&veiculo=<?php echo $id_veiculo ?>&login=<?php echo $usuario ?>"><?php echo $nome ?></a></span><center></td>
@@ -637,6 +649,14 @@ class getInformacoes {
                     }
                     ?>  
                     </table><?php
+                    if ($tela_vazia == 0) {
+                        ?>
+                        <div style="width: 100%; height: 200px;  ">
+                            <div style="width: 400px; height: 30px; margin:7% 0% 0% 30%; font-size: 2em; color: #122b40;">Ainda nao tem projetos Criados</div>
+                        </div>
+                        <?php
+                    }
                 }
 
- }
+            }
+            

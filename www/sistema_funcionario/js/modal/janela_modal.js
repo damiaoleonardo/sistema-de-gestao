@@ -2,9 +2,8 @@
                 var dialog = document.getElementById(idModal);
                 dialog.style.opacity = 1;
                 dialog.style.pointerEvents = "auto";
-                loadContent('recebe_dados', "../control/tela_principal/teste.php");
+                loadContent('recebe_dados', "../control/finaliza_tarefa/finaliza_tarefa_liberada.php?id_projeto="+id_projeto+"&id_veiculo="+id_veiculo+"&id_projeto_executa="+id_projeto_executa);
             }
-
 
             function loadContent(idElement, urlDest) {
                 var xhttp = new XMLHttpRequest();
