@@ -42,7 +42,7 @@ class ControleManutencao {
                         $semana = $informaçoes_manutencao['semana'];
                         ?>
                         <td>
-                            <table class="table table-hover" style="font-size: 0.9em;  background: #444; color:white;">
+                            <table class="table table-hover" style="font-size: 0.9em;  background: #777; color:white;">
                                 <tr>
                                     <?php
                                     if ($flag_cabecalho == 1) {

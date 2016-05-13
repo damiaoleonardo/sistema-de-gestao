@@ -28,7 +28,7 @@ class TabelaExecucao {
         ?>
         <table class='table table-hover'>
             <tr><td colspan="5" style="background:#449d44; color:white;">Ativos<td></tr>
-            <tr  style="font-size: 0.9em; background: #adadad; color:white;">
+            <tr  style="font-size: 1em; background: #adadad; color:white;">
                 <td>Funcionario</td>
                 <td>Projeto</td>
                 <td>Veiculo</td>
@@ -56,7 +56,7 @@ WHERE funcionario_executa.status_funcionario_tarefa = 'ativo'";
                 $horas_concluida = $dados_ativos['horas_concluidas'];
                 $meta = $dados_ativos['duracao'];
                 ?>
-                <tr style="font-size: 0.8em;">
+                <tr style="font-size: 0.9em;">
                     <td><a style="color:black;"  href=""><?php echo $nome_funcionario ?></a></td>
                     <td><a style="color:black;" href="telaprincipal.php?t=/relatorios_tarefas&id_projeto=<?php echo $id_do_projeto ?>&id_executa=<?php echo $id_do_projeto_executa ?>&id_veiculo=<?php echo $id_do_veiculo ?>&flag=1"><?php echo $nome_do_projeto ?></a></td>
                     <td><?php echo $nome_do_veiculo ?></td>
@@ -69,10 +69,10 @@ WHERE funcionario_executa.status_funcionario_tarefa = 'ativo'";
             <tr  style="height: 25px;">
                 <td colspan="5"></td> 
             </tr>
-            <tr style="font-size: 0.9em; background:salmon; color:white; height: 35px;">
+            <tr style="font-size: 1em; background:salmon; color:white; height: 35px;">
                 <td colspan="5">Inativos</td>
             </tr>
-            <tr style="font-size: 0.9em; background: #adadad; color:white;">
+            <tr style="font-size: 1em; background: #adadad; color:white;">
                 <td colspan="3">Funcionario</td>
                 <td>Status</td>
                 <td>Tempo Inativo</td>
@@ -107,7 +107,7 @@ WHERE funcionario_executa.status_funcionario_tarefa = 'ativo'";
                 //  $intervalo = $hora_inicial->diff($horainicio_da_tarefas);
                 //  $hora_concluidas = $intervalo->format('%H:%I:%S');
                 ?>
-                <tr style="font-size: 0.8em;">
+                <tr style="font-size: 0.9em;">
                     <td colspan="3"><?php echo $sobrenome_funcionario_inativo ?></td>
                     <td style="background: salmon; color: white;f">INATIVO</td>
                     <td style=" color: black;"><?php echo $horafinal ?> </td>

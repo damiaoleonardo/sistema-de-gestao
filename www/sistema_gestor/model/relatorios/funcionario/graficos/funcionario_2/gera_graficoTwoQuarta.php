@@ -1,6 +1,6 @@
 <?php
 //incluir o arquivo do phpplot
-include('phplot-5.0.4/phplot.php');
+include('../phplot-5.0.4/phplot.php');
 
 session_start("array");
 $data = $_SESSION["lista"];
@@ -17,7 +17,7 @@ $plot->SetBackgroundColor('YellowGreen'); // Define a cor de fundo do grafico
 $plot->SetPlotType('pie'); // Seleciona o tipo do grafico, pode ser PIE, BARS, LINES e etc
 $plot->SetShading(1); 
 $plot->SetDataType('text-data-single');
-$plot->SetPlotAreaPixels(80, 0, 560, 600);
+$plot->SetPlotAreaPixels(80, 130, 550, 600);
 $plot->SetLegendPixels(0,0); 
 //$plot->SetShading(0);
 //$plot->SetLabelScalePosition(0.3);

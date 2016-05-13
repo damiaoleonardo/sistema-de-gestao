@@ -5,8 +5,8 @@ require ('../../../model/relatorios/mensagens/Mensagens.php');
 $funcionario = new funcionario_periodo();
 $mensagem = new Mensagens();
 $id_funcionario = $_POST['campo_select_funcionario'];
-$data_inicio = $_POST['select_dataI'];
-$data_final = $_POST['select_dataF'];
+$data_inicio = $_POST['data_inicio'];
+$data_final = $_POST['data_final'];
 
 if (empty($id_funcionario)) {
     echo $print_retorno = $mensagem->MensagemCampoVazio();

@@ -14,17 +14,43 @@
 }
 .atividades_semanal #conteudo_veiculos{
     width: 100%;
-    height: 520px;
+    height: 620px;
+  
 }
 .atividades_semanal #conteudo_veiculos #veiculos_selecao #semana{
-    width: 100%;  margin-top:10px; height: 100px;
+    width: 100%;  margin-top:25px; height: 70px; 
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #semana label{
+    font-size: 1.1em;
+        color:black;
+        
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #semana .selectpicker{
+    margin-top:5px;
+    width: 80%;
+    height: 30px;
 }
 .atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos{
     width: 100%;
     margin-top:10px; 
-    height: 390px;
+    height: 440px;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .cabecalho{
+    height: 40px;
+    width: 100%;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .veiculos_list{
+    height: 400px;
+    width: 100%;
     overflow: scroll;
 }
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .botao_confirma{
+    width: 100%;
+    height: 40px;
+}
+
+
 .atividades_semanal #conteudo_veiculos #grafico_nota{
-    height: 520px;
+    height: 620px;
+    border-left:1px solid black;
 }

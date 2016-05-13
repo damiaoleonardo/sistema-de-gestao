@@ -7,12 +7,6 @@ class projetos_abertos {
     function projetosAberto() {
         ?>
         <table class='table table-hover'>
-            <tr><td colspan="5" style="background:#449d44; color:white;">Projetos Abertos <td></tr>
-            <tr  style="font-size: 0.9em; background: #adadad; color:white;">
-                <td>Funcionario</td>
-                <td>Projeto</td>
-                <td>Veiculo</td>
-            </tr>
             <?php
             $sql_projetos_abertos = "select projeto_executa.nome_projeto, projeto_executa.nome_veiculo , funcionarios.sobrenome from `projeto_executa` join `funcionarios` on(projeto_executa.id_funcionario = funcionarios.id_funcionario) where projeto_executa.status = 'open' ";
             $result = mysql_query($sql_projetos_abertos);

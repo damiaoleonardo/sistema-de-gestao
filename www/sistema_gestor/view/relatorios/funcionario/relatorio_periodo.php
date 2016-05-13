@@ -5,7 +5,14 @@
         <link rel="stylesheet" href="../style/relatorios/funcionario/funcionario_periodo.css" type="text/css">
         <link rel="stylesheet" href="../style/modal/janela_modal.css" type="text/css" >
         <script src="../js/modal/janela_modal.js"></script>
-        <script src="../js/relatorios/requisicao_formulario.js"></script> 
+        <script src="../js/relatorios/funcionarios/requisicao_formulario.js"></script> 
+        <script src='../js/relatorios/projetos/data_inicio.js'></script>
+        <script src='../js/relatorios/projetos/data_final.js'></script>
+        <link rel="stylesheet" href="../style/relatorios/projetos/bootstrap-datepicker3.css"/>
+        <script type="text/javascript" src="../js/relatorios/projetos/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="../js/relatorios/projetos/bootstrap-datepicker.min.js"></script>
+        
+        
     </head>
     <body>
         <div class="row_funcionario">
@@ -28,10 +35,25 @@
                     </select>
                 </div>
                 <div id="periodo_datas" class="col-md-5 col-sm-5 col-xs-5">
-                    <label id="label_dI">Data Inicio</label> 
-                    <input class="select_dataI" type="date" name="select_dataI">
-                    <label id="label_dF">Data Final</label> 
-                    <input class="select_dataF" type="date" name="select_dataF">
+                     <div id="data_inicio" class="col-sm-12 col-md-12 col-xs-12">
+                         <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Inicio</label>
+                                            <div class="col-sm-9 col-md-9 col-xs-9">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                    <input style="height: 24px;" class="form-control" id="date" name="data_inicio" placeholder="YYYY/MM/DD" type="text"/>
+                                                </div>
+                                            </div>
+                        
+                    </div>
+                    <div id="data_final" class="col-sm-12 col-md-12 col-xs-12">  
+                            <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Final</label>
+                                            <div class="col-sm-9 col-md-9 col-xs-9" >
+                                                <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                    <input style="height: 24px;" class="form-control" id="date" name="data_final" placeholder="YYYY/MM/DD" type="text"/>
+                                                </div>
+                                            </div>
+                     </div>
                 </div>
                 <div id="button_relatorio_funci" class="col-md-2 col-sm-2 col-xs-2"><button style="background: #01669F; color:white;" type="submit" id="button_relatorio_periodo" class="btn btn-default">Pesquisar</button></div>
             </form>

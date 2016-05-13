@@ -123,13 +123,13 @@ $data_selecionada_para_consulta = invertedata($data_selecionada, '/', '/');
 
                         $horas_concluidas_funcionario_por_dia[] = $horas_concluidas;
 
-                        $sql_informacoes_adicionais_tarefa = "SELECT tarefas_executa.descricao_da_tarefa,tarefas_executa.horas_inicio_tarefa,tarefas_executa.horas_final, veiculos.nome_veiculo
+                        $sql_informacoes_adicionais_tarefa = "SELECT tarefas_executa.horas_inicio_tarefa,tarefas_executa.horas_final, veiculos.nome_veiculo
                                                               FROM `tarefas_executa`
                                                               JOIN `veiculos` ON ( tarefas_executa.id_veiculo = veiculos.id_veiculo )
                                                               WHERE tarefas_executa.id_tarefa = $codigo_tarefa  and tarefas_executa.id_projeto = $id_projeto_func and tarefas_executa.id_veiculo = $id_veiculo_func and tarefas_executa.id_projeto_executa = $id_projeto_executa_func";
                         $result_informacoes_adicionais_tarefa = mysql_query($sql_informacoes_adicionais_tarefa);
                         while ($aux_informacoes_adicionais_tarefa = mysql_fetch_array($result_informacoes_adicionais_tarefa)) {
-                            $descricao_tarefa = $aux_informacoes_adicionais_tarefa['descricao_da_tarefa'];
+                         //   $descricao_tarefa = $aux_informacoes_adicionais_tarefa['descricao_da_tarefa'];
                             $nome_veiculo = $aux_informacoes_adicionais_tarefa['nome_veiculo'];
                             $tarefa_horas = $aux_informacoes_adicionais_tarefa['horas_inicio_tarefa'];
                             $horas_final = $aux_informacoes_adicionais_tarefa['horas_final'];
@@ -181,7 +181,7 @@ $data_selecionada_para_consulta = invertedata($data_selecionada, '/', '/');
                                 <td style="font-size: 0.9em; background: #006600; color:white;"><?php echo $horas_concluidas ?></td>
                                 <td style="font-size: 0.9em; background: #006600; color:white;"><?php echo $duracao_tarefa ?></td>
                                 <td style="font-size: 0.9em; background: #006600; color:white;"><?php echo $nome_veiculo ?></td>
-                                <td style="font-size: 0.9em; background: #006600; color:white;"><?php echo $descricao_tarefa ?></td>
+                                <td style="font-size: 0.9em; background: #006600; color:white;"><?php // echo $descricao_tarefa ?></td>
                             </tr>
                             <?php
 

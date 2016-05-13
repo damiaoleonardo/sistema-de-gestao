@@ -1,6 +1,6 @@
 <?php
 require('../model/Conexao/Connection.class.php');
-$conexao = Connection::getInstance();
+$conexao = Connection::getInstance(); 
 ?>
 <html>
     <head>
@@ -17,7 +17,7 @@ $conexao = Connection::getInstance();
     </head>
     <body>
         <?php
-            $tabela = $_REQUEST['t'];
+            $tabela = $_REQUEST['t'];            
             if ($tabela == 'home') {
                 ?>
               <meta http-equiv="refresh" content="20">
@@ -32,27 +32,41 @@ $conexao = Connection::getInstance();
                             <ul class="nav navbar-nav" style="margin-left: 0px ; ">
                                 <li><a href="telaPrincipal.php?t=home"><span style="color:white; font-size:1em;">Execucao</span></a></li>
                                 <li class="menu-item dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span style="color:white; font-size:1em;">Cadastro</span><b class="caret"></b></a>
-                                    <ul class="dropdown-menu"  >
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span style="color:white; font-size:1.1em;">Cadastro</span><b class="caret"></b></a>
+                                    <ul class="dropdown-menu" style=" font-size:1.1em;" >
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=funcionarios">Funcionarios</a></li>
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=veiculos">Veiculos</a></li>
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=tarefas">Tarefas</a></li>
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=projetos">Projetos</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="telaPrincipal.php?t=controle-manutencao-veiculos"><span style="color:white; font-size:1em;">Controle de Manutenção</span></a></li>
+                                <li><a href="telaPrincipal.php?t=controle-manutencao-veiculos"><span style="color:white; font-size:1.1em;">Controle de Manutenção</span></a></li>
+                                 <li><a href="telaPrincipal.php?t=programacao-semanal"><span style="color:white; font-size:1.1em;">Programação Semanal</span></a></li>
                                 <li class="menu-item dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white; font-size:1em;">Relatorios<b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white; font-size:1.1em;">Relatorios<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=relatorios/projetos">Projeto</a></li>
-                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=relatorios/tarefas">Tarefas</a></li> 
                                         <li class="menu-item dropdown dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align: left;">Funcionario</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="menu-item">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align: left;  font-size:1.1em;">Projeto</a>
+                                            <ul class="dropdown-menu" style=" font-size:1.1em; ">
+                                                <li class="menu-item" style="text-align: left;">
+                                                    <a href="telaPrincipal.php?t=relatorios/funcionario/custo">Por periodo</a>
+                                                </li>
+                                                <li class="menu-item " style="text-align: left;">
+                                                    <a href="telaPrincipal.php?t=relatorios/projetos">Finalizados</a>
+                                                </li>
+                                                <li class="menu-item " style="text-align: left;">
+                                                    <a href="telaPrincipal.php?t=relatorios/funcionario/ativo-inativo">Em andamentos</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li style="text-align: left; font-size:1.1em;"><a href="telaPrincipal.php?t=relatorios/tarefas">Tarefas</a></li> 
+                                        <li class="menu-item dropdown dropdown-submenu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align: left; font-size:1.1em;">Funcionario</a>
+                                            <ul class="dropdown-menu" style=" font-size:1.1em;">
+                                                <li class="menu-item" style="text-align: left;">
                                                     <a href="telaPrincipal.php?t=relatorios/funcionario/custo">Custo</a>
                                                 </li>
-                                                <li class="menu-item ">
+                                                <li class="menu-item " style="text-align: left;">
                                                     <a href="telaPrincipal.php?t=relatorios/funcionario/ativo-inativo">Ativo/Inativo</a>
                                                 </li>
                                                 <!--  <li class="menu-item dropdown dropdown-submenu">
@@ -65,19 +79,18 @@ $conexao = Connection::getInstance();
                                                   </li>-->
                                             </ul>
                                         </li>
-                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=projetos">Atividade Semanal</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span style="color:white; font-size:1em;">Indicadores</span><b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span style="color:white; font-size:1.1em;">Indicadores</span><b class="caret"></b></a>
                                     <ul class="dropdown-menu"  >
-                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=atividade-semanal">Atividade Semanal</a></li>
+                                        <li style="text-align: left;  font-size:1.1em;"><a href="telaPrincipal.php?t=atividade-semanal">Atividade Semanal</a></li>
                                        
                                     </ul>
                                 </li>
-                                <li id="usuario" style="text-align: left; float:right; width: 200px; ">
+                                <li id="usuario" style="text-align: left; float:right; width: 200px;  font-size:1.1em; ">
                                     <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/usuario.png"><span>Diogenes</span></span></a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" >
                                         <li><a href="#">Troca Senha</a></li>
                                         <li><a href="../index.php">Sair</a></li>
                                     </ul>
@@ -124,6 +137,9 @@ $conexao = Connection::getInstance();
             }else if ($tabela == 'atividade-semanal') {
                 ?>
                 <div class="atividade_semanal"><?php require './indicadores/indicadores.php';?></div><?php
+            }else if ($tabela == 'programacao-semanal') {
+                ?>
+                <div class="programacao-semanal"><?php require './programacao-semanal/programacao_semanal.php';?></div><?php
             }else {
                 ?>
                 <div class="tela_inicial"><?php require 'grafico_execucao.php'; ?></div><?php
@@ -135,11 +151,11 @@ $conexao = Connection::getInstance();
                 <div class="col-md-12 col-sm-12 col-xs-12"></div>
             </div>
         </footer>
+              
     </body>
+    
 </html>
-
 <!--
-
  <ul class="nav nav-tabs" style="border-bottom: 1px solid #204d74">
                         <li><a href="telaPrincipal.php?t=home">Execução</a></li>
                         <li class="dropdown">

@@ -22,7 +22,7 @@
                     <span>Add files...</span>
                     <input type="file" name="files[]" multiple>
                 </span>
-                <button type="submit" class="btn btn-primary start"  style="width: 200px; height: 60px; font-size:1.5em;">
+              <!--  <button type="submit" class="btn btn-primary start"  style="width: 200px; height: 60px; font-size:1.5em;">
                     <i class="glyphicon glyphicon-upload"></i>
                     <span>Start upload</span>
                 </button>
@@ -33,7 +33,7 @@
                 <button type="button" class="btn btn-danger delete"  style="width: 200px; height: 60px; font-size:1.5em;">
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
-                </button>
+                </button>-->
               
                 <span class="fileupload-process"></span>
             </div>
