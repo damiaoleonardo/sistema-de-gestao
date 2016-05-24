@@ -49,15 +49,16 @@ while ($aux_consulta_veiculo = mysql_fetch_array($result_consulta_veiculo)) {
 if ($cont_veiculos_iguais > 0) {
     echo "<script>alert('Ja existe um veiculo vinculado a esta atividade');</script>";
 } else {
-    $sql_recebe_nome_projeto = "select projeto.nome,projeto.duracao,veiculos.nome_veiculo from projeto join veiculos on(veiculos.id_veiculo = $id_do_veiculo ) where projeto.id_projeto = $id_do_projeto ";
+    $sql_recebe_nome_projeto = "select projeto.nome,projeto.duracao,projeto.id_ugb,veiculos.nome_veiculo from projeto join veiculos on(veiculos.id_veiculo = $id_do_veiculo ) where projeto.id_projeto = $id_do_projeto ";
     $result_nome = mysql_query($sql_recebe_nome_projeto);
     while ($aux_recebe_nome = mysql_fetch_array($result_nome)) {
         $nome_projeto = $aux_recebe_nome['nome'];
+        $id_ugb = $aux_recebe_nome['id_ugb'];
         $nome_veiculo = $aux_recebe_nome['nome_veiculo'];
         $duracao_projeto = $aux_recebe_nome['duracao'];
     }
-    $sql_query_insert = "insert projeto_executa (nome_projeto,nome_veiculo,status,duracao,id_projeto,id_veiculo,id_funcionario)"
-            . "values('$nome_projeto','$nome_veiculo','notopen','$duracao_projeto','$id_do_projeto','$id_do_veiculo','$id_do_funcionario')";
+    $sql_query_insert = "insert projeto_executa (nome_projeto,nome_veiculo,status,duracao,id_projeto,id_veiculo,id_funcionario,id_ugb)"
+            . "values('$nome_projeto','$nome_veiculo','notopen','$duracao_projeto','$id_do_projeto','$id_do_veiculo','$id_do_funcionario','$id_ugb')";
     mysql_query($sql_query_insert);
     $sql_duracao_projeto_executa = "select projeto_executa.duracao from projeto_executa where projeto_executa.id_projeto = $id_do_projeto and projeto_executa.id_veiculo = $id_do_veiculo and projeto_executa.status !='concluido'";
     $result_duracao_projeto_executa = mysql_query($sql_duracao_projeto_executa);

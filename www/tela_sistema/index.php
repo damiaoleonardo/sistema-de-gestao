@@ -5,144 +5,144 @@ $conexao = Connection::getInstance();
 <html>
     <head>
         <meta charset="UTF-8">
-         <meta http-equiv="refresh" content="10">
+        <meta http-equiv="refresh" content="90">
         <title>Sistema de Gestão</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="style/tela_principal.css" type="text/css">
+        <link rel="stylesheet" href="style/slider_show.css" type="text/css">
         <link rel="stylesheet" href="style/bootstrap/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="style/bootstrap/class_table.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.js"></script>
-        <script src="js/slider.js"></script>
-        <script language="javascript">
-            ScrollRate = 20;
-            function scrollDiv_init() {
-                DivElmnt = document.getElementById('tela_right');
-                ReachedMaxScroll = false;
-
-                DivElmnt.scrollTop = 0;
-                PreviousScrollTop = 0;
-
-                ScrollInterval = setInterval('scrollDiv()', ScrollRate);
+        <script src="js/scroll_auto.js"></script>
+        <script src="js/scrollauto_programacao.js"></script>
+        <style>
+               indicators {
+                bottom: 0px;
+            }
+            .carousel-indicators {
+                position: absolute;
+                bottom: 0px;
+                left: 0%;
+                z-index: 0;
+                width: 1300px;
+                padding-left: 0;
+                margin-left: 0%;
+                text-align: center;
+                list-style: none;
             }
 
-            function scrollDiv() {
-
-                if (!ReachedMaxScroll) {
-                    DivElmnt.scrollTop = PreviousScrollTop;
-                    PreviousScrollTop++;
-
-                    ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
-                } else {
-                    ReachedMaxScroll = (DivElmnt.scrollTop == 0) ? false : true;
-
-                    DivElmnt.scrollTop = PreviousScrollTop;
-                    PreviousScrollTop--;
-                }
+            .carousel {
+                width: 1300px;
+                height: 500px;
+                margin-bottom: 60px;
             }
 
-            function pauseDiv() {
-                clearInterval(ScrollInterval);
+            .carousel .item {
+                width: 1300px;
+                height: 500px;
+                background-color: #777;
+            }
+            .carousel-inner > .item > img {
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                height: 500px;
             }
 
-            function resumeDiv() {
-                PreviousScrollTop = DivElmnt.scrollTop;
-                ScrollInterval = setInterval('scrollDiv()', ScrollRate);
+            .carousel .item {
+                height: 100%;
+                background-color: white;
             }
-        </script>
-        <script>
-            jQuery(document).ready(function ($) {
-                var options = {$AutoPlay: true};
-                var jssor_slider1 = new $JssorSlider$('conteudo', options);
-            });
-
-        </script>
-  <script language="javascript">
-            ScrollRate = 20;
-            function scrollDiv_init_programacao() {
-                DivElmnt = document.getElementById('programacao_viagens');
-                ReachedMaxScroll = false;
-
-                DivElmnt.scrollTop = 0;
-                PreviousScrollTop = 0;
-
-                ScrollInterval = setInterval('scrollDiv()', ScrollRate);
+            .carousel-caption {
+                right: 0%;
+                left: 0%;
+                padding-bottom: 0px;
             }
+            .carousel-caption {
+                position: relative;
+                right: 0%;
+                bottom: 0px;
+                left: 0%;
+                z-index: 10;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                text-align: center;
+                text-shadow: 0 0px 0px rgba(0,0,0,.6);
+            }
+            .container {
+                width: 1300px;
+            }
+            .container {
 
-            function scrollDiv_programacao() {
+                padding-right: 20px;
+                padding-left: 0px;
+                margin-right: 0px;
+                margin-left: 0px;
 
-                if (!ReachedMaxScroll) {
-                    DivElmnt.scrollTop = PreviousScrollTop;
-                    PreviousScrollTop++;
-
-                    ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
-                } else {
-                    ReachedMaxScroll = (DivElmnt.scrollTop == 0) ? false : true;
-
-                    DivElmnt.scrollTop = PreviousScrollTop;
-                    PreviousScrollTop--;
-                }
             }
 
-            function pauseDiv_programacao() {
-                clearInterval(ScrollInterval);
-            }
-
-            function resumeDiv_programacao() {
-                PreviousScrollTop = DivElmnt.scrollTop;
-                ScrollInterval = setInterval('scrollDiv()', ScrollRate);
-            }
-        </script>
-        <script>
-            jQuery(document).ready(function ($) {
-                var options = {$AutoPlay: true};
-                var jssor_slider1 = new $JssorSlider$('conteudo', options);
-            });
-
-        </script>
-
-
-
+            
+        </style>
     </head>
-    <body  onLoad="scrollDiv_init(); scrollDiv_init_programacao()">
+    <body onload="scrollDiv_init(); Rolar();">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12" id="header"></div>
             <div class="col-md-12 col-sm-12 col-xs-12" id="conteudo">
-                <div id="slide" u="slides">
-                    <div class="projetos_abertos">
-                        <div  id="tela_left">
-                            <?php
-                            require './control/paginaInicial/TabelaInicialativosController.php';
-                            ?>
-                        </div>
-                        <div id="tela_projeto">
-                            <table class='table table-hover'>
-                                <tr><td colspan="5" style="background:#449d44; color:white;">Projetos Abertos <td></tr>
-                                <tr  style="font-size: 1em; background: #adadad; color:white;">
-                                    <td>Funcionario</td>
-                                    <td>Projeto</td>
-                                    <td>Veiculo</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div  id="tela_right"  style="overflow:auto;">
-                            <div id="MyDivName" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()">
-                                <?php
-                                require './control/paginaInicial/projeto_abertos.php';
-                                ?>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox" >
+                        <div class="item active">
+                            <div class="container">
+                                <div class="carousel-caption" >
+                                    <div  id="tela_left" style=" height: 90%; width: 53%; margin-left:1%; margin-top:2%;  float: left; font-size:1.1em; ">
+                                        <?php
+                                        require './control/paginaInicial/TabelaInicialativosController.php';
+                                        ?>
+                                    </div>
+                                    <div id="tela_projeto" style="float: left;   height: 10%;width: 46%;margin-top:2%;float: left;">
+                                        <table class='table table-hover'>
+                                            <tr><td colspan="5" style="background:#449d44; color:white;">Projetos Abertos <td></tr>
+                                            <tr  style="font-size: 1.2em; background: #adadad; color:white;">
+                                                <td>Funcionario</td>
+                                                <td>Projeto</td>
+                                                <td>Veiculo</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div  id="tela_right"  style="overflow:auto; height: 90%;width: 46%;margin-top:2%; float: left; font-size:1.1em; ">
+                                        <div id="MyDivName" onMouseOver="pauseDiv()" onMouseOut="resumeDiv()">
+                                            <?php
+                                            require './control/paginaInicial/projeto_abertos.php';
+                                            ?>
+                                        </div>
+                                    </div> 
+
+                                </div>
                             </div>
-                        </div> 
+                        </div>
+                        <div class="item" >                 
+                            <div>
+                                <div class="carousel-caption" >
+                                    <div class="col-md-12 col-sm-12 col-xs-12">Programação Semanal</div>
+                                    <?php
+                                    require './control/paginaInicial/programacao_semanal.php';
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="programacao_viagens" style="overflow:auto;">
-                     <div id="MyDivName" onMouseOver="pauseDiv_programacao()" onMouseOut="resumeDiv_programacao()">
-                        <?php
-                          require './control/paginaInicial/programacao_semanal.php';
-                        ?>
-                     </div>
-                    </div>
-                    <div><img u="image" src="logo_empresa.png" /></div>
                 </div>
             </div>
-            <div class="col-md-12 col-sm-12 col-xs-12" id="footer"></div>
+            <div class="col-md-12 col-sm-12 col-xs-12" id="footer" ></div>
         </div>
     </body>
 </html>

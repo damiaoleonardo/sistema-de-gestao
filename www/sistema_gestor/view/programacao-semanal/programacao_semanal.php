@@ -4,8 +4,31 @@
         <title></title>
         <link rel="stylesheet" href="../style/programacao_semanal/programacao_semanal.css" type="text/css">
         <link rel="stylesheet" href="../style/bootstrap/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="../style/programacao_semanal/modal_viagem.css" type="text/css">
+        <script src="../js/viagens/modal_viagens.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/relatorios/projetos/jquery-1.11.3.min.js"></script>
+        <script src="../js/viagens/adicionar_viagem.js"></script>
+        <script>
+        function deleteViagem(id,url){
+                decisao = confirm('Deseja deletar'+ url);
+                if (decisao){
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                                document.getElementById(id).innerHTML = xhttp.responseText;   
+                            }else{
+                               alert("ola");
+                            }
+                        };
+                     xhttp.open("GET", url, true);
+                     xhttp.send();
+                }
+           }
+        </script>
     </head>
     <body>
+      <div id="retorno_delete"></div>
         <div class="row_programacao">
             <div class="col-md-12 col-sm-12 col-xs-12" id="header_programacao_semanal"><div id="titulo"><span>Programação Semanal</span></div></div>
             <contans>
@@ -18,13 +41,13 @@
                         <form  method="post" action="telaPrincipal.php?t=programacao-semanal&v=edita-programacao">
                             <select class="selectpicker" name="dia_semana">
                                 <option></option>
-                                <option value="Segunda">Segunda</option>
-                                <option value="Terca">Terça</option>
-                                <option value="Quarta">Quarta</option>
-                                <option value="Quinta">Quinta</option>
-                                <option value="Sexta">Sexta</option>
-                                <option value="Sabado">Sabado</option>
-                                <option value="Domingo">Domingo</option>
+                                <option value="1">Segunda</option>
+                                <option value="2">Terça</option>
+                                <option value="3">Quarta</option>
+                                <option value="4">Quinta</option>
+                                <option value="5">Sexta</option>
+                                <option value="6">Sabado</option>
+                                <option value="7">Domingo</option>
                             </select> 
                             <button type="submit" class="btn btn-default" style="margin:15% 0% 0% 50%;">Pesquisar</button>
                         </form>
@@ -35,12 +58,12 @@
                     $pagina_programacao = $_REQUEST['v'];
                     if ($pagina_programacao == "visualizacao-todos") {
                         ?>
-                    <div class="visualizacao_programacao">
-                        <?php
+                        <div class="visualizacao_programacao">
+                            <?php
                             require '../control/programacao_semanal/programacaovisualizacao_controller.php';
-                        ?>
-                    </div>
-                    <?php 
+                            ?>
+                        </div>
+                        <?php
                     } else if ($pagina_programacao == "edita-programacao") {
                         ?>
                         <div class="programacao_edit">
@@ -49,6 +72,7 @@
                             session_start("dia_semana");
                             $_SESSION['dia'] = $dia_da_semana;
                             require '../control/programacao_semanal/programacaosemanal_controller.php';
+                           
                             ?>
 
                         </div>
@@ -57,6 +81,155 @@
                     ?> 
                 </div>
             </contans>
+        </div>
+        <div  id="viagem" class="modalDialog">
+            <div id="viagens">
+                <a id="btnClose" href="#" title="Close" class="close" onclick="fecha_modal('viagem')" >X</a>
+                <div class="recebe_resposta"></div>
+                <form class="form_rotas" method="post" action="">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="header"></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="contans">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+
+                            <label>Motorista A</label>
+                            <select class="selectpicker" id="campos" name="motoristaA">
+                                <option></option>
+                                <?php
+                                $sql_motorista = "select motoristas.id_motorista, motoristas.nome_motorista from motoristas where 1 ";
+                                $result_motorista = mysql_query($sql_motorista);
+                                while ($aux_motorista = mysql_fetch_array($result_motorista)) {
+                                    $id_motorista = $aux_motorista['id_motorista'];
+                                    $nome_motorista = $aux_motorista['nome_motorista'];
+                                    ?>
+                                    <option value="<?php echo $id_motorista ?>"><?php echo $nome_motorista ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+
+                            <label>Motorista B</label>
+                            <select class="selectpicker" id="campos" name="motoristaB">
+                                <option></option>
+                                <?php
+                                $sql_motorista = "select motoristas.id_motorista, motoristas.nome_motorista from motoristas where 1 ";
+                                $result_motorista = mysql_query($sql_motorista);
+                                while ($aux_motorista = mysql_fetch_array($result_motorista)) {
+                                    $id_motorista = $aux_motorista['id_motorista'];
+                                    $nome_motorista = $aux_motorista['nome_motorista'];
+                                    ?>
+                                    <option value="<?php echo $id_motorista ?>"><?php echo $nome_motorista ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <label>Veiculo</label>
+                            <select class="selectpicker" id="campos" name="veiculo">
+                                <option></option>
+                                <?php
+                                $sql_veiculo = "select veiculos.id_veiculo,veiculos.nome_veiculo from veiculos where id_tipo = 1 or id_tipo =2 or id_tipo = 5";
+                                $result_veiculo = mysql_query($sql_veiculo);
+                                while ($aux_veiculo = mysql_fetch_array($result_veiculo)) {
+                                    $id_veiculo = $aux_veiculo['id_veiculo'];
+                                    $nome_veiculo = $aux_veiculo['nome_veiculo'];
+                                    ?>
+                                    <option value="<?php echo $id_veiculo ?>"><?php echo $nome_veiculo ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <label>Rota</label>
+                            <select class="selectpicker" id="campos" name="rota">
+                                <option></option>
+                                <?php
+                                $sql_rota = "select rotas.id_rota,rotas.nome_rota from rotas where 1 ";
+                                $result_rota = mysql_query($sql_rota);
+                                while ($aux_rota = mysql_fetch_array($result_rota)) {
+                                    $id_rota = $aux_rota['id_rota'];
+                                    $nome_rota = $aux_rota['nome_rota'];
+                                    ?>
+                                    <option value="<?php echo $id_rota ?>"><?php echo $nome_rota ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <button type="submit" class="btn btn-default" style="margin-top:15%; background: #01669F; color:white;">Salvar</button> 
+                        </div>
+                    </div>   
+                </form>
+            </div>
+        </div>
+        <div  id="editeviagem" class="modalDialog">
+            <div id="editeviagens">
+                <a id="btnClose" href="#" title="Close" class="close" onclick="fecha_modal('editeviagem')">X</a>
+                <div id="recebe_resposta"></div>
+                <form class="form_rotassss" method="post" action="">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="header"></div>
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="contans">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <label>Motorista</label>
+                            <select class="selectpicker" id="motorista" name="motorista">
+                                <option value="<?php ?>"><?php ?></option>
+                                <?php
+                                $sql_motorista = "select motoristas.id_motorista, motoristas.nome_motorista from motoristas where 1 ";
+                                $result_motorista = mysql_query($sql_motorista);
+                                while ($aux_motorista = mysql_fetch_array($result_motorista)) {
+                                    $id_motorista = $aux_motorista['id_motorista'];
+                                    $nome_motorista = $aux_motorista['nome_motorista'];
+                                    ?>
+                                    <option value="<?php echo $id_motorista ?>"><?php echo $nome_motorista ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <label>Veiculo</label>
+                            <select class="selectpicker" id="motorista" name="veiculo">
+                                <option></option>
+                                <?php
+                                $sql_veiculo = "select veiculos.id_veiculo,veiculos.nome_veiculo from veiculos where id_tipo = 1";
+                                $result_veiculo = mysql_query($sql_veiculo);
+                                while ($aux_veiculo = mysql_fetch_array($result_veiculo)) {
+                                    $id_veiculo = $aux_veiculo['id_veiculo'];
+                                    $nome_veiculo = $aux_veiculo['nome_veiculo'];
+                                    ?>
+                                    <option value="<?php echo $id_veiculo ?>"><?php echo $nome_veiculo ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <label>Rota</label>
+                            <select class="selectpicker" id="motorista" name="rota">
+                                <option></option>
+                                <?php
+                                $sql_rota = "select rotas.id_rota,rotas.nome_rota from rotas where 1 ";
+                                $result_rota = mysql_query($sql_rota);
+                                while ($aux_rota = mysql_fetch_array($result_rota)) {
+                                    $id_rota = $aux_rota['id_rota'];
+                                    $nome_rota = $aux_rota['nome_rota'];
+                                    ?>
+                                    <option value="<?php echo $id_rota ?>"><?php echo $nome_rota ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select> 
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <button type="submit" class="btn btn-default" style="margin-top:15%; background: #01669F; color:white;">Salvar</button> 
+                        </div>
+                    </div>   
+                </form>
+            </div>
         </div>
     </body>
 </html>

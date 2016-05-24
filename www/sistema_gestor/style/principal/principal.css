@@ -76,8 +76,8 @@ header .row #usuario img{
 }
 .conteudo_central .atividade_semanal {
     height: 700px;
-    width: 80%;
-    margin: 6% 0% 3% 10%;
+    width: 90%;
+    margin: 6% 0% 3% 5%;
     background:#e3e3e3;
     border:1px solid #adadad;
 }

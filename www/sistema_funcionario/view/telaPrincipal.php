@@ -133,7 +133,7 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                                             <select class="selectpicker"  name="campo_select_projeto" style="height: 80px; font-size: 1.5em;">
                                                 <option value="0" selected="selected" ></option>
                                                 <?php
-                                                $q_op = "SELECT projeto.id_projeto,projeto.nome from projeto where 1";
+                                                $q_op = "SELECT projeto.id_projeto,projeto.nome from `projeto` join `funcionarios` on (projeto.id_ugb = funcionarios.id_ugb ) where funcionarios.login = '$logado' ";
                                                 $op = mysql_query($q_op);
                                                 while ($aux_projeto = mysql_fetch_array($op)) {
                                                     $nome_projeto = $aux_projeto['nome'];
@@ -141,7 +141,7 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                                                     ?>
                                                     <option value="<?php echo $id_projeto; ?>" style="color:black;"> <?php echo $nome_projeto; ?></option>
                                                     <?php
-                                                }
+                                                 }
                                                 ?>
                                             </select>
                                         </div>

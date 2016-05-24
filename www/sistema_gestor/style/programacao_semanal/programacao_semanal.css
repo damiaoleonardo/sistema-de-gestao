@@ -70,3 +70,33 @@
     margin-top:10%;
     overflow: scroll;
 }
+
+#viagem #viagens #header{
+    height: 40px;
+    width: 95%;
+    background: #555;
+}
+#viagem #viagens #contans{
+    height: 120px;
+    width: 97%;
+}
+
+#viagem #viagens #contans #campos{
+    width: 120px;
+    height: 30px;
+}
+
+#editeviagem #editeviagens #header{
+    height: 40px;
+    width: 95%;
+    background: #555;
+}
+#editeviagem #editeviagens #contans{
+    height: 120px;
+    width: 97%;
+}
+
+#editeviagem #editeviagens #contans #motorista{
+    width: 150px;
+    height: 30px;
+}

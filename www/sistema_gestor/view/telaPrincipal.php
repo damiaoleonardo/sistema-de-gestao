@@ -38,6 +38,7 @@ $conexao = Connection::getInstance();
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=veiculos">Veiculos</a></li>
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=tarefas">Tarefas</a></li>
                                         <li style="text-align: left;"><a href="telaPrincipal.php?t=projetos">Projetos</a></li>
+                                        <li style="text-align: left;"><a href="telaPrincipal.php?t=viagens">Viagens</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="telaPrincipal.php?t=controle-manutencao-veiculos"><span style="color:white; font-size:1.1em;">Controle de Manutenção</span></a></li>
@@ -45,21 +46,8 @@ $conexao = Connection::getInstance();
                                 <li class="menu-item dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white; font-size:1.1em;">Relatorios<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li class="menu-item dropdown dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align: left;  font-size:1.1em;">Projeto</a>
-                                            <ul class="dropdown-menu" style=" font-size:1.1em; ">
-                                                <li class="menu-item" style="text-align: left;">
-                                                    <a href="telaPrincipal.php?t=relatorios/funcionario/custo">Por periodo</a>
-                                                </li>
-                                                <li class="menu-item " style="text-align: left;">
-                                                    <a href="telaPrincipal.php?t=relatorios/projetos">Finalizados</a>
-                                                </li>
-                                                <li class="menu-item " style="text-align: left;">
-                                                    <a href="telaPrincipal.php?t=relatorios/funcionario/ativo-inativo">Em andamentos</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li style="text-align: left; font-size:1.1em;"><a href="telaPrincipal.php?t=relatorios/tarefas">Tarefas</a></li> 
+                                        <li><a href="telaPrincipal.php?t=relatorios/projetos-finalizado" style="text-align: left; font-size:1.1em;"><span style="color:white; ">Projetos</span></a></li>
+                                        <li><a href="telaPrincipal.php?t=relatorios/tarefas" style="text-align: left; font-size:1.1em;">Tarefas</a></li> 
                                         <li class="menu-item dropdown dropdown-submenu">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align: left; font-size:1.1em;">Funcionario</a>
                                             <ul class="dropdown-menu" style=" font-size:1.1em;">
@@ -88,7 +76,7 @@ $conexao = Connection::getInstance();
                                        
                                     </ul>
                                 </li>
-                                <li id="usuario" style="text-align: left; float:right; width: 200px;  font-size:1.1em; ">
+                                <li id="usuario" style="text-align: left; float:right; width: 200px;  font-size:1.1em;">
                                     <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/usuario.png"><span>Diogenes</span></span></a>
                                     <ul class="dropdown-menu" >
                                         <li><a href="#">Troca Senha</a></li>
@@ -125,9 +113,9 @@ $conexao = Connection::getInstance();
             } else if ($tabela == 'relatorios/tarefas') {
                 ?>
                 <div class="relatorio_projeto"><?php require './relatorios/tarefas/tarefas.php'; ?></div><?php
-            } else if ($tabela == 'relatorios/projetos') {
+            } else if ($tabela == 'relatorios/projetos-finalizado') {
                 ?>
-                <div class="relatorio_projeto"><?php require './relatorios/projetos/projetos.php'; ?></div><?php
+                <div class="relatorio_projeto"><?php require './relatorios/projetos/projetos_finalizados.php'; ?></div><?php
             } else if ($tabela == 'relatorios/funcionario/custo') {
                 ?>
                 <div class="relatorio_funcionario-custo"><?php require './relatorios/funcionario/relatorio_custo.php';?></div><?php
