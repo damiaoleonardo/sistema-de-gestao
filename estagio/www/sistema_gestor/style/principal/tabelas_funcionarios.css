@@ -1,0 +1,24 @@
+.graficos{
+    width: 100%;
+    height: 100%;
+}
+.graficos .funcionarios_ativos{
+    width: 100%;
+    height: 99%;
+    overflow: scroll;
+}
+.graficos .funcionarios_ativos #legenda{
+    width: 100%;
+    height: 35px;
+    background: darkseagreen;
+}
+.graficos .funcionarios_ativos #legenda span{
+    font-size:1.2em;
+    color:white;
+    margin-left: 45%;
+}
+.graficos .funcionarios_ativos .table table-hover{
+    width: 100%;
+    height: 80%;
+}
+

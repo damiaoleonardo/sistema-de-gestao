@@ -1,0 +1,22 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.row_controle-manutencao{
+    width: 100%;
+    height: 80px;
+    background: #777;
+}
+.row_controle-manutencao .row_controle #titulo_controle{
+    margin-top:2%;
+    font-size: 1.2em;
+    color:white;
+    text-align: center;
+}
+
+.row_conteudo-controle-manutencao{
+    width: 100%;
+    height: 520px;
+    overflow: scroll;
+}
+
