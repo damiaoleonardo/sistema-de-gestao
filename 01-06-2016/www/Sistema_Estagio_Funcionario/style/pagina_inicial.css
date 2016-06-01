@@ -1,0 +1,131 @@
+*{margin:0px;padding: 0px;}
+.geral_login{width: 100%; height: 100%; background: #7ebebe;}
+.geral_login .login_tela{
+    
+    width: 40%;
+    background:#cfcfcf;
+    margin-top:10%;
+    margin-left:30%; border-bottom-left-radius: 25px;border-top-right-radius: 25px;
+}
+.geral_login .login_tela #divlogin{
+    width: 90%;
+    margin:auto;
+}
+
+.geral_login .login_tela #divlogin #text_header{
+    width: 70%;
+    padding-top: 10%;
+    margin:10% 0% 0% 15%;
+        
+}
+.geral_login .login_tela #divlogin #login{
+    width: 60%;
+    margin:8% 0% 0% 10%;
+}
+.geral_login .login_tela #divlogin #footer{
+    width: 85%;
+    margin:20% 0% 0% 10%;
+    padding-bottom: 5%;
+}
+
+
+
+.geral_login .login_tela #divlogin #login #botao_enviar{
+color: #FFF;
+font-family: arial;
+font-weight: bold;
+font-size: 15px;
+margin: 19px 0px 0px;
+width: 80px;
+height: 30px;
+line-height: 36px;
+background: none repeat scroll 0% 0% #2891CC;
+display: block;
+text-align: center;
+border-radius: 5px;
+float: left;
+border: 1px solid #01669F; 
+}
+
+
+
+
+
+
+@media (min-width: 1025px) {
+   
+  
+
+  .geral_login .login_tela #divlogin #footer{
+    margin:20% 0% 0% 3%;
+    width: 95%;
+    font-size:1.2em;
+  }
+   
+
+
+.geral_login .login_tela #divlogin #login{
+    width: 50%;
+    margin:8% 0% 0% 15%;
+}
+
+
+
+ 
+}
+
+@media (min-height: 900px) {
+ 
+.geral_login .login_tela{
+    
+    margin-top:20%;
+
+}
+    
+}
+@media (min-height: 1000px)  {
+ 
+.geral_login .login_tela{
+    
+    margin-top:30%;
+
+}
+    
+}
+
+@media (min-height: 1200px)  {
+ 
+.geral_login .login_tela{
+    
+    margin-top:40%;
+
+}
+    
+}
+
+@media (min-height: 1400px) and (max-width: 1300px) {
+ 
+.geral_login .login_tela{
+    zoom: 1.5;
+-ms-zoom: 1.5;
+-webkit-zoom: 1.5;
+-moz-transform:  scale(1.5,1.5);
+-moz-transform-origin: left center;
+  margin-top:50%;
+   width: 50%;
+}
+    
+}
+@media (min-height: 1600px)  {
+ 
+.geral_login .login_tela{
+      zoom: 1.5;
+-ms-zoom: 1.5;
+-webkit-zoom: 1.5;
+-moz-transform:  scale(1.5,1.5);
+-moz-transform-origin: left center;
+    margin-top:60%;
+    width: 50%;
+}
+    
+}

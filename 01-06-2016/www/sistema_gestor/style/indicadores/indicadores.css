@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.atividades_semanal{
+    width: 100%;
+    height: 100%;
+}
+.atividades_semanal #header{
+    width: 100%;
+    height: 80px;
+    background: #777;
+}
+.atividades_semanal #header #titulo{
+    width: 40%;
+    height: 50%;
+    margin:2% 0% 0% 40%;
+}
+.atividades_semanal #header #titulo span{
+    color:white;
+    font-size: 1.4em;
+}
+.atividades_semanal #conteudo_veiculos{
+    width: 100%;
+    height: 620px;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao{
+    width: 30%;
+    height: 100%;   
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #semana{
+    width: 100%;  margin-top:25px;  height: 60px; 
+}
+
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #semana label{
+    font-size: 1.1em;
+    color:black;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #semana .selectpicker{
+    margin-top:5px;
+    width: 80%;
+    height: 30px;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #periodo{
+    width: 100%; margin-left:-13px;  margin-top:5px; height: 50px; 
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos{
+    width: 100%;
+    margin-top:35px; 
+    height: 340px;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .cabecalho{
+    height: 40px;
+    width: 100%;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .veiculos_list{
+    height: 300px;
+    width: 100%;
+    overflow: scroll;
+}
+.atividades_semanal #conteudo_veiculos #veiculos_selecao #veiculos .botao_confirma{
+    width: 100%;
+    height: 40px;
+}
+
+.atividades_semanal #conteudo_veiculos #grafico_nota{
+    width: 69%;
+    height: 620px;
+    border-left:1px solid black;
+}

@@ -1,0 +1,52 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.conteudo_da_pagina_rotas{
+    width: 100%;
+    height: 100%;
+    float:left;
+}
+.conteudo_da_pagina_rotas .row_rotas{
+    width: 100%;
+    height: 80px;
+}
+
+.conteudo_da_pagina_rotas  .eventos_relacionados_rotas{
+    height: 40px;
+}
+.conteudo_da_pagina_rotas  .eventos_relacionados_rotas #botoes{
+    margin-top:10px;
+}
+.conteudo_da_pagina_rotas .row_rotas .row_rotas #titulo_rotas #span_rotas{
+    margin-top:15px;
+}
+.conteudo_da_pagina_rotas .row_rotas .row_rotas #titulo_rotas span{
+    font-size: 1.4em;
+    color:white;
+    margin-left: 20%;
+}
+.conteudo_da_pagina_rotas .row_rotas #campo_pesquisa #form_pesquisa #pesquisaCliente{
+    margin-top:15px;
+    height: 30%;
+    width: 90%;
+}
+.conteudo_da_pagina_rotas .row_conteudo_rotas {
+    width: 100%;
+    height: 400px;
+    margin-top:15px;
+    margin-bottom: 5px;
+    overflow: scroll;
+}
+.conteudo_da_pagina_rotas .formulario_rota {
+    width: 50%;
+    height: 300px;
+    margin:auto;
+    margin-top: 100px;
+}
+.jumbotron{
+    padding-top: 5px;
+}
+
+
+

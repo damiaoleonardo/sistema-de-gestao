@@ -1,0 +1,156 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background: #adadad;
+    overflow-y: scroll; overflow-x: hidden;
+}
+header{
+    width: 100%;
+    float: top;
+    height: 45px;
+    background: #777;
+}
+header .row ul{
+    background: #444;
+    width: 100%;
+}
+header .row ul li{
+    text-align: center;
+}
+header .row ul li a{
+    font-size: 0.9em;
+    color: white;
+}
+header .row ul li a:hover{
+    background: white;
+    color:#204d74;
+}
+header .row #usuario span{
+    float: right;
+    margin-right: 15px;
+    font-size: 1em;
+    color:white;
+}
+header .row #usuario img{
+    float:right;
+    margin-right: 10px;
+}
+
+.conteudo_central{
+    width: 100%;
+    height: auto;
+}
+.conteudo_central  .tela_inicial {
+    height: 500px;
+    width: 85%;
+    margin: 3% 0% 3% 7%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .funcionario {
+    height: 600px;
+    width: 80%;
+    margin: 6% 0% 3% 10%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .veiculos {
+    height: 600px;
+    width: 70%;
+    margin: 6% 0% 3% 15%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .projetos {
+    height: 600px;
+    width: 95%;
+    margin: 4% 0% 3% 2%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .tarefas {
+    height: 600px;
+    width: 80%;
+    margin: 6% 0% 3% 10%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .atividade_semanal {
+    height: 700px;
+    width: 90%;
+    margin: 6% 0% 3% 5%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+
+.conteudo_central .programacao-semanal{
+    height: 600px;
+    width: 90%;
+    margin: 6% 0% 3% 5%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central  .controle_manutencao {
+    height: 600px;
+    width: 90%;
+    margin: 6% 0% 3% 5%;
+    background: #e3e3e3;
+    border:1px solid #adadad;
+}
+
+.conteudo_central  .sugestoes{
+    height: 600px;
+    width: 90%;
+    margin: 6% 0% 3% 5%;
+    background: #e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central  .relatorio_projeto {
+    height: 700px;
+    width: 90%;
+    margin: 4% 0% 3% 5%;
+    background: #e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central  .relatorio_funcionario-custo{
+    height: 700px;
+    width: 90%;
+    margin: 4% 0% 3% 5%;
+    background: #e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central  .relatorio_funcionario-inativo-ativo{
+    height: 700px;
+    width: 96%;
+    margin: 4% 0% 3% 2%;
+    background: #e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .rotas{
+    height: 600px;
+    width: 60%;
+    margin: 6% 0% 3% 20%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .motoristas{
+    height: 600px;
+    width: 60%;
+    margin: 6% 0% 3% 20%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+.conteudo_central .ugb_mes{
+    height: 600px;
+    width: 80%;
+    margin: 6% 0% 3% 10%;
+    background:#e3e3e3;
+    border:1px solid #adadad;
+}
+
+footer .row{
+    clear: both;
+    height: 30px;
+    background:  #444;
+    width:101%;
+}
