@@ -5,7 +5,7 @@
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="style/principal/pagina_inicial.css" type="text/css"> 
         <script src="js/jquery.js"></script>
-        <script src="js/requisicoes_js.js" ></script>
+        <script src="js/verifica_usuario/requisicoes_js.js" ></script>
     </head>
     <body class="geral_login">      
         <div class="recebe_resposta"></div>

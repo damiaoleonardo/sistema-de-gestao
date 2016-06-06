@@ -136,6 +136,10 @@ class projetos_tarefas {
                             <td style="width: 15%; background: #c7254e; color:white;"><?php echo $tempo_gasto ?></td>
                             <?php
                         }
+                    }else {
+                        ?>
+                            <td style="width: 15%; background: #666666; color:white;"><?php echo $tempo_gasto ?></td>
+                       <?php 
                     }
                     ?>
                     <td style="width: 10%;"><?php echo $meta ?></td>
@@ -485,8 +489,208 @@ class projetos_tarefas {
         $status = $obj->getStatus_projeto();
         $id_projeto = $obj->getId_projeto();
         $id_tipoveiculo = $obj->getId_tipo_veiculo();
-        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo and projeto_executa.id_projeto = $id_projeto and projeto_executa.status = 'concluido' ";
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo and projeto_executa.id_projeto = $id_projeto and projeto_executa.status = '$status' ";
         return $sql;
     }
+    
+    ///  todos as funções para os projetos com status igual a concluido ou abertos
+     function projetosStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from projeto_executa  where projeto_executa.id_projeto = $id_projeto and  ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function projetosDatasStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from projeto_executa  where projeto_executa.id_projeto = $id_projeto and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function veiculosStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from projeto_executa  where projeto_executa.id_veiculo = $id_veiculo and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function veiculosDatasStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` where projeto_executa.id_veiculo = $id_veiculo and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)  ";
+        return $sql;
+    }
+
+    function tipoVeiculoStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_tipoveiculo = $obj->getId_tipo_veiculo();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo  and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function projetoTipoDatasStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $id_tipoveiculo = $obj->getId_tipo_veiculo();
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo and projeto_executa.id_projeto = $id_projeto and  projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)  ";
+        return $sql;
+    }
+
+    function ugbStatusTodos(projetos_tarefas $obj) {
+        $id_ugb = $obj->getUgb();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa`  join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where  projeto_executa.id_ugb = $id_ugb and projeto_executa.status = '$status'";
+        return $sql;
+    }
+
+    function ugbDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_ugb = $obj->getUgb();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa`  join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where  projeto_executa.id_ugb = $id_ugb and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function ugbVeiculoStatusTodos(projetos_tarefas $obj) {
+        $id_ugb = $obj->getUgb();
+        $id_veiculo = $obj->getId_veiculo();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_veiculo = $id_veiculo and projeto_executa.id_ugb = $id_ugb and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function ugbVeiculoDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_ugb = $obj->getUgb();
+        $id_veiculo = $obj->getId_veiculo();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_veiculo = $id_veiculo and projeto_executa.id_ugb = $id_ugb and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function ugbProjetoStatusTodos(projetos_tarefas $obj) {
+        $id_ugb = $obj->getUgb();
+        $id_projeto = $obj->getId_projeto();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_ugb = $id_ugb and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function ugbProjetoDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_ugb = $obj->getUgb();
+        $id_projeto = $obj->getId_projeto();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_ugb = $id_ugb and  projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function ugbTipoVeiculoStatusTodos(projetos_tarefas $obj) {
+        $id_tipoVeiculo = $obj->getId_tipo_veiculo();
+        $id_ugb = $obj->getUgb();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where  veiculos.id_tipo = $id_tipoVeiculo and projeto_executa.id_ugb = $id_ugb and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function ugbTipoVeiculoDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_tipoVeiculo = $obj->getId_tipo_veiculo();
+        $id_ugb = $obj->getUgb();
+        $status = $obj->getStatus_projeto();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where  veiculos.id_tipo = $id_tipoVeiculo and projeto_executa.id_ugb = $id_ugb and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function projetoVeiculoUgbStatusTodos(projetos_tarefas $obj) {
+        $id_projeto = $obj->getId_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $status = $obj->getStatus_projeto();
+        $id_ugb = $obj->getUgb();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_veiculo = $id_veiculo and projeto_executa.id_ugb = $id_ugb  and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function projetoVeiculoUgbDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_projeto = $obj->getId_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $status = $obj->getStatus_projeto();
+        $id_ugb = $obj->getUgb();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_veiculo = $id_veiculo and projeto_executa.id_ugb = $id_ugb and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final'  and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function projetoTipoVeiculoUgbStatusTodos(projetos_tarefas $obj) {
+        $id_projeto = $obj->getId_projeto();
+        $id_tipoVeiculo = $obj->getId_tipo_veiculo();
+        $status = $obj->getStatus_projeto();
+        $id_ugb = $obj->getUgb();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and veiculos.id_tipo = $id_tipoVeiculo and projeto_executa.id_ugb = $id_ugb and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function projetoTipoVeiculoUgbDatasStatusTodos(projetos_tarefas $obj) {
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $id_projeto = $obj->getId_projeto();
+        $id_tipoVeiculo = $obj->getId_tipo_veiculo();
+        $status = $obj->getStatus_projeto();
+        $id_ugb = $obj->getUgb();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) join `ugb` on (projeto_executa.id_ugb = ugb.id_ugb) where projeto_executa.id_projeto = $id_projeto and veiculos.id_tipo = $id_tipoVeiculo and projeto_executa.id_ugb = $id_ugb and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)";
+        return $sql;
+    }
+
+    function tipoVeiculoDatasStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_tipoveiculo = $obj->getId_tipo_veiculo();
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo and  projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status)  ";
+        return $sql;
+    }
+
+    function projetosVeiculosStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from projeto_executa where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_veiculo = $id_veiculo and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function projetosVeiculosDatasStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $id_veiculo = $obj->getId_veiculo();
+        $data_inicio = $obj->getData_inicial();
+        $data_final = $obj->getData_final();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from projeto_executa where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_veiculo = $id_veiculo and projeto_executa.data_inicio >= '$data_inicio' and projeto_executa.data_final <= '$data_final' and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+
+    function projetoTipoStatusTodos(projetos_tarefas $obj) {
+        $status = $obj->getStatus_projeto();
+        $id_projeto = $obj->getId_projeto();
+        $id_tipoveiculo = $obj->getId_tipo_veiculo();
+        $sql = "SELECT DISTINCT projeto_executa.id_projeto_executa,projeto_executa.id_projeto,projeto_executa.id_veiculo,projeto_executa.nome_projeto,projeto_executa.nome_veiculo,projeto_executa.data_inicio,projeto_executa.data_final,projeto_executa.data_inicio,projeto_executa.horas_concluidas,projeto_executa.duracao from `projeto_executa` join `veiculos` on (projeto_executa.id_veiculo = veiculos.id_veiculo) join `tipo_veiculo` on (veiculos.id_tipo = tipo_veiculo.id_tipo) where veiculos.id_tipo = $id_tipoveiculo and projeto_executa.id_projeto = $id_projeto and ( projeto_executa.status = $status) ";
+        return $sql;
+    }
+    
+    
+    
+    
+    
 
 }

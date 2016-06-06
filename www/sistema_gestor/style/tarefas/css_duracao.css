@@ -1,0 +1,13 @@
+.input-append {color:white; }
+.add-on{ display:inline-block;width:auto;height:30px;min-width:16px;font-size:18px;font-weight:normal;line-height:20px;text-align:center;text-shadow:0 1px 0 #fff;background-color:#eee;border:1px solid #ccc}
+
+[class^="icon-"],[class*=" icon-"]{
+    display:inline-block;width:20px;height:14px;*margin-right:.3em;line-height:14px;vertical-align:text-top;background: #0077b3}
+.btn{ background-color:#0077b3; color:white; }
+select,textarea,
+input[type="text"],
+.uneditable-input{display:inline-block;height:30px;
+                 line-height:20px;color:#555;vertical-align:middle;}
+input,.uneditable-input{width:80px}textarea{height:auto}
+                  
+                

@@ -7,28 +7,10 @@
         <link rel="stylesheet" href="../style/programacao_semanal/modal_viagem.css" type="text/css">
         <script src="../js/viagens/modal_viagens.js"></script>
         <script src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/relatorios/projetos/jquery-1.11.3.min.js"></script>
         <script src="../js/viagens/adicionar_viagem.js"></script>
-        <script>
-        function deleteViagem(id,url){
-                decisao = confirm('Deseja deletar'+ url);
-                if (decisao){
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function () {
-                            if (xhttp.readyState === 4 && xhttp.status === 200) {
-                                document.getElementById(id).innerHTML = xhttp.responseText;   
-                            }else{
-                               alert("ola");
-                            }
-                        };
-                     xhttp.open("GET", url, true);
-                     xhttp.send();
-                }
-           }
-        </script>
     </head>
     <body>
-      <div id="retorno_delete"></div>
+        <div id="retorno_delete"></div>
         <div class="row_programacao">
             <div class="col-md-12 col-sm-12 col-xs-12" id="header_programacao_semanal"><div id="titulo"><span>Programação Semanal</span></div></div>
             <contans>
@@ -68,13 +50,25 @@
                         ?>
                         <div class="programacao_edit">
                             <?php
-                            $dia_da_semana = $_POST['dia_semana'];
-                            session_start("dia_semana");
-                            $_SESSION['dia'] = $dia_da_semana;
-                            require '../control/programacao_semanal/programacaosemanal_controller.php';
-                           
+                            if (isset($_GET['dia_semana']) and isset($_GET['id_motoristaA']) and isset($_GET['id_motoristaB']) and isset($_GET['id_rota']) and isset($_GET['id_veiculo']) ) {
+                                $dia_semanas = $_GET['dia_semana'];
+                                $id_motoristaA = $_GET['id_motoristaA'];
+                                $id_motoristaB = $_GET['id_motoristaB'];
+                                $id_rota = $_GET['id_rota'];
+                                $id_veiculo = $_GET['id_veiculo'];
+                                $sql = "delete from programacao_semanal where programacao_semanal.id_diasemana = $dia_semanas and programacao_semanal.id_motoristaA = $id_motoristaA "
+                                        . "and programacao_semanal.id_motoristaB = $id_motoristaB and programacao_semanal.id_rota = $id_rota and programacao_semanal.id_veiculo = $id_veiculo";
+                                mysql_query($sql);
+                                session_start("dia_semana");
+                                $_SESSION['dia'] = $dia_semanas;
+                                require '../control/programacao_semanal/programacaosemanal_controller.php';
+                            } else {
+                                $dia_da_semana = $_POST['dia_semana'];
+                                session_start("dia_semana");
+                                $_SESSION['dia'] = $dia_da_semana;
+                                require '../control/programacao_semanal/programacaosemanal_controller.php';
+                            }
                             ?>
-
                         </div>
                         <?php
                     }

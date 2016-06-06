@@ -221,33 +221,6 @@ class getInformacoes {
         return $array;
     }
 
-    function sethorasconcluidasfuncionario($intervalo_concluido, $id_do_projeto, $id_do_veiculo, $id_da_tarefa) {
-        $conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
-        mysqli_autocommit($conexao_select, FALSE);
-        $erro_finaliza_set_horas = 0;
-        $array_set_horas_funcionario = array();
-        $sql_set_horas = "select funcionario_executa.horas_concluidas,funcionario_executa.id_funcionario from funcionario_executa where funcionario_executa.id_projeto = '$id_do_projeto' and funcionario_executa.id_veiculo = '$id_do_veiculo' and funcionario_executa.id_tarefa = '$id_da_tarefa' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa = 'open'";
-        $result_set_horas = mysql_query($sql_set_horas);
-        while ($aux_set_horas = mysql_fetch_array($result_set_horas)) {
-            $ids_dos_funcionarios = $aux_set_horas['id_funcionario'] . "<br>";
-            $horas_concluidas_do_funcionario = $aux_set_horas['horas_concluidas'] . "<br>";
-            $array_set_horas_funcionario[] = $intervalo_concluido;
-            $array_set_horas_funcionario[] = $horas_concluidas_do_funcionario;
-            $array_das_horas_do_funcionario = array($intervalo_concluido, $horas_concluidas_do_funcionario);
-            $hora_somada_do_funcionario = $this->somarhoras($array_das_horas_do_funcionario);
-            $set_horas_funcionario = "UPDATE funcionario_executa SET horas_concluidas = '$hora_somada_do_funcionario' where funcionario_executa.id_projeto = '$id_do_projeto' and funcionario_executa.id_veiculo= '$id_do_veiculo' and funcionario_executa.id_tarefa = '$id_da_tarefa' and funcionario_executa.id_funcionario='$ids_dos_funcionarios' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa != 'concluida' and funcionario_executa.status_tarefa != 'pause'";
-            if (!mysqli_query($conexao_select, $set_horas_funcionario)) {
-            $erro_finaliza_set_horas++;
-          }
-            if ($erro_finaliza_set_horas == 0) {
-                mysqli_commit($conexao_select);
-            } else {
-                mysqli_rollback($conexao_select);
-            }
-            unset($array_set_horas_funcionario);
-        }
-    }
-
     function preenchearrayparavariosexecutores($time_tarefas, $x) {
         $array_executores = array();
         for ($i = 0; $i < $x; $i++) {
@@ -303,8 +276,67 @@ class getInformacoes {
         return sprintf('%02d:%02d:00', $h, $m);
     }
 
-    function atualiza_tarefa_nao_liberada(getInformacoes $obj) {
+   /* function sethorasconcluidasfuncionario($intervalo_concluido, $id_do_projeto, $id_do_veiculo, $id_da_tarefa) {
+        echo "intervalo para cada funcionario" . $intervalo_concluido . "<br>";
+        $conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
+        mysqli_autocommit($conexao_select, FALSE);
+        $erro_finaliza_set_horas = 0;
+        $array_set_horas_funcionario = array();
+        $array_do_total_horas_tarefas = array();
+        $sql_set_horas = "select funcionario_executa.horas_concluidas,funcionario_executa.id_funcionario,funcionario_executa.id_projeto_executa from funcionario_executa where funcionario_executa.id_projeto = '$id_do_projeto' and funcionario_executa.id_veiculo = '$id_do_veiculo' and funcionario_executa.id_tarefa = '$id_da_tarefa' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa = 'open'";
+        $result_set_horas = mysql_query($sql_set_horas);
+        while ($aux_set_horas = mysql_fetch_array($result_set_horas)) {
+            $id_executa = $aux_set_horas['id_projeto_executa'];
+            $ids_dos_funcionarios = $aux_set_horas['id_funcionario'] . "<br>";
+            $horas_concluidas_do_funcionario = $aux_set_horas['horas_concluidas'] . "<br>";
+            $array_set_horas_funcionario[] = $intervalo_concluido;
+            $array_set_horas_funcionario[] = $horas_concluidas_do_funcionario;
+            $array_das_horas_do_funcionario = array($intervalo_concluido, $horas_concluidas_do_funcionario);
+            echo "tempo de cada funcionario" . $hora_somada_do_funcionario = $this->somarhoras($array_das_horas_do_funcionario);
+            $set_horas_funcionario = "UPDATE funcionario_executa SET horas_concluidas = '$hora_somada_do_funcionario' where funcionario_executa.id_projeto = '$id_do_projeto' and funcionario_executa.id_veiculo= '$id_do_veiculo' and funcionario_executa.id_tarefa = '$id_da_tarefa' and funcionario_executa.id_funcionario='$ids_dos_funcionarios' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa != 'concluida' and funcionario_executa.status_tarefa != 'pause'";
+            if (!mysqli_query($conexao_select, $set_horas_funcionario)) {
+                $erro_finaliza_set_horas++;
+            }
+            if ($erro_finaliza_set_horas == 0) {
 
+                mysqli_commit($conexao_select);
+            } else {
+                mysqli_rollback($conexao_select);
+            }
+            unset($array_set_horas_funcionario);
+        }
+
+        $sql_duracao_da_tarefa = "select funcionario_executa.horas_concluidas from funcionario_executa where funcionario_executa.id_projeto_executa = $id_executa and funcionario_executa.id_tarefa = $id_da_tarefa and funcionario_executa.id_veiculo = $id_do_veiculo ";
+        $result_da_duracao = mysql_query($sql_duracao_da_tarefa);
+        while ($aux_da_duracao = mysql_fetch_array($result_da_duracao)) {
+            $horas_concluidas_por_funcionario = $aux_da_duracao['horas_concluidas'];
+            $array_do_total_horas_tarefas[] = ($horas_concluidas_por_funcionario);
+        }
+
+        //  print_r($array_do_total_horas_tarefas);
+        echo "id_executa" . $id_executa . "<br>";
+        //   echo  $hora_momento = $this->horadobanco();
+        echo $tempo_da_tarefa = $this->somarhoras($array_do_total_horas_tarefas);
+        //   $intervalo_entre_duracao_horasconcluida_2 = $hora_inicial_intervalo_2->diff($hora_final_2);
+        //  $duracao_restante_da_tarefa = $intervalo_entre_duracao_horasconcluida_2->format('%H:%I:%S');
+        /*
+          $conexao_atualiza_tarefa = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
+          mysqli_autocommit($conexao_atualiza_tarefa, FALSE);
+          $atualiza_tarefa = 0;
+
+          $atualiza_tarefa_horas = "UPDATE tarefas_executa SET horas_concluidas = '$tempo_da_tarefa',horas_inicio='$horainicio_da_tarefa_2',horas_restante = '$duracao_restante_2', porcentagem_concluida = '$porcentagem_concluida_2' where tarefas_executa.id_projeto = $id_projeto and tarefas_executa.id_veiculo= $id_veiculo and tarefas_executa.id_tarefa = $id_tarefa and tarefas_executa.conclusao_projeto = 'nao concluido'";
+          if (!mysqli_query($conexao_atualiza_tarefa, $atualiza_tarefa_horas)) {
+          $atualiza_tarefa++;
+          }
+
+          if ($atualiza_tarefa == 0) {
+          mysqli_commit($conexao_atualiza_tarefa);
+          } else {
+          mysqli_rollback($conexao_atualiza_tarefa);
+          } 
+    }*/
+
+    function atualiza_tarefa_nao_liberada(getInformacoes $obj) {
         $id_projeto = $obj->getId_projeto();
         $id_veiculo = $obj->getId_veiculo();
         $id_funcionario = $obj->getId_funcionario();
@@ -330,10 +362,11 @@ class getInformacoes {
         $tamanho = $pintadiv * 100 . "%";
         $conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
         mysqli_autocommit($conexao_select, FALSE);
-        $erro_finaliza = 0;
+        $erro_da_query_tarefa = 0;
         $atualiza_tarefa_horas_concluidas = "UPDATE tarefas_executa SET horas_concluidas = '$tempo_somado',horas_inicio='$hora_atual_do_banco',horas_restante = '$duracao_restante', porcentagem_concluida = '$porcentagem_concluida' where tarefas_executa.id_projeto = $id_projeto and tarefas_executa.id_veiculo= $id_veiculo and tarefas_executa.id_tarefa = $id_tarefa and tarefas_executa.conclusao_projeto = 'nao concluido'";
         if (!mysqli_query($conexao_select, $atualiza_tarefa_horas_concluidas)) {
-            $erro_finaliza++;
+
+            $erro_da_query_tarefa++;
         }
 
         $horas_concluidas_funcionario = $this->pegahorasconluidofuncionario($id_projeto, $id_veiculo, $id_tarefa, $id_funcionario);
@@ -341,7 +374,7 @@ class getInformacoes {
         $tempo_somado_funcionario = $this->somarhoras($array_tempo_funcionario);
         $atualiza_funcionario_executa = "UPDATE funcionario_executa SET horas_concluidas = '$tempo_somado_funcionario' where funcionario_executa.id_projeto = $id_projeto and funcionario_executa.id_veiculo= $id_veiculo and funcionario_executa.id_tarefa = $id_tarefa and funcionario_executa.id_funcionario=$id_funcionario and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa != 'concluida' and funcionario_executa.status_tarefa != 'pause'";
         if (!mysqli_query($conexao_select, $atualiza_funcionario_executa)) {
-            $erro_finaliza++;
+            $erro_da_query_tarefa++;
         }
         $horas_das_tarefas = $this->pegahorasconluidastarefas($id_projeto, $id_veiculo);
         $horas_conluidas_das_tarefas = $this->somarhoras($horas_das_tarefas);
@@ -350,17 +383,17 @@ class getInformacoes {
         $horas_concluidas_projeto_minutos = $this->transformahoraemminuto($horas_concluidas_projeto);
         $atualiza_projeto_executa = "UPDATE projeto_executa SET horas_concluidas = '$horas_conluidas_das_tarefas',ultima_atualizacao = '$hora_atual_do_banco' where projeto_executa.id_projeto=$id_projeto and projeto_executa.id_veiculo = $id_veiculo and projeto_executa.status != 'concluido'";
         if (!mysqli_query($conexao_select, $atualiza_projeto_executa)) {
-            $erro_finaliza++;
+            $erro_da_query_tarefa++;
         }
         $duracao_do_projeto = $this->pegaduracaoprojeto($id_projeto, $id_veiculo);
         $duracao_do_projeto_minutos = $this->transformahoraemminuto($duracao_do_projeto);
         $porcentagem_do_projeto_concluida = $aux_da_porcentagem_projeto / $duracao_do_projeto_minutos * 100 . "%";
         $atualiza_porcentagem_projeto = "UPDATE projeto_executa SET porcentagem_concluida = '$porcentagem_do_projeto_concluida' where projeto_executa.id_projeto = $id_projeto and projeto_executa.id_veiculo = $id_veiculo and projeto_executa.status != 'concluido' ";
         if (!mysqli_query($conexao_select, $atualiza_porcentagem_projeto)) {
-            $erro_finaliza++;
+            $erro_da_query_tarefa++;
         }
 
-        if ($erro_finaliza == 0) {
+        if ($erro_da_query_tarefa == 0) {
             mysqli_commit($conexao_select);
             return $tamanho;
         } else {
@@ -394,14 +427,52 @@ class getInformacoes {
         $pintadiv_2 = $hora_ja_concluida_2 / $duracao_geral_tarefa_2;
         $porcentagem_concluida_2 = $pintadiv_2 * 100;
         $tamanho = $pintadiv_2 * 100 . "%";
+        //  $this->sethorasconcluidasfuncionario($hora_concluidas_2, $id_projeto, $id_veiculo, $id_tarefa);
+
+
+        $conexao_select_tarefa = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
+        mysqli_autocommit($conexao_select_tarefa, FALSE);
+        $erro_finaliza_set_horas = 0;
+        $array_set_horas_funcionario = array();
+        $array_do_total_horas_tarefas = array();
+        $sql_set_horas = "select funcionario_executa.horas_concluidas,funcionario_executa.id_funcionario,funcionario_executa.id_projeto_executa from funcionario_executa where funcionario_executa.id_projeto = '$id_projeto' and funcionario_executa.id_veiculo = '$id_veiculo' and funcionario_executa.id_tarefa = '$id_tarefa' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa = 'open'";
+        $result_set_horas = mysql_query($sql_set_horas);
+        while ($aux_set_horas = mysql_fetch_array($result_set_horas)) {
+            $id_executa = $aux_set_horas['id_projeto_executa'];
+            $ids_dos_funcionarios = $aux_set_horas['id_funcionario'];
+            $horas_concluidas_do_funcionario = $aux_set_horas['horas_concluidas'];
+            $array_set_horas_funcionario[] = $hora_concluidas_2;
+            $array_set_horas_funcionario[] = $horas_concluidas_do_funcionario;
+            $array_das_horas_do_funcionario = array($hora_concluidas_2, $horas_concluidas_do_funcionario);
+            $hora_somada_do_funcionario = $this->somarhoras($array_das_horas_do_funcionario);
+            $set_horas_funcionario = "UPDATE funcionario_executa SET horas_concluidas = '$hora_somada_do_funcionario' where funcionario_executa.id_projeto = '$id_projeto' and funcionario_executa.id_veiculo= '$id_veiculo' and funcionario_executa.id_tarefa = '$id_tarefa' and funcionario_executa.id_funcionario='$ids_dos_funcionarios' and funcionario_executa.status_funcionario_tarefa = 'ativo' and funcionario_executa.status_tarefa != 'concluida' and funcionario_executa.status_tarefa != 'pause'";
+            if (!mysqli_query($conexao_select_tarefa, $set_horas_funcionario)) {
+                $erro_finaliza_set_horas++;
+            }
+            if ($erro_finaliza_set_horas == 0) {
+                mysqli_commit($conexao_select_tarefa);
+            } else {
+                mysqli_rollback($conexao_select_tarefa);
+            }
+            unset($array_set_horas_funcionario);
+        }
+
+        $sql_duracao_da_tarefa = "select funcionario_executa.horas_concluidas from funcionario_executa where funcionario_executa.id_projeto_executa = $id_executa and funcionario_executa.id_tarefa = $id_tarefa and funcionario_executa.id_veiculo = $id_veiculo ";
+        $result_da_duracao = mysql_query($sql_duracao_da_tarefa);
+        while ($aux_da_duracao = mysql_fetch_array($result_da_duracao)) {
+            $horas_concluidas_por_funcionario = $aux_da_duracao['horas_concluidas'];
+            $array_do_total_horas_tarefas[] = ($horas_concluidas_por_funcionario);
+        }
+        $tempo_da_tarefa = $this->somarhoras($array_do_total_horas_tarefas);
         $conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
         mysqli_autocommit($conexao_select, FALSE);
         $erro_finaliza = 0;
-        $atualiza_tarefa_horas = "UPDATE tarefas_executa SET horas_concluidas = '$tempo_somado_2',horas_inicio='$horainicio_da_tarefa_2',horas_restante = '$duracao_restante_2', porcentagem_concluida = '$porcentagem_concluida_2' where tarefas_executa.id_projeto = $id_projeto and tarefas_executa.id_veiculo= $id_veiculo and tarefas_executa.id_tarefa = $id_tarefa and tarefas_executa.conclusao_projeto = 'nao concluido'";
+        $atualiza_tarefa_horas = "UPDATE tarefas_executa SET horas_concluidas = '$tempo_da_tarefa',horas_inicio='$horainicio_da_tarefa_2',horas_restante = '$duracao_restante_2', porcentagem_concluida = '$porcentagem_concluida_2' where tarefas_executa.id_projeto = $id_projeto and tarefas_executa.id_veiculo= $id_veiculo and tarefas_executa.id_tarefa = $id_tarefa and tarefas_executa.conclusao_projeto = 'nao concluido'";
         if (!mysqli_query($conexao_select, $atualiza_tarefa_horas)) {
             $erro_finaliza++;
         }
-        $this->sethorasconcluidasfuncionario($hora_concluidas_2, $id_projeto, $id_veiculo, $id_tarefa);
+        /////////////////////////////////////////////////////////////
+
         $horas_das_tarefas_2 = $this->pegahorasconluidastarefas($id_projeto, $id_veiculo);
         $horas_conluidas_das_tarefas_2 = $this->somarhoras($horas_das_tarefas_2);
         $aux_da_porcentagem_projeto_2 = $this->transformahoraemminuto($horas_conluidas_das_tarefas_2);
@@ -427,14 +498,24 @@ class getInformacoes {
         }
     }
 
+    function getNomeVeiculo($id_executa) {
+        $sql_nome_veiculo = "select projeto_executa.nome_veiculo from projeto_executa where projeto_executa.id_projeto_executa = $id_executa";
+        $result_nome_veiculo = mysql_query($sql_nome_veiculo);
+        $nome_veiculo = mysql_fetch_row($result_nome_veiculo);
+        return $veiculo = $nome_veiculo[0];
+    }
+
     function exibeTarefas(getInformacoes $obj) {
         $id_projeto = $obj->getId_projeto();
         $id_projeto_executa = $obj->getId_projeto_executa();
         $id_veiculo = $obj->getId_veiculo();
-        $id_funcionario = $obj->getId_funcionario();
+        echo $id_funcionario = $obj->getId_funcionario();
         $status_funcionario = $obj->getStatus_funcionario();
         ?>
         <table class="table table-hover" id="tabela_tarefas" style="width: 100%;">
+            <tr style="height: 80px;  font-size:1.5em;">
+                <td colspan="4"><?php echo $nome_veiculo = $this->getNomeVeiculo($id_projeto_executa); ?></td>
+            </tr>
             <?php
             $sql = "select tarefas_projeto.id_tarefa from tarefas_projeto where tarefas_projeto.id_projeto = $id_projeto";
             $result = mysql_query($sql);
@@ -450,6 +531,7 @@ class getInformacoes {
                     $duracao_geral = $aux_duracao_hora . "." . $aux_duracao_minuto;
                     $horas_concluidas_tarefa = $this->pegahorasconluidatarefa($id_projeto, $id_veiculo, $id_tarefa);
                     $status_tarefa = $this->pegastatustarefa($id_projeto, $id_veiculo, $id_tarefa);
+
                     if ($status_tarefa == "notopen") {
                         ?>
                         <tr style="height: 80px;">
@@ -462,12 +544,12 @@ class getInformacoes {
                                 <div class="col-md-4 col-sm-4 col-xs-4"   ><a href="" onClick="alert('Tarefa ainda nao foi Iniciada!');"><img src="../img/1430175354_Stop1Pressed.png" ></a></div>
                             </td>
                         </tr>
-                    <?php
-                } else if ($status_tarefa == "open") {
-                    $id_projeto_funcionario_ativo = $this->pegaidprojetofuncionario($id_funcionario);
-                    $id_veiculo_funcionario_ativo = $this->pegaidveiculofuncionario($id_funcionario);
-                    $id_tarefa_funcionario_ativo = $this->pegaidtarefafuncionario($id_funcionario);
-                    ?>
+                        <?php
+                    } else if ($status_tarefa == "open") {
+                        $id_projeto_funcionario_ativo = $this->pegaidprojetofuncionario($id_funcionario);
+                        $id_veiculo_funcionario_ativo = $this->pegaidveiculofuncionario($id_funcionario);
+                        $id_tarefa_funcionario_ativo = $this->pegaidtarefafuncionario($id_funcionario);
+                        ?>
                         <tr style="height: 80px;">
                             <td class="col-md-3 col-sm-3 col-xs-3" id="primeira_coluna"><?php echo $nome_tarefa ?></td>
                             <?php
@@ -517,11 +599,11 @@ class getInformacoes {
                                         </div>  
                                     </td>
 
-                            <?php
-                            unset($tamanho);
-                            unset($atualiza_tarefa);
-                        } else {
-                            ?>
+                                    <?php
+                                    unset($tamanho);
+                                    unset($atualiza_tarefa);
+                                } else {
+                                    ?>
                                     <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
                                         <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
                                             <div class="progress" style="height: 60px; margin:auto;" >
@@ -531,9 +613,9 @@ class getInformacoes {
                                             </div>
                                         </div>  
                                     </td>
-                            <?php
-                        }
-                        ?>
+                                    <?php
+                                }
+                                ?>
                                 <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna" ><span style="font-size:1.5em; color:black; "><?php echo $duracao_tarefa; ?></span></td>
                                 <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
                                     <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
@@ -586,11 +668,11 @@ class getInformacoes {
                                     </div>  
                                 </td>
 
-                            <?php
-                            unset($tamanho);
-                            unset($atualiza_tarefa);
-                        } else {
-                            ?>
+                                <?php
+                                unset($tamanho);
+                                unset($atualiza_tarefa);
+                            } else {
+                                ?>
                                 <td class="col-md-5 col-sm-5 col-xs-5" id="segunda_coluna">
                                     <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;" >                                     
                                         <div class="progress" style="height: 60px; margin:auto;" >
@@ -600,9 +682,9 @@ class getInformacoes {
                                         </div>
                                     </div>  
                                 </td>
-                            <?php
-                        }
-                        ?>
+                                <?php
+                            }
+                            ?>
                             <td class="col-md-1 col-sm-1 col-xs-1" id="terceira_coluna" ><span style="font-size:1.5em; color:black; "><?php echo $duracao_tarefa; ?></span></td>
                             <td class="col-md-3 col-sm-3 col-xs-3" id="quarta_coluna" style="margin: auto;">
                                 <div class="col-md-4 col-sm-4 col-xs-4" ><a href="" onclick="reabre_tarefa('<?php echo $status_funcionario ?>', '<?php echo $id_tarefa ?>', '<?php echo $status_tarefa ?>', '<?php echo $id_projeto ?>', '<?php echo $id_veiculo ?>', '<?php echo $id_funcionario ?>', '<?php echo $id_projeto_funcionario_ativo ?>', '<?php echo $id_veiculo_funcionario_ativo ?>', '<?php echo $id_tarefa_funcionario_ativo ?>')"><img src="../img/1430175909_StepForwardHot.png" ></a></div>
@@ -621,12 +703,12 @@ class getInformacoes {
                             <div class="progress progress-striped active" class="progress" style="height: 60px; margin:auto;"  >                                     
                                 <div class="progress" style="height: 60px; margin:auto;" >
                                     <div class="progress-bar progress-bar-warning" style="width: <?php
-                    if ($tamanho > 100) {
-                        echo $tamanho = 100 . "%";
-                    } else {
-                        echo $tamanho;
-                    }
-                    ?>; ">
+                                    if ($tamanho > 100) {
+                                        echo $tamanho = 100 . "%";
+                                    } else {
+                                        echo $tamanho;
+                                    }
+                                    ?>; ">
                                         <div style="margin-top:20px;"><span style="font-size:2em; color:black;"><?php echo $horas_concluidas_tarefa; ?></span></div>  
                                     </div>
                                 </div>
@@ -649,12 +731,12 @@ class getInformacoes {
                             <div class="progress " class="progress" style="height: 60px; margin:auto;">                                     
                                 <div class="progress" style="height: 60px; margin:auto;" >
                                     <div class="progress-bar progress-bar-success" style="width: <?php
-                    if ($tamanho > 100) {
-                        echo $tamanho = 100 . "%";
-                    } else {
-                        echo $tamanho;
-                    }
-                    ?>">
+                                    if ($tamanho > 100) {
+                                        echo $tamanho = 100 . "%";
+                                    } else {
+                                        echo $tamanho;
+                                    }
+                                    ?>">
                                         <div style="margin-top:20px;"><span style="font-size:2em; color:black;" ><?php echo $horas_concluidas_tarefa; ?></span></div>        
                                     </div>
                                 </div>
@@ -674,11 +756,11 @@ class getInformacoes {
         ?>
         </table> 
 
-            <?php
-        }
+        <?php
+    }
 
-        function exibeProjetos() {
-            ?>
+    function exibeProjetos() {
+        ?>
         <table class="table table-hover" style="width: 100%;">
             <tr style="background: #cfcfcf; color: #01669F; font-size:1.6em; height: 70px; "><td>Projeto</td><td>Veiculo</td></tr>
             <?php
@@ -697,17 +779,18 @@ class getInformacoes {
                     <td><center><span><a href="telaPrincipal.php?t=visualiza_tarefas&id=<?php echo $id ?>&id_projeto=<?php echo $id_projetos_executas ?>&veiculo=<?php echo $id_veiculo ?>&login=<?php echo $usuario ?>"><?php echo $nome ?></a></span><center></td>
                         <td><center><?php echo $nome_veiculo ?></center></td>
                         </tr>
-            <?php
-        }
-        ?>  
+                        <?php
+                    }
+                    ?>  
                     </table><?php
                     if ($tela_vazia == 0) {
                         ?>
                         <div style="width: 100%; height: 200px;  ">
                             <div style="width: 400px; height: 30px; margin:7% 0% 0% 30%; font-size: 2em; color: #122b40;">Ainda nao tem projetos Criados</div>
                         </div>
-            <?php
-        }
-    }
+                        <?php
+                    }
+                }
 
-}
+            }
+            

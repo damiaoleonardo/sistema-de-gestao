@@ -11,8 +11,16 @@
         <link rel="stylesheet" href="../style/relatorios/projetos/bootstrap-datepicker3.css"/>
         <script type="text/javascript" src="../js/relatorios/projetos/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../js/relatorios/projetos/bootstrap-datepicker.min.js"></script>
-        
-        
+        <script src="http://static.pureexample.com/js/flot/jquery.flot.min.js"></script>
+        <script src="http://static.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>
+        <style type="text/css">
+            #mostra {
+                width: 700px;
+                height: 500px;
+                text-align: left;
+            }
+        </style>
+
     </head>
     <body>
         <div class="row_funcionario">
@@ -30,30 +38,30 @@
                             ?>
                             <option value="<?php echo $id_funcionario; ?>" style="color:black;"> <?php echo $nome_funcionario; ?></option>
                             <?php
-                          }
+                        }
                         ?>
                     </select>
                 </div>
                 <div id="periodo_datas" class="col-md-5 col-sm-5 col-xs-5">
-                     <div id="data_inicio" class="col-sm-12 col-md-12 col-xs-12">
-                         <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Inicio</label>
-                                            <div class="col-sm-9 col-md-9 col-xs-9">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                    <input style="height: 24px;" class="form-control" id="date" name="data_inicio" placeholder="YYYY/MM/DD" type="text"/>
-                                                </div>
-                                            </div>
-                        
+                    <div id="data_inicio" class="col-sm-12 col-md-12 col-xs-12">
+                        <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Inicio</label>
+                        <div class="col-sm-9 col-md-9 col-xs-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input style="height: 24px;" class="form-control" id="date" name="data_inicio" placeholder="YYYY/MM/DD" type="text"/>
+                            </div>
+                        </div>
+
                     </div>
                     <div id="data_final" class="col-sm-12 col-md-12 col-xs-12">  
-                            <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Final</label>
-                                            <div class="col-sm-9 col-md-9 col-xs-9" >
-                                                <div class="input-group">
-                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                    <input style="height: 24px;" class="form-control" id="date" name="data_final" placeholder="YYYY/MM/DD" type="text"/>
-                                                </div>
-                                            </div>
-                     </div>
+                        <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Final</label>
+                        <div class="col-sm-9 col-md-9 col-xs-9" >
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input style="height: 24px;" class="form-control" id="date" name="data_final" placeholder="YYYY/MM/DD" type="text"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="button_relatorio_funci" class="col-md-2 col-sm-2 col-xs-2"><button style="background: #01669F; color:white;" type="submit" id="button_relatorio_periodo" class="btn btn-default">Pesquisar</button></div>
             </form>
@@ -61,7 +69,7 @@
         <div  class="contans_funcionario_periodo">
             <div class="tabela_funcionario"></div>
         </div>
-        <div  id="editCourseModal" class="modalDialog">
+        <div  id="detalhamento_dia_funcionario" class="modalDialog">
             <div id="recebe_dados"></div>
         </div>
     </body>

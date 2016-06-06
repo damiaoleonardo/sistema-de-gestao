@@ -98,8 +98,8 @@ class programacaoSemanal {
                                             $nome_rotas = $aux_edit['nome_rota'];
                                             $nome_veiculos = $aux_edit['nome_veiculo'];
                                             $cor_rota = $aux_edit['cor'];
-                                           // $id_rota = $aux_edit['id_rota'];
-                                          //  $id_veiculo = $aux_edit['id_veiculo'];
+                                            $id_rota = $aux_edit['id_rota'];
+                                            $id_veiculo = $aux_edit['id_veiculo'];
                                             $id_motoristaA = $aux_edit['id_motoristaA'];
                                             $id_motoristaB = $aux_edit['id_motoristaB'];
                                             $sql_motoristaA = "select motoristas.nome_motorista from `motoristas` join `programacao_semanal` on (programacao_semanal.id_motoristaA = motoristas.id_motorista) where id_diasemana = $dia and id_motoristaA = $id_motoristaA ";
@@ -112,8 +112,8 @@ class programacaoSemanal {
                                             $nome_motoristaB = $motoristaB[0];
                                             ?>
                                             <td align="center">
-                                                <a class="btn btn-default"><em class="fa fa-pencil" onclick="openModalViagemEdite('editeviagem')"><span class="glyphicon glyphicon-pencil" style="color: #006600;"></span></em></a>
-                                                <a class="btn btn-danger" href="#" onclick="deleteViagem('retorno_delete','../model/programacao_semanal/deleteViagem.php');"><span style="color: #006600; font-size: 0.7em;">X</span></a>
+                                             <!-- <a class="btn btn-default"><em class="fa fa-pencil" onclick="openModalViagemEdite('editeviagem')"><span class="glyphicon glyphicon-pencil" style="color: #006600;"></span></em></a>-->
+                                              <a class="btn btn-danger" href="telaPrincipal.php?t=programacao-semanal&v=edita-programacao&dia_semana=<?php echo $dia; ?>&id_motoristaA=<?php echo $id_motoristaA ?>&id_motoristaB=<?php echo $id_motoristaB ?>&id_rota=<?php echo $id_rota ?>&id_veiculo=<?php echo $id_veiculo ?>" onClick="return confirm('Deseja realmente deletar o veiculo:')"><span style="color: #006600; font-size: 0.7em;">X</span></a>   
                                             </td>
                                             <?php
                                             if (empty($nome_motoristaB)) {

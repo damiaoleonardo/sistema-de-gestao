@@ -47,7 +47,6 @@ $erro_select = 0;
 
 if ($id_do_status_do_funci == $id_funcionario) {
     if ($data_da_tarefa == $data_hoje) {
-
         $atualiza_funcionario = "UPDATE funcionario_executa SET hora_inicial = '$horainicio', status_funcionario_tarefa = 'ativo',status_tarefa = 'open',flag_tarefa_aberta = 1,flag_tarefa_relatorio = 0 where funcionario_executa.id_projeto=$id_projeto_pausado and funcionario_executa.id_veiculo= $veiculo_pausado and funcionario_executa.id_tarefa= $id_tarefa_pausada and funcionario_executa.id_funcionario=$id_funcionario and funcionario_executa.status_tarefa != 'concluida' and funcionario_executa.flag_tarefa_relatorio = 1";
         if (!mysqli_query($conexao_select, $atualiza_funcionario)) {
             $erro_select++;
@@ -79,7 +78,7 @@ $query1 = "UPDATE funcionarios SET disponibilidade = 'ativo' where funcionarios.
 $query2 = "UPDATE tarefas_executa SET status = 'open',horas_inicio = '$horainicio' where tarefas_executa.id_tarefa = $id_tarefa_pausada and tarefas_executa.id_projeto = $id_projeto_pausado and tarefas_executa.id_veiculo= $veiculo_pausado and tarefas_executa.conclusao_projeto = 'nao concluido'";
 
 if (!mysqli_query($conexao_select, $query1)) {$erro_select++; }
-if (!mysqli_query($conexao_select, $query2)) { $erro_select++; }
+if (!mysqli_query($conexao_select, $query2)) {$erro_select++; }
 
 if ($erro_select == 0){
    mysqli_commit($conexao_select); 

@@ -1,0 +1,21 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.row_sugestoes{
+    width: 100%;
+    height: 80px;
+    background: #777;
+}
+.row_sugestoes .row_sugestoes #titulo_sugestoes{
+    margin-top:2%;
+    font-size: 1.2em;
+    color:white;
+    text-align: center;
+}
+
+.row_sugestoes_contans{
+    width: 100%;
+    height: 515px;
+}
+

@@ -57,9 +57,9 @@ while ($aux_horas_trabalhadas_funcionarios = mysql_fetch_array($horas_trabalhada
 $horas_trabalhadas_pelo_funcionario = somarhoras_funcionario($horas_concluidas_funcionario_por_dia);
 $pagina_atual = $_GET['t'];
 if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto") {
-    ?>
-    <meta http-equiv="refresh" content="20">
-    <?php
+  ?>
+    <meta http-equiv="refresh" content="7">
+  <?php
 }
 ?>
 <html>
@@ -79,6 +79,7 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
         <script src="../js/finaliza_tarefa/finaliza_tarefa_liberada.js"></script>
         <script src="../js/modal/janela_modal.js"></script>
         <script src="../js/adiciona_tarefa/adiciona_tarefa.js"></script>
+        <script src="../js/flag_tarefa/flag_tarefa.js"></script>
     </head>
     <body>
         <div class="recebe_resposta"></div>
@@ -94,7 +95,7 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                         <div class="col-sm-12 col-md-12 col-xs-12" style=" font-size: 1.2em;">Horas:<span style="  margin-left:10px;  color: #a94442; font-size: 1em;"><?php echo $horas_trabalhadas_pelo_funcionario ?></span></div>
                     </div>
                     <div id="sair_sistema" class="col-sm-3 col-md-3 col-xs-3">
-                        <div id="botao_sair"><a href="../index.php"><span>Sair do Sistema</span></a></div>
+                       <div id="botao_sair"><a href="../index.php"><span>Sair do Sistema</span></a></div>
                     </div>
                     <div id="imagem" class="col-sm-2 col-md-2 col-xs-2">
                         <?php
@@ -117,8 +118,18 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                     if ($tabela == 'visualiza_projeto') {
                         ?><div class="projetos"><?php require '../control/tela_principal/getProjetos.php'; ?></div><?php
                     } else if ($tabela == 'visualiza_tarefas') {
+
+                        function pegaflagtarefasabertas($id_do_projeto, $id_do_veiculo, $id_do_funcionario) {
+                            $flag_tarefa_aberta = "select funcionario_executa.flag_tarefa_aberta from funcionario_executa where funcionario_executa.id_projeto = $id_do_projeto and funcionario_executa.id_veiculo = $id_do_veiculo  and funcionario_executa.id_funcionario=$id_do_funcionario and funcionario_executa.status_funcionario_tarefa = 'ativo'";
+                            $aux_flag_tarefa_aberta = mysql_query($flag_tarefa_aberta);
+                            $flag_tarefa = mysql_fetch_row($aux_flag_tarefa_aberta);
+                            return $flga_da_tarefa = $flag_tarefa[0];
+                        }
+                        $id_do_projeto = $_GET['id'];
+                        $id_do_veiculo = $_GET['veiculo'];
+                        $flag_tarefas_abertas = pegaflagtarefasabertas($id_do_projeto, $id_do_veiculo, $id_funcionario);
                         ?>
-                        <div class="col-md-12 col-sm-12 col-xs-12" style="background: white; height: 80px;"><a href="#" onclick="flag_tarefa_aberta('<?php echo $flag_tarefas_abertas ?>', '<?php echo $login ?>');"><div id="volta"><center><img style="margin-top:20px;" src="../img/6148_32x32.png"></center></div></a></div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="background: white; height: 80px;"><a href="#" onclick="flag_tarefa_aberta('<?php echo $flag_tarefas_abertas ?>');"><div id="volta"><center><img style="margin-top:20px;" src="../img/6148_32x32.png"></center></div></a></div>
                         <div class="col-md-12 col-sm-12 col-xs-12" id="tarefas"><?php require '../control/tela_principal/getTarefas.php'; ?></div>
                         <?php
                     } else if ($tabela == 'adiciona_tarefa') {
@@ -141,7 +152,7 @@ if ($pagina_atual == "visualiza_tarefas" || $pagina_atual == "visualiza_projeto"
                                                     ?>
                                                     <option value="<?php echo $id_projeto; ?>" style="color:black;"> <?php echo $nome_projeto; ?></option>
                                                     <?php
-                                                 }
+                                                }
                                                 ?>
                                             </select>
                                         </div>

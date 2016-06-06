@@ -76,7 +76,6 @@ class funcionario_periodo {
     function transferenciadearray($array) {
         $tamanho_array = sizeof($array);
         for ($i = 0; $i < $tamanho_array; $i += 2) {
-            
             $porcentagem_grafico_total[] = array($array[$i], $array[$i + 1]);
         }
         return $porcentagem_grafico_total;
@@ -110,7 +109,7 @@ class funcionario_periodo {
         $id_funcionario = $obj->getId_funcionario();
         $data_inicio = $obj->getData_inicio();
         ?>
-        <div style="width: 45%; float:left;   height: 100%; overflow: scroll;">
+        <div style="width: 35%; float:left;   height: 100%; overflow: scroll;">
             <table class="table table-hover" >
                 <tr class="coluna" style=" color:black; background: #999; height: 50px;">
                     <td>Dia</td><td>Tempo Ativo</td><td>Tempo Inativo</td><td>Total</td><td>Tempo Extra</td>
@@ -120,7 +119,7 @@ class funcionario_periodo {
                     $host = "localhost";
                     $user = "root";
                     $pass = "";
-                    $banco = "sistema de gerenciamento";
+                    $banco = "sistema_de_gestao";
                     $conexao = mysql_connect($host, $user, $pass)or die(mysql_error());
                     $bd = mysql_select_db($banco, $conexao)or die(mysql_error());
                 } catch (Exception $ex) {
@@ -146,12 +145,12 @@ class funcionario_periodo {
                 $tempo_inativo = $intervalo->format('%H:%I:%S');
                 ?>
                 <tr>
-                    <td><a style=" cursor: pointer;" herf="" onclick="openModal('<?php echo $id_funcionario ?>', '<?php echo $data_inicio ?>', 'editCourseModal')"><?php echo $data_inicio ?></a></td>
+                    <td><a style=" cursor: pointer;" herf="" onclick="openModal('<?php echo $id_funcionario ?>', '<?php echo $data_inicio ?>', 'detalhamento_dia_funcionario')"><?php echo $data_inicio ?></a></td>
                     <td><?php echo $horas_trabalhadas_pelo_funcionario ?></td><td><?php echo $tempo_inativo ?></td><td><?php echo $meta_diaria ?></td><td><?php echo $meta_diaria ?></td>
                 </tr>
             </table>
         </div>
-        <div id="grafico" style="width: 55%;float:left; height: 100%; overflow: scroll;">
+        <div id="grafico" style="width: 65%;float:left; height: 100%; overflow: scroll;">
             <table class="table table-hover" >
                 <tr style=" color:black;">
                     <td style="text-align: center;">Grafico</td>
@@ -382,7 +381,7 @@ class funcionario_periodo {
                     $host = "localhost";
                     $user = "root";
                     $pass = "";
-                    $banco = "sistema de gerenciamento";
+                    $banco = "sistema_de_gestao";
                     $conexao = mysql_connect($host, $user, $pass)or die(mysql_error());
                     $bd = mysql_select_db($banco, $conexao)or die(mysql_error());
                 } catch (Exception $ex) {
@@ -487,9 +486,21 @@ class funcionario_periodo {
                     unset($dia_da_semana_periodo);
                 }
 
-           
+                // print_r($porcentagem_grafico_periodo);
+                ?>
+                <script type="text/javascript">
+                    var data1 = <?php echo json_encode($porcentagem_grafico_periodo) ?>;
+                      for(var indice = 0;indice < 2;indice ++){
+
+                    var data = [
+                        {label: '<?php echo "manutencao geral" ?>', data: indice},
+                        {label: "data2", data: 30},
+                    ];
+                     }
+                </script>
+                <?php
                 $porcentagem_grafico_total = $this->transferenciadearray($porcentagem_grafico_periodo);
-                //print_r($porcentagem_grafico_total);
+                // print_r($porcentagem_grafico_total);
                 session_start("array");
                 $_SESSION["lista"] = $porcentagem_grafico_total;
 
@@ -518,7 +529,47 @@ class funcionario_periodo {
                 <tr>
                     <td style="width: 100%;height: 425px;">
                         <div id="mostra">  
-                            <img id="imagem" src= "../model/relatorios/funcionario/graficos/funcionario_1/gera_graficoSegunda.php" alt = "" title = ""/>
+                            <script type="text/javascript">
+                                $(function () {
+                                var options = {
+                                series: {
+                                pie: {show: true}
+                                },
+                                        legend: {
+                                        show: false
+                                        }
+                                };
+                                $.plot($("#mostra"), data, options);
+                                });
+                            </script>
+                            <?php
+                            /*
+                              $graficos = array();
+                              $graficos[1] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio1.php";
+                              $graficos[2] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio2.php";
+                              $graficos[3] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio3.php";
+                              $graficos[4] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio4.php";
+                              $graficos[5] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio5.php";
+                              $graficos[6] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio6.php";
+                              $graficos[7] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio7.php";
+                              $graficos[8] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio8.php";
+                              $graficos[9] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio9.php";
+                              $graficos[10] = "../model/relatorios/funcionario/graficos/graficos_aleatorios/graficoAleatorio10.php";
+                              session_start("numero_aleatorio");
+                              echo $numero = $_SESSION['numero'];
+                              session_destroy("numero_aleatorio");
+                              echo $numero_aleatorio = rand(1, 10);
+                              if ($numero == $numero_aleatorio) {
+                              echo "igual";
+                              } else {
+                              ?>
+                              <img id="imagem" src="<?php echo $graficos[$numero_aleatorio]; ?>"  alt = "" title = ""/>
+                              <?php
+                              }
+                              session_start("numero_aleatorio");
+                              $_SESSION['numero'] = $numero_aleatorio; */
+                            ?>
+
                         </div> 
                     </td>
                 </tr>

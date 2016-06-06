@@ -6,7 +6,7 @@ class programacao_semanal {
         ?>
      <div id="painel" style="font: 15px Tahoma; cursor: default; height: 550px; overflow: hidden; background-color: #DFEDFE; padding-left: 10px;  padding-right: 10px" onmouseover="Parar()" onmouseout="Rolar()">
         <table class="table table-hover" style="background: white; font-size: 1.2em;">
-            <tr style="height: 60px; background: #01669F; color:white; ">
+            <tr style="height: 60px; background: #01669F; color:white;">
                 <td>Dia</td>
                 <td>Motorista</td>
                 <td>Destino</td>

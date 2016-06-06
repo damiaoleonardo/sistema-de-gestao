@@ -11,6 +11,7 @@
     <body>
         <div class="atividades_semanal">
             <div id="header" class="col-md-12 col-sm-12 col-xs-12">
+                <div id="titulo"><span>Indicador Semanal</span></div>
             </div>
             <div id="conteudo_veiculos" class="col-md-12 col-sm-12 col-xs-12">  
                 <div id="veiculos_selecao" class="col-md-4 col-sm-4 col-xs-4">

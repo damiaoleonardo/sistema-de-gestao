@@ -29,8 +29,8 @@ function invertedata($data, $separar = "/", $juntar = "/") {
     return implode($juntar, array_reverse(explode($separar, $data)));
 }
 
- $id_do_funcionario_especifico = $_GET['id_funcionario'];
- $data_selecionada = $_GET['data'];
+$id_do_funcionario_especifico = $_GET['id_funcionario'];
+$data_selecionada = $_GET['data'];
 $data_selecionada_para_consulta = invertedata($data_selecionada, '/', '/');
 ?>
 <html>
@@ -40,7 +40,7 @@ $data_selecionada_para_consulta = invertedata($data_selecionada, '/', '/');
         <link rel="stylesheet" href="../style/bootstrap/class_table.css" type="text/css">
     </head>
     <body>
-         <a id="btnClose" href="#" title="Close" class="close" onclick="fecha_modal('editCourseModal')" >X</a>
+         <a id="btnClose" href="#" title="Close" class="close" onclick="fecha_modal('detalhamento_dia_funcionario')" >X</a>
         <div class="geral_relatorio_funcionario">
             <div id="menus">	
             </div>
@@ -79,7 +79,6 @@ $data_selecionada_para_consulta = invertedata($data_selecionada, '/', '/');
                    
                     
                     function comparaHoras($primeira_hora, $segunda_hora) {
-
                         if ($primeira_hora == $segunda_hora) {
                             return 1;
                         }

@@ -1,0 +1,20 @@
+body{
+ margin:0px;
+ padding: 0px;
+}
+#troca_senha_user{
+    width: 100%;
+    height: 100%;
+}
+#troca_senha_user #usuario{
+    height: 15%;
+}
+#troca_senha_user #senha_antiga{
+    height: 25%;
+}
+#troca_senha_user #nova_senha{
+    height: 25%;
+}
+#troca_senha_user #button_altera{
+    height: 35%;
+}

@@ -1,5 +1,4 @@
 function inicia_tarefa(disponibilidade, id_tarefa, id_projeto, id_veiculo, id_funcionario) {
-  //  alert(disponibilidade); alert(id_tarefa); alert(id_projeto); alert(id_veiculo); alert(id_funcionario);
     if (disponibilidade == "inativo") {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();

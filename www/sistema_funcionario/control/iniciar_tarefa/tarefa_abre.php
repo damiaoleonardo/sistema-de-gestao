@@ -37,8 +37,6 @@ $sql_nome_funcionario = "select funcionarios.sobrenome from funcionarios where f
 $result_nome_funcionario = mysql_query($sql_nome_funcionario);
 $nome_funcionario = mysql_fetch_row($result_nome_funcionario);
 $nome_do_funcionario = $nome_funcionario[0];
-
-
 $conexao_select = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
 mysqli_autocommit($conexao_select, FALSE);
 $erro_reabre = 0;
@@ -67,7 +65,6 @@ if (!mysqli_query($conexao_select, $atualiza_tarefas_executa)) {
         $erro_reabre++;
     }
 $executores_tarefa = 0;
-
 $sql_quantidade_executores_projeto = "select tarefas_executa.quantidade_executores from tarefas_executa where tarefas_executa.id_projeto = $id_projeto_varios_executores and tarefas_executa.id_veiculo = $veiculo_varios_executores and tarefas_executa.id_tarefa = $id_tarefa_varios_executores and tarefas_executa.conclusao_projeto = 'nao concluido'";
 $result_executores_projeto = mysql_query($sql_quantidade_executores_projeto);
 $quantidade_executores_do_projeto = mysql_fetch_row($result_executores_projeto);
