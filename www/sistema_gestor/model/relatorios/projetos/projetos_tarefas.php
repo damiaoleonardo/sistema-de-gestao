@@ -171,7 +171,7 @@ class projetos_tarefas {
             }
 
             $flag_tarefa = 0;
-            $sql_relatorio_tarefa = "select tarefas_executa.id_tarefa,tarefas_executa.status,tarefas_executa.tipo_tarefa,tarefas_executa.duracao,tarefas_executa.horas_concluidas, tarefas_executa.porcentagem_concluida,tarefas_executa.data_inicio,tarefas_executa.horas_inicio_tarefa, tarefas_executa.data_final,tarefas_executa.horas_final,tarefas_executa.quantidade_executores,tarefas.nome from `tarefas` join `tarefas_executa` on (tarefas_executa.id_tarefa = tarefas.id_tarefa) join `projeto_executa` on (tarefas_executa.id_projeto_executa = projeto_executa.id_projeto_executa and tarefas_executa.id_projeto = projeto_executa.id_projeto and tarefas_executa.id_veiculo = projeto_executa.id_veiculo) where tarefas_executa.id_projeto_executa = '$id_executa' and tarefas_executa.id_projeto = '$id_projeto' and tarefas_executa.id_veiculo = '$id_veiculo' ";
+            $sql_relatorio_tarefa = "select tarefas_executa.id_tarefa,tarefas_executa.status,tarefas_executa.tipo_tarefa,tarefas_executa.duracao,tarefas_executa.horas_concluidas,tarefas_executa.data_inicio, tarefas_executa.data_final,tarefas.nome from `tarefas` join `tarefas_executa` on (tarefas_executa.id_tarefa = tarefas.id_tarefa) join `projeto_executa` on (tarefas_executa.id_projeto_executa = projeto_executa.id_projeto_executa and tarefas_executa.id_projeto = projeto_executa.id_projeto and tarefas_executa.id_veiculo = projeto_executa.id_veiculo) where tarefas_executa.id_projeto_executa = '$id_executa' and tarefas_executa.id_projeto = '$id_projeto' and tarefas_executa.id_veiculo = '$id_veiculo' ";
             $result_gera_relatorio_tarefa = mysql_query($sql_relatorio_tarefa);
             while ($aux_gera_relatorio_tarefa = mysql_fetch_array($result_gera_relatorio_tarefa)) {
                 $codigo_tarefa = $aux_gera_relatorio_tarefa['id_tarefa'];
@@ -179,11 +179,8 @@ class projetos_tarefas {
                 $status_tarefa = $aux_gera_relatorio_tarefa['status'];
                 $duracao_tarefa = $aux_gera_relatorio_tarefa['duracao'];
                 $horas_concluidas = $aux_gera_relatorio_tarefa['horas_concluidas'];
-                $porcentagem_tarefa = $aux_gera_relatorio_tarefa['porcentagem_concluida'];
                 $data_inicio_tarefa = $aux_gera_relatorio_tarefa['data_inicio'];
-                $horas_inicial_tarefa = $aux_gera_relatorio_tarefa['horas_inicio_tarefa'];
                 $data_final_tarefa = $aux_gera_relatorio_tarefa['data_final'];
-                $horas_final_tarefa = $aux_gera_relatorio_tarefa['horas_final'];
                 $tipo_tarefa = $aux_gera_relatorio_tarefa['tipo_tarefa'];
                 $data_inicio_da_tarefa = invertedata($data_inicio_tarefa, "-", "/");
                 $data_final_da_tarefa = invertedata($data_final_tarefa, "-", "/");
@@ -258,12 +255,12 @@ class projetos_tarefas {
                 <tr>
                     <td colspan="7" style="height: 50px;"></td>
                 </tr>
-                <tr>
-                    <td style="font-weight: bold; background: #666666; color:white;font-size: 0.9em;" colspan="3">Funcionario</td>
-                    <td style="font-weight: bold; background: #666666; color:white;font-size: 0.9em;">Dia de execução</td>
-                    <td style="font-weight: bold; background: #666666; color:white;font-size: 0.9em;">Hora Inicial</td>
-                    <td style="font-weight: bold; background: #666666; color:white;font-size: 0.9em;">Horas Trabalhadas</td>
-                    <td style="font-weight: bold; background: #666666; color:white;font-size: 0.9em;">Hora Final</td>
+                <tr style=" background: #3c763d; color:white;font-size: 0.9em; font-weight: bold;">
+                    <td colspan="3">Funcionario</td>
+                    <td>Dia de execução</td>
+                    <td>Hora Inicial</td>
+                    <td>Horas Trabalhadas</td>
+                    <td>Hora Final</td>
                 </tr>
                 <?php
                 $flag_mesclagem = 0;
@@ -280,13 +277,13 @@ class projetos_tarefas {
                     ?>
                     <tr>
                         <th style="text-align: left;" colspan="3"><?php echo $nome_funcionario ?></th>  
-                        <th style="background: #ff7f24; color: white; font-size: 1em;"><?php echo $data_tarefa_invertida ?></th>
-                        <th style=" background: #ff7f24; color: white; font-size: 1em;"><?php echo $horas_inicial_funcionario ?></th>
+                        <th style="font-size: 1em;"><?php echo $data_tarefa_invertida ?></th>
+                        <th style=" font-size: 1em;"><?php echo $horas_inicial_funcionario ?></th>
                         <th><?php echo $horas_concluidas_funcionario ?></th>
-                        <th style=" background: #ff7f24; color: white; font-size: 1em;"><?php echo $horas_final_funcionario ?></th>
+                        <th style="  font-size: 1em;"><?php echo $horas_final_funcionario ?></th>
                     </tr>
                     <?php
-                }
+                   }
                 ?>
                 <tr>
                     <td colspan="7" style="height: 50px;"></td>
@@ -297,7 +294,7 @@ class projetos_tarefas {
             ?>
         </table>
         <?php
-    }
+      }
 
     function projetos(projetos_tarefas $obj) {
         $status = $obj->getStatus_projeto();

@@ -1,5 +1,4 @@
 <?php
-echo "<script>alert('ola')</script>";
 $mysqli = new mysqli('localhost', 'root', '', 'sistema_de_gestao');
 if (mysqli_connect_errno()) {
     die('Não foi possível conectar-se ao banco de dados: ' . mysqli_connect_error());

@@ -56,5 +56,13 @@
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
+              
+                public function selectoneelement($sql_one){
+			$stmt_one = $this->pdo->prepare($sql_one);
+			$stmt_one->execute();
+			return $stmt_one->fetch(PDO::FETCH_NUM);
+		}
+                
+               
 }
 ?>

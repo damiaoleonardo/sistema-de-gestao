@@ -1,7 +1,7 @@
 <?php
 
-
 class Tarefa {
+
     private $nome_tarefa;
     private $duracao;
     private $pessoa_certificador;
@@ -110,12 +110,26 @@ class Tarefa {
         $duracao = $obj->getDuracao();
         $certificador = $obj->getCertificador();
         $descricao_tarefa = $obj->getDescricao();
-        $sql = "insert into tarefas (nome,duracao,descricao) values('$nome','$duracao','$descricao_tarefa')";
-        mysql_query($sql);
+        $conexao_adiciona_tarefa = mysqli_connect("localhost", "root", "", "sistema_de_gestao");
+        mysqli_autocommit($conexao_adiciona_tarefa, FALSE);
+        $erro_adiciona_tarefa = 0;
+        $sql_insert = "insert into tarefas (nome,duracao,descricao) values('$nome','$duracao','$descricao_tarefa')";
+        if (!mysqli_query($conexao_adiciona_tarefa, $sql_insert)) {
+            $erro_adiciona_tarefa++;
+        }
         $id_tarefa = mysql_insert_id();
         foreach ($certificador as $certificador_tarefa) {
             $sql_certificacoes = "insert into certificacoes (id_tarefa,id_funcionario) values ('$id_tarefa','$certificador_tarefa')";
-            mysql_query($sql_certificacoes);
+            if (!mysqli_query($conexao_adiciona_tarefa, $sql_certificacoes)) {
+                $erro_adiciona_tarefa++;
+            }
+        }
+        if ($erro_adiciona_tarefa == 0) {
+            mysqli_commit($conexao_adiciona_tarefa);
+           return true;
+        } else {
+            mysqli_rollback($conexao_adiciona_tarefa);
+           return false;
         }
     }
 

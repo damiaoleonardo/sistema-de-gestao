@@ -14,7 +14,7 @@
                 xhttp.open("GET", urlDest, true);
                 xhttp.send();
             }
-            function fecha_modal_projeto(idModal) {
+            function fecha_modal_projeto_abertos(idModal) {
                 var dialog = document.getElementById(idModal);
                 dialog.style.opacity = 0;
                 dialog.style.pointerEvents = "none";

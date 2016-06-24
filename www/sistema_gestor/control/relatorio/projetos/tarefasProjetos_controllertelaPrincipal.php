@@ -4,7 +4,7 @@
         <title></title>
     </head>
     <body>
-        <a id="btnClose" href="#" title="Close" class="close_projeto" onclick="fecha_modal_projeto('detalhamento_projeto')" >X</a>
+        <a id="btnClose" href="#" title="Close" class="close_projeto" onclick="fecha_modal_projeto_abertos('detalhamento_projeto')">X</a>
         <?php
         require '../../../model/relatorios/projetos/projetos_tarefas.php';
         $tarefas_projetos = new projetos_tarefas();

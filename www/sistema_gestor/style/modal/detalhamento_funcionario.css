@@ -16,8 +16,8 @@
             .modalDialog_detalhamento_funcionario > div {
                 overflow-y: scroll;
                 overflow-x: hidden;
-                width: 80%;
-                height: 70%;
+                width: 95%;
+                height: 80%;
                 position: relative;
                 margin: 5% auto;
                 padding: 5px 20px 13px 20px;
@@ -27,15 +27,15 @@
                 background: -webkit-linear-gradient(#fff, #999);
                 background: -o-linear-gradient(#fff, #999);
               }
-            .close_detalhamento_funcionario {
+            .close {
                 background: #606061;
                 color: #FFFFFF;
                 line-height: 25px;
                 position: absolute;
-                right: 10px;
+                right: 7px;
                 text-align: center;
                 top: 5px;
-                width: 30px;
+                width: 35px;
                 text-decoration: none;
                 font-weight: bold;
                 -webkit-border-radius: 12px;
@@ -45,6 +45,6 @@
                 -webkit-box-shadow: 1px 1px 3px #000;
                 box-shadow: 1px 1px 3px #000;
               }
-            .close_detalhamento_funcionario:hover { background: #00d9ff;}
+            .close:hover { background: #00d9ff;}
 
             

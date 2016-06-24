@@ -1,28 +1,15 @@
 <?php
 
 class TabelaExecucao {
-
-    function calculaDiferenca($hora_inicial, $hora_final) {
-        $i = 1;
-        $tempo_total;
-        $tempos = array($hora_final, $hora_inicial);
-        foreach ($tempos as $tempo) {
-            $segundos = 0;
-            list($h, $m, $s) = explode(':', $tempo);
-            $segundos += $h * 3600;
-            $segundos += $m * 60;
-            $segundos += $s;
-            $tempo_total[$i] = $segundos;
-            $i++;
-           }
-        $segundos = $tempo_total[1] - $tempo_total[2];
-        $horas = floor($segundos / 3600);
-        $segundos -= $horas * 3600;
-        $minutos = str_pad((floor($segundos / 60)), 2, '0', STR_PAD_LEFT);
-        $segundos -= $minutos * 60;
-        $segundos = str_pad($segundos, 2, '0', STR_PAD_LEFT);
-        return "$horas:$minutos:$segundos";
+    
+    function horadobanco() {
+        $sql_hora = "SELECT DATE_FORMAT(now(),'%H:%i:%s')";
+        $result_hora = mysql_query($sql_hora);
+        $hora_inicio = mysql_fetch_row($result_hora);
+        $horainicio_tarefa = $hora_inicio[0];
+        return $horainicio_tarefa;
     }
+
 
     function tabelaInicialativo() {
         ?>
@@ -100,17 +87,16 @@ WHERE funcionario_executa.status_funcionario_tarefa = 'ativo'";
                 } else {
                     $ultimo_registro = $horafinal;
                 }
-                // $diferenca = calculaDiferenca("07:00:00","07:30:00");
-                //  $hora_atual_do_bacno = horadobanco();
-                //  $hora_inicial = DateTime::createFromFormat('H:i:s', $hora_atual_do_bacno);
-                //  $horainicio_da_tarefas = DateTime::createFromFormat('H:i:s', $ultimo_registro);
-                //  $intervalo = $hora_inicial->diff($horainicio_da_tarefas);
-                //  $hora_concluidas = $intervalo->format('%H:%I:%S');
+                 $hora_atual_do_banco = $this->horadobanco();
+                  $hora_inicial = DateTime::createFromFormat('H:i:s', $hora_atual_do_banco);
+                  $horainicio_da_tarefas = DateTime::createFromFormat('H:i:s', $ultimo_registro);
+                  $intervalo = $hora_inicial->diff($horainicio_da_tarefas);
+                  $hora_concluidas = $intervalo->format('%H:%I:%S');
                 ?>
                 <tr style="font-size: 1em;">
                     <td colspan="3"><?php echo $sobrenome_funcionario_inativo ?></td>
                     <td style="background: salmon; color: white;">INATIVO</td>
-                    <td style=" color: black;"><?php echo $horafinal ?> </td>
+                    <td style=" color: black;"><?php echo $hora_concluidas ?> </td>
                 </tr>
                 <?php
             }

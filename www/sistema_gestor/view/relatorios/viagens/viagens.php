@@ -13,7 +13,7 @@
         <script type="text/javascript" src="../js/relatorios/projetos/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="../js/relatorios/projetos/bootstrap-datepicker.min.js"></script>
         <script src="../js/modal/detalhamento_projeto.js"></script>     
-</head>
+    </head>
     <body>
         <div class="recebe_resposta"></div>
         <form class="form_relatorio_projeto" action="" method="post">
@@ -53,12 +53,12 @@
                             ?>
                         </select>
                     </div>
-                     <div id="veiculo" class="col-sm-12 col-md-12 col-xs-12">
+                    <div id="veiculo" class="col-sm-12 col-md-12 col-xs-12">
                         <label class="label">Status</label>
                         <select class="selectpicker"  name="campo_select_status">
-                            <option value="0" selected="selected" ></option>
-                            <option value="concluido" selected="selected" >Concluido</option>
-                            <option value="open" selected="selected" >Abertos</option>
+                            <option value="0" selected="selected"></option>
+                            <option value="concluido" selected="selected">Concluidas</option>
+                            <option value="open" selected="selected">Abertas</option>
                             <option value="'open' or projeto_executa.status = 'concluido'" selected="selected" >Todos</option>
                         </select>
                     </div>
@@ -66,7 +66,7 @@
                 <div id="segundo_campo" class="col-sm-3 col-md-3 col-xs-3">
                     <div id="tipoveiculo" class="col-sm-12 col-md-12 col-xs-12">
                         <label class="label">Tipo Veiculo</label>
-                        <select class="selectpicker"  name="campo_select_tipo" >
+                        <select class="selectpicker"  name="campo_select_tipo">
                             <option value="0" selected="selected" ></option>
                             <?php
                             $q_tipo = "SELECT tipo_veiculo.id_tipo,tipo_veiculo.tipo from tipo_veiculo where 1";
@@ -75,13 +75,13 @@
                                 $tipo = $aux_tipo['tipo'];
                                 $id_tipo = $aux_tipo['id_tipo'];
                                 ?>
-                                <option value="<?php echo $id_tipo; ?>" style="color:black;"> <?php echo $tipo; ?></option>
+                                <option value="<?php echo $id_tipo; ?>" style="color:black;"><?php echo $tipo; ?></option>
                                 <?php
                             }
                             ?>
                         </select>
                     </div>
-                     <div id="tipoveiculo" class="col-sm-12 col-md-12 col-xs-12">
+                    <div id="tipoveiculo" class="col-sm-12 col-md-12 col-xs-12">
                         <label class="label">UGB</label>
                         <select class="selectpicker"  name="campo_select_ugb" >
                             <option value="0" selected="selected" ></option>
@@ -101,30 +101,29 @@
                 </div>
                 <div id="terceiro_campo" class="col-sm-3 col-md-3 col-xs-3" >
                     <div id="data_inicio" class="col-sm-12 col-md-12 col-xs-12">
-                         <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Inicio</label>
-                                            <div class="col-sm-9 col-md-9 col-xs-9">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                    <input style="height: 24px;" class="form-control" id="date" name="data_inicio" placeholder="YYYY/MM/DD" type="text"/>
-                                                </div>
-                                            </div>
-                        
+                        <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Inicio</label>
+                        <div class="col-sm-9 col-md-9 col-xs-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input style="height: 24px;" class="form-control" id="date" name="data_inicio" placeholder="YYYY/MM/DD" type="text"/>
+                            </div>
+                        </div>
                     </div>
                     <div id="data_final" class="col-sm-12 col-md-12 col-xs-12">  
-                            <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Final</label>
-                                            <div class="col-sm-9 col-md-9 col-xs-9" >
-                                                <div class="input-group">
-                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                    <input style="height: 24px;" class="form-control" id="date" name="data_final" placeholder="YYYY/MM/DD" type="text"/>
-                                                </div>
-                                            </div>
-                                  </div>
+                        <label class="control-label col-sm-12 col-md-12 col-xs-12 requiredField" for="date" style="font-size:1em; color:white;">Data Final</label>
+                        <div class="col-sm-9 col-md-9 col-xs-9" >
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input style="height: 24px;" class="form-control" id="date" name="data_final" placeholder="YYYY/MM/DD" type="text"/>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 <div id="campo_button" class="col-sm-2 col-md-2 col-xs-2"><button type="submit"  class="btn btn-default">Pesquisar</button></div>
             </header>
         </form>
         <div class="recebe_projetos">
-            <table id="descricao_projetos"  class='table table-hover' >
+            <table id="descricao_projetos"  class='table table-hover'>
                 <tr>
                     <td style="width: 30%;">Projeto</td>
                     <td style="width: 15%;">Veiculo</td>

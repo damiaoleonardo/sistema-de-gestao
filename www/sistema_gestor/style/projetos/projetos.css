@@ -32,9 +32,15 @@ body{
 }
 .conteudo_da_pagina .row_conteudo{
     width: 100%;
-    height: 400px;
-    overflow: scroll; 
+    height: 550px;
+    overflow-y: scroll; 
+    overflow-x: hidden; 
 }
+.conteudo_da_pagina .form_projetos{
+    width: 100%;
+    height: 600px;
+}
+
 
 .jumbotron{
     padding-top: 10px;

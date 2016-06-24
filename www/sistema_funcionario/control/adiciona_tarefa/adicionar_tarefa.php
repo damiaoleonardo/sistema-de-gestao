@@ -1,5 +1,4 @@
 <?php
-
 include('../../model/projetos/projetos.php');
 $id_projeto = $_POST['campo_select_projeto'];
 $id_veiculo = $_POST['campo_select_veiculo'];

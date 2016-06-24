@@ -15,9 +15,10 @@
                 pointer-events: none;
             }
             .modalDialog > div {
-                overflow: scroll;
-                width: 85%;
-                height: 80%;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                width: 95%;
+                height: 85%;
                 position: relative;
                 margin: 5% auto;
                 padding: 5px 20px 13px 20px;

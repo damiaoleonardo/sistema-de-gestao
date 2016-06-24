@@ -231,10 +231,4 @@ class programacaoSemanal {
 
 }
 
-function atualizaViagem(programacaoSemanal $obj) {
-    
-    
-    
-    
-}
 ?>

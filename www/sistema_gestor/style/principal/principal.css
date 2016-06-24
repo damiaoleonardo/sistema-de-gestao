@@ -36,7 +36,7 @@ header .row #usuario img{
     margin-right: 10px;
 }
 
-.conteudo_central{
+.conteudo_central {
     width: 100%;
     height: auto;
 }
@@ -62,14 +62,14 @@ header .row #usuario img{
     border:1px solid #adadad;
 }
 .conteudo_central .projetos {
-    height: 600px;
-    width: 95%;
-    margin: 4% 0% 3% 2%;
+    height: 800px;
+    width: 90%;
+    margin: 4% 0% 3% 5%;
     background:#e3e3e3;
     border:1px solid #adadad;
 }
 .conteudo_central .tarefas {
-    height: 600px;
+    height: 700px;
     width: 80%;
     margin: 6% 0% 3% 10%;
     background:#e3e3e3;

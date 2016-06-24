@@ -20,24 +20,13 @@ $conexao = Connection::getInstance();
         <script src="../js/modal/detalhamento_projetotelaPrincipal.js"></script>
         <script src="../js/modal/detalhamento_do_funcionario.js"></script>
         <script src="../js/bootstrap.min.js"></script>
-        <style>
-           
-        </style>
-        <style>
-           
-        </style>
-         <style>
-            
-
-            
-        </style>
     </head>
     <body>
         <?php
         $tabela = $_REQUEST['t'];
         if ($tabela == 'home') {
             ?>
-            <meta http-equiv="refresh" content="10">
+            <meta http-equiv="refresh" content="30">
             <?php
         }
         ?>
@@ -233,9 +222,6 @@ $conexao = Connection::getInstance();
                             </ul>
                         </li>                        
                     </ul>
-
-
-
 <div id="usuario" class="col-md-3 col-sm-2 col-xs-4">
                     <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="../img/usuario.png"><span class="caret"></span></a><span>Diogenes</span>
                     <ul class="dropdown-menu">
