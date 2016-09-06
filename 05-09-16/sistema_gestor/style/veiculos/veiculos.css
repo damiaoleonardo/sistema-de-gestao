@@ -1,0 +1,54 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.conteudo_da_pagina_veiculo{
+    width: 100%;
+    height: 100%;
+    float:left;
+}
+.conteudo_da_pagina_veiculo .row_veiculos{
+    width: 100%;
+    height: 80px;
+}
+
+.conteudo_da_pagina_veiculo  .eventos_relacionados_veiculos{
+    height: 40px;
+}
+.conteudo_da_pagina_veiculo  .eventos_relacionados_veiculos #botoes{
+    margin-top:10px;
+}
+.conteudo_da_pagina_veiculo .row_veiculos .row_veiculo #titulo_veiculo #span_veiculo{
+    margin-top:15px;
+}
+.conteudo_da_pagina_veiculo .row_veiculos .row_veiculo #titulo_veiculo span{
+    font-size: 1.4em;
+    color:white;
+    margin-left: 20%;
+}
+.conteudo_da_pagina_veiculo .row_veiculos #campo_pesquisa #form_pesquisa #pesquisaCliente{
+    margin-top:15px;
+    height: 30%;
+    width: 90%;
+}
+.conteudo_da_pagina_veiculo .row_conteudo_veiculo {
+    width: 100%;
+    height: 400px;
+    margin-top:15px;
+    margin-bottom: 5px;
+    overflow: scroll;
+}
+.conteudo_da_pagina_veiculo .formulario_veiculo {
+    width: 50%;
+    height: 300px;
+    margin:auto;
+    margin-top: 100px;
+}
+
+
+.jumbotron{
+    padding-top: 5px;
+}
+
+
+

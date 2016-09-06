@@ -1,0 +1,270 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.tela_principal{
+    width: 100%;
+    height: 100%;
+    background: #7ebebe;
+}
+.tela_principal .row{
+    width: 100%;
+    height: auto;
+    background: #7ebebe;
+}
+.tela_principal .row #header {
+    width: 96%;
+    height: 130px;
+    margin-top: 5%;
+    margin-left:2%;
+    background:#cfcfcf;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+.tela_principal .row #header #logo{
+    height: 100%;
+    height: 30%; font-size:2.3em; color: #01669F;
+}
+.tela_principal .row #header #informacoes{
+    height: 30%; font-size:1.6em; color: #01669F;
+}
+.tela_principal .row #header #imagem{
+     height: 100%;
+}
+.tela_principal .row #header #imagem img{
+    margin:auto;
+    margin-top:12px;
+}
+.tela_principal .row #header #sair_sistema {
+    height: 100%;
+}
+.tela_principal .row #header #sair_sistema #botao_sair {
+    width: 90%;
+    height: 40%;
+    margin:20% 0% 0% 5%;
+    
+}
+.tela_principal .row #header #sair_sistema #botao_sair a{
+    color:white;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-decoration: none;
+    background: #3a87ad;
+    border-radius: 5px;
+    margin-top:5px;
+       zoom: 1.4;
+         -ms-zoom: 1.24;
+         -webkit-zoom: 1.24;
+         -moz-transform:  scale(1.4,1.4);
+         -moz-transform-origin: left center; 
+}
+
+.tela_principal .row #conteudo{
+    width: 98%;
+    margin-left: 1%;
+    height: auto;
+}
+
+.tela_principal .row #conteudo .projetos{
+    width: 100%;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.tela_principal .row #conteudo #tarefas{
+    width: 100%;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.tela_principal .row #conteudo .sugestao{
+    width: 100%;
+    height: 1000px;;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background:#cfcfcf;
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao {
+    height: 95%;
+    margin-top:5%; 
+}
+
+.tela_principal .row #conteudo .sugestao #tela_sugestao  .logo_com_titulo{
+     height: 15%;
+} 
+.tela_principal .row #conteudo .sugestao #tela_sugestao  .logo_com_titulo #imagem_logo{
+    float: left;
+    height: 100%;
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao  .logo_com_titulo #titulo_logo{
+    float: left;
+    height: 100%;
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao  .logo_com_titulo #titulo_logo #titulo{
+    width: 100%;
+    height: 50%;
+    margin-top:10%;
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao .logo_com_titulo #titulo_logo #titulo label{
+    font-size:2em;
+    color:#2b542c;
+}
+
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao{
+    height: 80%; 
+}
+
+
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .como_e_hoje{
+    height: 33%; 
+}
+
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .como_e_hoje #input_file{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background: #01669F;
+    color:white;
+    font-size: 1.5em;       
+}
+
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .nome_da_sugestao{
+    height: 15%; 
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .como_deve_ser{
+    height: 33%; 
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .como_deve_ser #input_file{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background: #01669F;
+    color:white;
+    font-size: 1.5em;
+        
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao .button_salva_sugestao{
+    height: 10%; 
+}
+.tela_principal .row #conteudo .sugestao #tela_sugestao .conteudo_sugestao .button_salva_sugestao #campo_button #button{
+    height: 70%;
+    width:20%;
+    margin-left: 20%;
+    margin-top:2%;
+    background: #01669F;
+    font-size:1.5em;
+    color:white;
+}
+
+
+
+.tela_principal .row #conteudo .finaliza_tarefa{
+    width: 100%;
+    height: 450px;;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background: beige;
+}
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa {
+    width: 80%;
+    margin-left:10%;
+    height: 90%;
+    border-radius: 2px;
+    padding-top: 5%;
+}
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa .descricao_button{
+    width: 100%;
+    height: 70px;
+    border:1px solid #cfcfcf;
+}
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa .descricao_button input{
+    width: 100%;
+    height: 100%;
+    background: #01669F;
+    color:white;
+    font-size: 2em;
+}
+
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa .formulario_finaliza_tarefa{
+    width: 90%;
+    height: 70%;
+    margin-top:5%;
+    margin-left:5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border:1px solid #cfcfcf;
+}
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa .formulario_finaliza_tarefa #enviar{
+    width: 100%;
+    height: 50px;
+    background: #01669F;
+    color:white;
+   font-size: 1.5em;
+        
+}
+.tela_principal .row #conteudo .finaliza_tarefa .tela_finaliza_tarefa .formulario_finaliza_tarefa #seleciona_arquivo{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background: #01669F;
+    color:white;
+    font-size: 1.5em;
+        
+}
+
+.tela_principal .row #conteudo #adiciona_tarefa {
+    width: 100%;
+    height: 400px;
+    background: beige;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.tela_principal .row #conteudo #adiciona_tarefa #tela_campos #campo_button{
+    width: 100%;
+    height: 100%;
+    border-radius:9px;
+}
+.tela_principal .row #conteudo #adiciona_tarefa #tela_campos #campo_button #button{
+    height: 70%;
+    width:20%;
+    margin-left: 20%;
+    margin-top:2%;
+    background: #01669F;
+    font-size:1.5em;
+    color:white;
+}
+
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #primeira_coluna{
+    zoom: 1.1;
+         -ms-zoom: 1.1;
+         -webkit-zoom: 1.1;
+         -moz-transform:  scale(1.1,1.1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #segunda_coluna{
+    zoom: 1;
+         -ms-zoom: 1;
+         -webkit-zoom: 1;
+         -moz-transform:  scale(1,1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #terceira_coluna{
+          zoom: 1;
+         -ms-zoom: 1;
+         -webkit-zoom: 1;
+         -moz-transform:  scale(1,1);
+         -moz-transform-origin: left center; 
+}
+.tela_principal .row #conteudo #tarefas #tabela_tarefas #quarta_coluna{
+      zoom: 1.7;
+         -ms-zoom: 1.7;
+         -webkit-zoom: 1.7;
+         -moz-transform:  scale(1.7,1.7);
+         -moz-transform-origin: left center; 
+
+}

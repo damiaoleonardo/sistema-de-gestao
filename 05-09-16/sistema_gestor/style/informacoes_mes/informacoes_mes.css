@@ -1,0 +1,44 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.conteudo_da_pagina_informacao_mes{
+    width: 100%;
+    height: 100%;
+    float:left;
+}
+.conteudo_da_pagina_informacao_mes .row_informacao_mes{
+    width: 100%;
+    height: 80px;
+}
+.conteudo_da_pagina_informacao_mes  .eventos_relacionados_informacao_mes{
+    height: 40px;
+}
+.conteudo_da_pagina_informacao_mes  .eventos_relacionados_informacao_mes #botoes{
+    margin-top:10px;
+}
+.conteudo_da_pagina_informacao_mes .row_informacao_mes .row_informacao_mes #titulo_informacao_mes #span_informacao_mes{
+    margin-top:15px;
+}
+.conteudo_da_pagina_informacao_mes .row_informacao_mes .row_informacao_mes #titulo_informacao_mes span{
+    font-size: 1.4em;
+    color:white;
+    margin-left: 40%;
+}
+.conteudo_da_pagina_informacao_mes .row_conteudo_informacao_mes {
+    width: 100%;
+    height: 450px;
+    margin-top:15px;
+    margin-bottom: 5px;
+}
+
+.conteudo_da_pagina_informacao_mes .row_conteudo_informacao_mes #imagem_ugb {
+    width: 100%;
+    height: 100%;
+}
+.jumbotron{
+    padding-top: 5px;
+}
+
+
+

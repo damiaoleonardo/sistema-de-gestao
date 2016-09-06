@@ -1,0 +1,49 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+.row_relatorio_tabela_horas{
+    width: 100%;
+    height: 150px;
+    background: #666;
+}
+.row_relatorio_tabela_horas #primeiro_campo{
+    height: 100%;
+}
+.row_relatorio_tabela_horas #primeiro_campo #tabela_horas{
+     height: 30%;
+     margin-top:10px;
+}
+.row_relatorio_tabela_horas #primeiro_campo #tabela_horas .label{
+    font-size: 1em;
+    color:white; 
+}
+.row_relatorio_tabela_horas #primeiro_campo #tabela_horas .selectpicker{
+    width: 60%;
+}
+
+.row_relatorio_tabela_horas #terceiro_campo{
+    height: 100%;  
+}
+
+.row_relatorio_tabela_horas #campo_button{
+    height: 100%;
+}
+.row_relatorio_tabela_horas #campo_button  .btn-default{
+   margin:25% 0% 0% 10%;
+   background: #01669F;
+   color:white;
+}
+
+.recebe_tabela_horas {
+   width: 100%;
+   height: 630px;
+   background: white;
+}
+
+.recebe_tabela_horas .conteudo_dinamico {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+

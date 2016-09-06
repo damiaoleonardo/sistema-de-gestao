@@ -1,0 +1,1180 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+body{
+    background: #7ebebe;
+}
+ 
+ .div_waiting {
+	position: fixed;
+	left: 0px;
+	top:0px;
+	margin:0px;
+	width: 100%;
+	height: 100%;
+	display:block;
+	z-index: 9999997;
+	opacity: 0.65;
+	-moz-opacity: 0.65;
+	filter: alpha(opacity = 65);
+	background: #000;
+	background-image: url("../img/ajax-loader.gif");
+	background-repeat: no-repeat;
+	background-position:50% 50%;
+	text-align: center;
+	overflow: hidden;
+	font-weight: bold;
+	color: white;
+	padding-top: 25%;
+}
+
+.geral_funcionario_tarefa{
+    width: 100%;
+    height: 100%;
+}
+
+.geral_funcionario #header_tela_funcionario{
+    width: 95%;
+    height: 130px;
+    margin-top: 5%;
+    margin-left:2%;
+    background:#cfcfcf;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+.geral_funcionario #header_tela_funcionario #logo{
+    width: 170px;
+    height: 100%;
+    float:left;
+    border-radius: 5px;
+}
+.geral_funcionario #header_tela_funcionario #logo p{
+    color: #01669F;
+    font-size:2.3em;
+    font-family: cursive,Arial,verdana;
+    text-align: center;
+    margin-top: 20px;
+    padding: 5%;
+    
+}
+
+.geral_funcionario #header_tela_funcionario  #sair_do_sistema{
+    width: 210px;
+    height: 30px;
+    float:left;
+    margin-left:15px;
+    margin-top: 10px;
+    font-size:1.5em;
+    background: #3a87ad;
+    border-radius: 5px;
+ 
+}
+
+.geral_funcionario #header_tela_funcionario  #sair_do_sistema a{
+    color:white;
+    font-size:1em;
+    font-family: cursive,Arial,verdana;
+    text-decoration: none;
+    margin-left:15px;
+
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes{
+    width: 420px;
+    height: 100%;
+    float:left;
+}
+    
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #login_funcio{
+    width: 100%;
+    height: 30%;
+    float:left;
+    margin-top: 2px;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #login_funcio #titulo{
+    color: #3a87ad;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-align: left;
+    padding: 5%; 
+    float:left;
+}
+
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #login_funcio #valor{
+    color: brown;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-align: left;
+    padding: 5%; 
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #status_funcionario{
+    width: 100%;
+    height: 30%;
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #status_funcionario #titulo{
+    color: #3a87ad;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-align: left;
+    padding: 5%;  
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #status_funcionario #valor{
+    color: brown;
+    font-size:1.6em;
+    font-family: cursive,Arial,verdana;
+    text-align: left;
+    padding: 5%; 
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #horas_trabalhadas{
+    width: 100%;
+    height: 30%;
+    float:left; 
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #horas_trabalhadas #titulo{
+    color: #3a87ad;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    text-align: left;
+    padding: 5%;   
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #quadro_informacoes #horas_trabalhadas #valor{
+    color: brown;
+    font-size:1.6em;
+    font-family: cursive,Arial,verdana;
+    text-align: center;
+    padding: 5%; 
+    float:left;
+}
+
+
+.geral_funcionario #header_tela_funcionario  #add_tarefa{
+    width: 95px;
+    height: 90px;
+    float:left;
+    margin-left:10px;
+}
+
+
+.geral_funcionario #tela_funcionario{
+    margin-left:2%;
+    width: 95%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+ 
+.geral_funcionario #tela_funcionario #projetosinexistentes{
+    width: 100%; 
+    height: 50%;
+}
+.geral_funcionario #tela_funcionario #projetosinexistentes #titulo_tela_funcionario{
+    color:coral;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    padding-top:15%;
+    margin-left: 25%;
+}
+.geral_funcionario #finaliza_tarefa{
+    margin-left:2%;
+    width: 95%;
+    height: 500px;
+    background:cadetblue;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.geral_funcionario #finaliza_tarefa .container{
+    float:left;
+    width: 58%;
+    height: 100%;
+}
+.geral_funcionario #finaliza_tarefa .container .main-content #titulo_da_imagem {
+    width: 100%;
+    height: 15%;
+    background: #3a87ad; 
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.geral_funcionario #finaliza_tarefa .container .main-content #imagem_tirada img{
+    width: 100%;
+    height: 85%;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+
+.geral_funcionario #finaliza_tarefa #descricao{
+    float:left;
+    width: 38%;
+    height: 40%;
+    margin-left:3%;
+    margin-top:20px;
+}
+.geral_funcionario #finaliza_tarefa #descricao #text_area{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.geral_funcionario #finaliza_tarefa #descricao #text_area textarea {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.geral_funcionario #finaliza_tarefa #botao_salvar_foto_audio #button_volta_finaliza_tarefa{
+    margin:5% 0% 0% 4%;
+    width: 95px;
+    height: 45px;
+    border-radius: 9px;
+    font-size: 1.3em;
+    color:white;
+    background: #ff7f24;
+}
+.geral_funcionario #finaliza_tarefa #botao_salvar_foto_audio #button_add_finaliza_tarefa{
+    margin:5% 0% 0% 4%;
+    width: 170px;
+    height: 45px;
+    border-radius: 9px;
+    font-size: 1.3em;
+    color:white;
+    background: #ff7f24;
+}
+
+
+.geral_funcionario #tela_add_tarefa{
+    margin-left:2%;
+    width: 95%;
+    height: 300px;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background:beige;
+}
+.geral_funcionario #tela_add_tarefa .div-ajax-carregamento-pagina{
+position: absolute;
+top: 120px;
+left: 0px;
+width: 100%;
+height: 80%;
+z-index: 9999997;
+/* transparência compatível com os navegadores comuns.*/
+opacity:0.65;
+-moz-opacity: 0.65;
+filter: alpha(opacity=65);
+background: black;
+text-align: center;
+}
+
+.geral_funcionario #tela_add_tarefa #tarefas{
+    width: 70%;
+    height: 20%;
+    margin-left:15%;
+    padding-top:3%;
+ 
+ 
+    
+}
+.geral_funcionario #tela_add_tarefa #veiculo{
+    width: 70%;
+    height: 8%;
+    padding-top:5%;
+    padding-bottom:2%;
+    margin-left:15%;
+
+    
+}
+
+.geral_funcionario #tela_add_tarefa #tarefas #nome_input_tarefa{
+    font-size: 1.5em; 
+    font-family: arial,verdana;
+    
+}
+.geral_funcionario #tela_add_tarefa #tarefas #tarefas_select{
+    width: 500px;
+    height: 70px;
+    font-size:1.3em;
+    text-align: center;
+    margin-left:35px;
+}
+
+.geral_funcionario #tela_add_tarefa #veiculo #nome_input_veiculo{
+   font-size: 1.5em;
+   font-family: arial,verdana;
+}
+
+.geral_funcionario #tela_add_tarefa #veiculo #veiculos{
+    width: 500px;
+    height: 70px;
+    text-align: center;
+    font-size:1.3em;
+    margin-left:30px;
+}
+
+
+.geral_funcionario #tela_add_tarefa #botao_add_tarefa{
+  
+    width: 300px;
+    height: 45px;
+    margin-left:60%;
+    margin-top:5%;
+}
+
+
+.geral_funcionario #tela_add_tarefa #botao_add_tarefa #button_add_tarefas{
+    font-size:1.6em;
+    background: #2891CC;
+    border-radius: 8px;
+    width: 140px;
+    height: 45px;
+     color:white;
+     margin-left:20px;
+}
+
+.geral_funcionario #tela_add_tarefa #botao_add_tarefa #button_volta_tarefas{
+    font-size:1.6em;
+    background: #2891CC;
+    border-radius: 8px;
+    width: 100px;
+    height: 45px;
+    color:white;
+    
+}
+
+
+
+
+
+
+
+.geral_funcionario #tela_funcionario .tarefasinexistentes{  
+    height: 50%;
+}
+.geral_funcionario #tela_funcionario .tarefasinexistentes #titulo_tela_funcionario{
+    color:coral;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    padding-top:15%;
+    margin-left: 25%;
+}
+.geral_funcionario #visualiza_tarefas{
+    margin-left:2%;
+    width: 95%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.geral_funcionario #visualiza_tarefas #volta{
+    height: 70px;
+    width: 100%;  
+    padding-top: 20px;
+}
+.geral_funcionario #visualiza_tarefas #volta img{
+    margin-top:5px;
+}
+.geral_funcionario #visualiza_tarefas table{
+    width: 100%;
+} 
+geral_funcionario #visualiza_tarefas table{
+    width: 100%;
+} 
+.geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+    width: 150px;
+    background: wheat;
+    border-radius: 9px;
+    text-align: center;
+    color:black;
+    font-size:1em;
+    font-family: cursive,Arial,verdana;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna {
+    overflow:scroll;
+    padding-left: 1%;
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa {
+    width: 100%;
+    height: 50px;
+    background: white;
+}
+
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+    color:coral;
+    font-size: 1.2em;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa #execucao{
+    height: 100%;
+    border-radius: 4px;
+}
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+    width: 190px;
+}
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna a {
+    margin-left:4%;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+    background: white;
+}
+.geral_funcionario #tela_funcionario table{
+    width: 100%;
+}
+.geral_funcionario #tela_funcionario table tr td{
+    height: 70px;
+}
+.geral_funcionario #tela_funcionario table tr td {
+    font-size:1.7em;
+    font-family: cursive,Arial,verdana;
+    color:slategrey;
+    padding: auto;
+    padding-top: 20px;
+
+}
+.geral_funcionario #tela_funcionario table tr td span a{
+    text-decoration: none;   
+    color:slategrey;
+}
+
+
+@media (min-height: 465px) and (max-width: 980px) {
+    
+  
+    
+    
+ .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa {
+    width: 480px;
+    height: 55px;  
+   
+  }
+  .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+    width: 220px;
+  }
+  
+
+   .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+          zoom: 1.6;
+         -ms-zoom: 1.6;
+         -webkit-zoom: 1.6;
+         -moz-transform:  scale(1.6,1.6);
+         -moz-transform-origin: left center; 
+  }
+  
+}
+@media(min-width: 981px) and (max-width:1067px) {
+    
+  
+    
+    
+ .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa {
+    width: 480px;
+    height: 55px;  
+   
+  }
+  .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+    width: 150px;
+  }
+  .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+          zoom: 1.6;
+         -ms-zoom: 1.6;
+         -webkit-zoom: 1.6;
+         -moz-transform:  scale(1.6,1.6);
+         -moz-transform-origin: left center; 
+  }
+  
+   .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+          zoom: 1.7;
+         -ms-zoom: 1.7;
+         -webkit-zoom: 1.7;
+         -moz-transform:  scale(1.7,1.7);
+         -moz-transform-origin: left center; 
+         
+}
+}
+
+
+
+/*
+@media (min-width: 400px) and (max-width: 1000px) {
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:200px;
+    }
+}
+
+
+
+
+
+
+
+.geral_funcionario #tela_funcionario{
+    margin-left:5%;
+    width: 90%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.geral_funcionario #tela_funcionario #projetosinexistentes{
+    width: 100%; 
+    height: 50%;
+    //border:1px solid black;
+}
+.geral_funcionario #tela_funcionario #projetosinexistentes #titulo_tela_funcionario{
+    color:coral;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    padding-top:15%;
+    margin-left: 25%;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 400px) and (max-width: 900px) {
+
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:145px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 200px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 180px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 130px;  
+    }
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:80px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 160px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 150px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 110px;  
+        font-size:0.9em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.9em;
+    }
+
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:20px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 130px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 150px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 90px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.7em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.9em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 100px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 130px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 80px;  
+        font-size:0.7em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.7em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+@media (min-width: 200px) and (max-width: 500px) {
+ .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.8em;
+    }
+
+    .geral_funcionario #header_tela_funcionario{
+        width: 80%;
+        margin-left:10%;
+    }
+    .geral_funcionario #tela_funcionario{
+        margin-left:10%;
+        width: 80%;
+        border:1px solid black;
+    }
+    .geral_funcionario #visualiza_tarefas{
+        margin-left:10%;
+        width: 80%;
+
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 130px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 140px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 90px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.8em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.7em;
+    }
+    .geral_funcionario #header_tela_funcionario{
+        width: 95%;
+        margin-left:2%;
+    }
+    .geral_funcionario #tela_funcionario{
+        width: 95%;
+        margin-left:2%;
+    }
+    .geral_funcionario #visualiza_tarefas{
+        width: 95%;
+        margin-left:2%;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 90px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 120px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 80px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.8em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+@media (min-height: 1000px)  {
+ 
+.geral_login .login_tela{
+    
+  .geral_funcionario #header_tela_funcionario{
+         zoom: 1.8;
+-ms-zoom: 1.8;
+-webkit-zoom: 1.8;
+-moz-transform:  scale(1.8,1.8);
+-moz-transform-origin: left center;
+    }
+
+}
+    
+}
+
+@media (min-height: 1200px)  {
+ 
+.geral_login .login_tela{
+    
+ .geral_funcionario #header_tela_funcionario{
+         zoom: 1.7;
+-ms-zoom: 1.7;
+-webkit-zoom: 1.7;
+-moz-transform:  scale(1.7,1.7);
+-moz-transform-origin: left center;
+    }
+    .geral_funcionario #tela_funcionario{
+        
+    }
+
+}
+    
+}*/
+
+
+/*
+
+@media (min-height: 1429px) and (max-width: 980px) {
+ 
+  
+.geral_funcionario #header_tela_funcionario #sair_do_sistema{
+    width: 120px;
+    margin-left:0px;
+    font-size:1em;
+ 
+}
+.geral_funcionario #header_tela_funcionario #login_funcio{
+    width: 150px;
+    margin-left:0px;
+    margin-top:0px; 
+}
+.geral_funcionario #header_tela_funcionario #login_funcio p{
+    font-size:1em; 
+}
+.geral_funcionario #header_tela_funcionario #add_tarefa{
+    margin-left:10px;
+    
+}
+.geral_funcionario #header_tela_funcionario #add_tarefa img{
+    height: 47px;
+    width: 60px;
+}
+    
+   .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa {
+    width: 180px;
+    height: 50px; 
+   
+  }
+  .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+    width: 220px;
+  }  
+    
+.geral_funcionario #header_tela_funcionario{
+         zoom: 1.9;
+         -ms-zoom: 1.9;
+         -webkit-zoom: 1.9;
+         -moz-transform:  scale(1.9,1.9);
+         -moz-transform-origin: left center;
+    }
+   
+     .geral_funcionario #tela_funcionario{
+          zoom: 1.9;
+         -ms-zoom: 1.9;
+         -webkit-zoom: 1.9;
+         -moz-transform:  scale(1.9,1.9);
+         -moz-transform-origin: left center; 
+    }
+    
+    .geral_funcionario #visualiza_tarefas{
+        zoom: 1.7;
+         -ms-zoom: 1.7;
+         -webkit-zoom: 1.7;
+         -moz-transform:  scale(1.7,1.7);
+         -moz-transform-origin: left center; 
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+          zoom: 1.5;
+         -ms-zoom: 1.5;
+         -webkit-zoom: 1.5;
+         -moz-transform:  scale(1.5,1.5);
+         -moz-transform-origin: left center; 
+}
+    
+}
+
+
+@media (min-height: 1600px)  {
+ 
+.geral_funcionario #header_tela_funcionario{
+         zoom: 2.0;
+-ms-zoom: 2.0;
+-webkit-zoom: 2.0;
+-moz-transform:  scale(2.0,2.0);
+-moz-transform-origin: left center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+body{
+    background: #7ebebe;
+}
+.geral_funcionario{
+    width: 100%;
+    height: 100%;
+}
+.geral_funcionario #header_tela_funcionario{
+    width: 60%;
+    height: 90px;
+    margin-top: 10%;
+    margin-left:20%;
+    background:#cfcfcf;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+.geral_funcionario #header_tela_funcionario #logo{
+    width: 200px;
+    float:left;
+}
+.geral_funcionario #header_tela_funcionario #logo p{
+
+    color: white;
+    font-size:1.5em;
+    font-family: cursive,Arial,verdana;
+    text-align: center;
+    padding: 5%;
+
+}
+.geral_funcionario #header_tela_funcionario #sair_do_sistema{
+    width: 120px;
+    height: 30px;
+    float:left;
+    margin-left:255px;
+    margin-top: 10px;
+}
+.geral_funcionario #header_tela_funcionario a{
+    background: #3a87ad;
+    border-radius: 5px;
+    color:white;
+    font-size:1em;
+    font-family: cursive,Arial,verdana;
+    text-decoration: none;
+
+}
+.geral_funcionario #tela_funcionario{
+    margin-left:20%;
+    width: 60%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.geral_funcionario #tela_funcionario #projetosinexistentes{
+    width: 100%; 
+    height: 50%;
+    //border:1px solid black;
+}
+.geral_funcionario #tela_funcionario #projetosinexistentes #titulo_tela_funcionario{
+    color:coral;
+    font-size:1.4em;
+    font-family: cursive,Arial,verdana;
+    padding-top:15%;
+    margin-left: 25%;
+}
+.geral_funcionario #visualiza_tarefas{
+    margin-left:20%;
+    width: 60%;
+    height: auto;
+    background: white;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.geral_funcionario #visualiza_tarefas #volta{
+    height: 50px;
+    width: 100%;  
+}
+.geral_funcionario #visualiza_tarefas #volta img{
+    margin-top:5px;
+}
+.geral_funcionario #visualiza_tarefas table{
+    width: 100%;
+} 
+geral_funcionario #visualiza_tarefas table{
+    width: 100%;
+} 
+.geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+    //border:1px solid black;
+    width: 150px;
+    background: wheat;
+    border-radius: 9px;
+    text-align: center;
+    color:black;
+    font-size:1em;
+    font-family: cursive,Arial,verdana;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna {
+    overflow:scroll;
+    padding-left: 1%;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa {
+    width: 260px;
+    height: 50px;
+    background: white;
+    overflow-x: scroll;
+   
+}
+
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+    color:coral;
+    font-size: 1.2em;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa #execucao{
+    height: 100%;
+    border-radius: 9px;
+
+}
+
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+    width: 190px;
+}
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna a {
+    margin-left:4%;
+
+}
+.geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+    background: white;
+}
+.geral_funcionario #tela_funcionario table{
+    width: 100%;
+}
+.geral_funcionario #tela_funcionario table tr td{
+    height: 35px;
+}
+.geral_funcionario #tela_funcionario table tr td {
+    font-size:1.3em;
+    font-family: cursive,Arial,verdana;
+    color:slategrey;
+    padding: auto;
+
+}
+.geral_funcionario #tela_funcionario table tr td span a{
+    text-decoration: none;   
+    color:slategrey;
+}
+
+@media (min-width: 400px) and (max-width: 1000px) {
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:200px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:145px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        overflow: scroll;
+        width: 200px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 180px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 130px;  
+    }
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:80px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 160px;overflow: scroll;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 150px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 110px;  
+        font-size:0.9em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.9em;
+    }
+
+    .geral_funcionario #header_tela_funcionario #sair_do_sistema{
+        margin-left:20px;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 130px;overflow: scroll;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 150px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 90px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.7em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.9em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 100px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 130px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 80px;  
+        font-size:0.7em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.7em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+@media (min-width: 200px) and (max-width: 500px) {
+ .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.8em;
+    }
+
+    .geral_funcionario #header_tela_funcionario{
+        width: 80%;
+        margin-left:10%;
+    }
+    .geral_funcionario #tela_funcionario{
+        margin-left:10%;
+        width: 80%;
+        border:1px solid black;
+    }
+    .geral_funcionario #visualiza_tarefas{
+        margin-left:10%;
+        width: 80%;
+
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 130px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 140px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 90px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.8em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+
+    .geral_funcionario #tela_funcionario table tr td {
+        font-size:0.7em;
+    }
+    .geral_funcionario #header_tela_funcionario{
+        width: 95%;
+        margin-left:2%;
+    }
+    .geral_funcionario #tela_funcionario{
+        width: 95%;
+        margin-left:2%;
+    }
+    .geral_funcionario #visualiza_tarefas{
+        width: 95%;
+        margin-left:2%;
+    }
+
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa{
+        width: 90px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna{
+        width: 120px;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #primeira_coluna{
+        width: 80px;  
+        font-size:0.8em;
+    }
+    .geral_funcionario #visualiza_tarefas table tr #segunda_coluna #tarefa span{
+        font-size: 0.8em;
+
+    }
+    .geral_funcionario #visualiza_tarefas table tr #terceira_coluna a img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+*/
